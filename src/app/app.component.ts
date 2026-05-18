@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Training } from './training';
+import { UserInfo } from './training';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +8,10 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
+
 export class AppComponent {
 
 }
+
+const testSum = new Training(10, 20);
+testSum.getSumOfNumbers();
