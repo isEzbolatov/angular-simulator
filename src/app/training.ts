@@ -1,3 +1,5 @@
+import { concatAll } from "rxjs";
+
 // (3) Функция, которая возвращает сумму двух чисел.
 export class Training {
   firstNumber: number;
@@ -15,7 +17,7 @@ export class Training {
 }
 
 // (4) Переменная status, которая может быть только: "loading", "success", "error".
-let status: 'louading' | 'sucsess' | 'error';
+let status: 'loading' | 'sucsess' | 'error';
 
 // (5) Переменная textFormat, которая может быть только: 'uppercase', 'lowercase', 'capitalize'".
 let textFormat: 'uppercase' | 'lowercase' | 'capitalize';
@@ -79,3 +81,19 @@ const usersList: IUserInfo[] = [
 ];
 
 const filteredUsers = usersList.filter(user => user.city === 'Москва');
+
+
+function last<T>(arr: T[]): T {
+  return arr[arr.length - 1];
+}
+
+const a = [1, 2, 3, 4];
+console.log(last(a));
+
+const b = ['a', 'b', 'c']
+console.log(last(b));
+
+
+function wrapInArray<T>(value: T): T[] {
+  return [value];
+}
