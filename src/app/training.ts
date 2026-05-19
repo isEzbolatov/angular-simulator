@@ -17,7 +17,7 @@ export class Training {
 }
 
 // (4) Переменная status, которая может быть только: "loading", "success", "error".
-let status: 'loading' | 'sucsess' | 'error';
+let status: 'loading' | 'success' | 'error';
 
 // (5) Переменная textFormat, которая может быть только: 'uppercase', 'lowercase', 'capitalize'".
 let textFormat: 'uppercase' | 'lowercase' | 'capitalize';
@@ -36,7 +36,7 @@ export interface IUserStatus extends IUserInfo {
   status: boolean;
 }
 
-// (8) Функцию, которая принимает строку и вариант, 
+// (8) Функцию, которая принимает строку и вариант,
 // как именно форматировать строку (задание №5) и на основе этого возвращает форматированную строку.
 function getformatText(text: string, textFormat: 'uppercase' | 'lowercase' | 'capitalize') {
   if (textFormat === 'uppercase') {
