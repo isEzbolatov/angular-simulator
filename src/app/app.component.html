@@ -1,1 +1,73 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+<header class="header">
+  <div class="header-container">
+    <div class="logo-container">
+      <img class="mountains-logo" src="/images/mountains-logo.svg" alt="mountains logo">
+      <span class="company-name fs-14 fw-700">{{ companyName }}</span>
+    </div>
+
+    <nav class="header-nav fs-18">
+      <a>Главная</a>
+      <a>Про гида</a>
+      <a>Программа тура</a>
+      <a>Стоимость</a>
+      <a>Блог</a>
+      <a>Контакты</a>
+    </nav>
+
+    <button class="consultation-button">Консультация</button>
+  </div>
+</header>
+
+<section class="hero-container">
+  <div class="main-content-wrapper">
+    <h1 class="description fw-400 fs-50">Насладись прогулкой в горах<br>с командой единомышленников</h1>
+
+    <div class="search-section">
+      <form class="search-form" action="/search" method="get">
+
+        <div class="input-group">
+          <div class="input">
+            <select name="location" id="location" aria-describedby="location-desc" required>
+              <option value="" disabled selected hidden>Локация для тура</option>
+              <option value="Домбай">Домбай</option>
+              <option value="Сулакский каньон">Сулакский каньон</option>
+              <option value="Эльбрус">Эльбрус</option>
+            </select>
+
+            <img src="/images/arrow-list.svg" alt="arrow list" class="arrow-list">
+          </div>
+
+          <label id="location-desc" class="input-desc">выберите из списка</label>
+        </div>
+
+        <div class="input-group">
+          <div class="input-wrapper">
+            <label for="date">Дата похода</label>
+            <img src="/images/calendar.svg" alt="calendar" class="calendarSVG">
+            <input type="date" id="date" name="date" aria-describedby="date-input" style="display: none;" required>
+          </div>
+          <span id="date-input" class="input-desc">укажите дату</span>
+        </div>
+
+        <div class="input-group">
+          <div class="input">
+            <select name="participants" id="participants" aria-describedby="participants-input" required>
+              <option value="" disabled selected hidden>Участники</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+
+            <img src="/images/arrow-list.svg" alt="arrow list" class="arrow-list">
+          </div>
+
+          <label id="participants-input" class="input-desc">выберите из списка</label>
+        </div>
+
+        <button class="search-programm-button">Найти программу</button>
+
+      </form>
+    </div>
+  </div>
+</section>

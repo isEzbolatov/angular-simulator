@@ -1,4 +1,4 @@
-import { concatAll } from "rxjs";
+import { concatAll, reduce } from "rxjs";
 
 // (3) Функция, которая возвращает сумму двух чисел.
 export class Training {
@@ -81,19 +81,3 @@ const usersList: IUserInfo[] = [
 ];
 
 const filteredUsers = usersList.filter(user => user.city === 'Москва');
-
-
-function last<T>(arr: T[]): T {
-  return arr[arr.length - 1];
-}
-
-const a = [1, 2, 3, 4];
-console.log(last(a));
-
-const b = ['a', 'b', 'c']
-console.log(last(b));
-
-
-function wrapInArray<T>(value: T): T[] {
-  return [value];
-}
