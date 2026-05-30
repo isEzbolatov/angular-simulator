@@ -71,3 +71,48 @@
     </div>
   </div>
 </section>
+
+<section class="history">
+  <div class="media-container">
+    <img class="media-container__image" src="/images/mountains.png" alt="mountains">
+    <div class="media-container__video-card">
+      <img class="media-container__video" src="/images/forest-image.png" alt="forest">
+      <button class="play-button">
+        <img src="/images/play-button-icon.svg" alt="play icon">
+      </button>
+    </div>
+  </div>
+
+  <div class="description-container">
+    <h2 class="history-title fs-24 fw-400">о нашем походе</h2>
+    <p class="history-subtitle fs-32 fw-800 line-height-120">Исследуйте все горные массивы мира вместе с нами</p>
+    <p class="history-desc fs-18 fw-400 line-height-150">{{ loremIpsum }}</p>
+    <button class="program-tour-button">Программа тура</button>
+  </div>
+</section>
+
+<section class="programs">
+  <div class="programs-wrapper">
+    <div class="offer-list">
+      <h2 class="offer-title fs-24 fw-400">наше предложение</h2>
+      <h3 class="data-title">{{ offerData.title }}</h3>
+      <p class="data-description fs-18 fw-400 line-height-150">{{ offerData.description }}</p>
+
+      @for (feature of offerData.features; track feature.id) {
+      <div class="feature-item">
+        <img [src]=feature.icon>
+        <div class="feature-wrapper">
+          <h2 class="feature-title fs-18 fw-700 ">{{ feature.title }}</h2>
+          <p class="feature-description fs-14 fw-400">{{ feature.description }}</p>
+        </div>
+      </div>
+      }
+
+      <button class="price-program-button">Стоимость программ</button>
+    </div>
+
+    <div>
+
+    </div>
+  </div>
+</section>

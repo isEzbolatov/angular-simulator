@@ -3,6 +3,7 @@ import { Training } from './training';
 import { IUserInfo } from './training';
 import { colors } from '../enums/Color';
 import { Collection } from './collection';
+import { IOffer } from '../interfaces/IOffer';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,33 @@ import { Collection } from './collection';
 
 export class AppComponent {
   companyName: string = 'румтибет';
+  loremIpsum: string = 'Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.';
+
+  offerData: IOffer = {
+    id: 1,
+    title: 'Лучшие программы для тебя',
+    description: 'Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.',
+    features: [
+      {
+        id: 1,
+        icon: 'images/offer-icons/guide-icon.svg',
+        title: 'Опытный гид',
+        description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
+      },
+      {
+        id: 2,
+        icon: 'images/offer-icons/security-icon.svg',
+        title: 'Безопасный поход',
+        description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
+      },
+      {
+        id: 3,
+        icon: 'images/offer-icons/prices-icon.svg',
+        title: 'Лояльные цены',
+        description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
+      }
+    ]
+  }
 
   constructor() {
     this.saveLastVisitDate();
