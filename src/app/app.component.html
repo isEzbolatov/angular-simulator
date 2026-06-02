@@ -27,7 +27,7 @@
 
         <div class="input-group">
           <div class="input">
-            <select name="location" id="location" aria-describedby="location-desc" required>
+            <select [(ngModel)]="locationTour" name="location" id="location" aria-describedby="location-desc" required>
               <option value="" disabled selected hidden>Локация для тура</option>
               <option value="Домбай">Домбай</option>
               <option value="Сулакский каньон">Сулакский каньон</option>
@@ -99,7 +99,7 @@
       <p class="data-description fs-18 fw-400 line-height-150">{{ offerData.description }}</p>
 
       @for (feature of offerData.features; track feature.id) {
-      <div class="feature-item">
+      <div class="feature-item scale">
         <img [src]=feature.icon>
         <div class="feature-wrapper">
           <h2 class="feature-title fs-18 fw-700 ">{{ feature.title }}</h2>
@@ -111,8 +111,11 @@
       <button class="price-program-button">Стоимость программ</button>
     </div>
 
-    <div>
-
+    <div class="tour-images-wrapper">
+      <img class="scale" src="/images/tour-program-images/mountain-canyon.png" alt="Горный каньон">
+      <img class="scale" src="/images/tour-program-images/dore-canyon.png" alt="Дор-Каньон">
+      <img class="scale" src="/images/tour-program-images/snowmobile-rider.png" alt="райдер на снегоходе">
+      <img class="scale" src="/images/tour-program-images/mountain-springs.png" alt="Горные источники">
     </div>
   </div>
 </section>

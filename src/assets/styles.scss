@@ -62,3 +62,12 @@
 .line-height-120 {
   line-height: 120%;
 }
+
+.scale {
+  width: 250px;
+  transition: 0.3s;
+}
+
+.scale:hover {
+  transform: scale(1.1);
+}

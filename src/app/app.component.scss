@@ -304,6 +304,7 @@
   background-color: var(--gray-color);
 
   &-wrapper {
+    display: flex;
     max-width: 1180px;
   }
 
@@ -366,5 +367,18 @@
     @include green-button;
     width: 236px;
     height: 52px;
+  }
+
+  .tour-images-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 510px;
+    height: 510px;
+    margin: 40px 0 41px 90px;
+    gap: 10px;
+  }
+
+  .box:hover {
+    transform: scale(1.2);
   }
 }
