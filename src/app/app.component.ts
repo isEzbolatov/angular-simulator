@@ -16,13 +16,13 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   public companyName: string = 'румтибет';
   public loremIpsum: string = 'Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.';
-  public locationTour: string = '';
-  public date: string = '';
-  public participantsCount: string = '';
+  public locationTour!: string;
+  public date!: string;
+  public participantsCount!: string;
   public currentDate: Date = new Date;
   public showTimer: boolean = true;
   public count: number = 0;
-  public liveText: string = '';
+  public liveText!: string;
   public loadingWebsite: boolean = false;
 
   public offerData: IOffer = {
@@ -109,8 +109,6 @@ export class AppComponent {
   toggleWidget() {
     this.showTimer = !this.showTimer;
   }
-
-
 }
 
 Collection;
