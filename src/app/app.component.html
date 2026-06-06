@@ -153,5 +153,70 @@
       </div>
     </div>
   </section>
+
+  <section class="popular-destinations">
+    <div class="popular-destinations-title-wrapper">
+      <p class="pre-title fs-24 fw-400">по версии отдыхающих</p>
+      <p class="destinations-title fs-32 fw-800 line-height-120">Популярные направления</p>
+    </div>
+
+    <div class="destinations-container">
+      @for (destination of destinationData; track destination.id) {
+      <div class="destination">
+        <img class="popular-destinations-img" [src]=destination.imageUrl>
+
+        <div class="destination-rating-wrapper">
+          <img src="images/rating-star-icon.svg">
+          <span class="destination-rating fs-14 fw-700">{{ destination.rating }}</span>
+        </div>
+
+        <div class="popular-destinations-description-container">
+          <div class="popular-destinations-description-wrapper">
+            <div>
+              <h2 class="destination-title fs-24 fw-700 line-height-120">{{ destination.title }}</h2>
+              <p class="destination-desc fs-14 fw-400">{{ destination.description }}</p>
+            </div>
+            <span class="destination-price fs-20 fw-700">{{ destination.price }} &#36;</span>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+
+    <button class="destination-rating-btn">Рейтинг направлений</button>
+  </section>
+
+  <section class="travel-blog">
+    <div class="travel-blog-container">
+      <div class="travel-blog-title-wrapper">
+        <p class="pre-title-blog fs-24 fw-400">делимся впечатлениями</p>
+        <p class="title-blog fs-32 fw-800 line-height-120">Блог о путешествиях</p>
+      </div>
+
+      <div class="travel-cards-container">
+        @for (card of travelCards; track card.id ) {
+        <div class="travel-card">
+          <img class="travel-card-img" [src]=card.imageUrl>
+
+          <div class="desc-card-wrapper">
+            <h2 class="card-title fs-24 fw-700">{{ card.title }}</h2>
+            <p class="card-desc fs-14 fw-400">{{ card.description }}</p>
+            <span class="data-card">{{ card.data }}</span>
+          </div>
+
+          <button class="read-article-btn fs-14 fw-700">читать статью</button>
+        </div>
+        }
+      </div>
+
+      <button class="other-materials-btn fs-16 fw-600">Другие материалы</button>
+    </div>
+  </section>
 </div>
 }
+
+<ng-template #travelBlog>
+  <div>
+
+  </div>
+</ng-template>

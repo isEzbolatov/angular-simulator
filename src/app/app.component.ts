@@ -5,11 +5,13 @@ import { colors } from '../enums/Color';
 import { Collection } from './collection';
 import { IOffer } from '../interfaces/IOffer';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
+import { IDestination } from '../interfaces/IDestination';
+import { ITravelCards } from '../interfaces/ITravelCards';
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, NgTemplateOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -51,6 +53,64 @@ export class AppComponent {
     ]
   }
 
+  public destinationData: IDestination[] = [
+    {
+      id: 1,
+      imageUrl: 'images/mountain-lake.png',
+      rating: 4.9,
+      title: 'Озеро возле гор',
+      description: 'романтическое приключение',
+      price: 480
+    },
+    {
+      id: 2,
+      imageUrl: 'images/mountain-night.png',
+      rating: 4.5,
+      title: 'Ночь в горах',
+      description: 'в компании друзей',
+      price: 500
+    },
+    {
+      id: 3,
+      imageUrl: 'images/mountain-yoga.png',
+      rating: 5.0,
+      title: 'Растяжка в горах',
+      description: 'для тех, кто забоится о себе',
+      price: 230
+    }
+  ]
+
+  public travelCards: ITravelCards[] = [
+    {
+      id: 1,
+      imageUrl: 'images/manarola.png',
+      title: 'Красивая Италия, какая она в реальности?',
+      description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
+      data: '01/04/2023',
+    },
+    {
+      id: 2,
+      imageUrl: 'images/airplane.png',
+      title: 'Долой сомнения! Весь мир открыт для вас!',
+      description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации ... независимые способы реализации соответствующих...',
+      data: '01/04/2023'
+    },
+    {
+      id: 3,
+      imageUrl: 'images/backpacker.png',
+      title: 'Как подготовиться к путешествию в одиночку?',
+      description: 'Для современного мира базовый вектор развития предполагает.',
+      data: '01/04/2023'
+    },
+    {
+      id: 4,
+      imageUrl: 'images/taj-mahal.png',
+      title: 'Индия ... летим?',
+      description: 'Для современного мира базовый.',
+      data: '01/04/2023'
+    }
+  ]
+
   constructor() {
     this.saveLastVisitDate();
     this.saveCountVisit();
@@ -61,7 +121,7 @@ export class AppComponent {
 
     setInterval(() => {
       this.loadingWebsite = true;
-    }, 2000)
+    }, 100)
   }
 
   // (ДЗ 15.2) Метод который проверяет, является ли переданный цвет основным и возвращает true/false.

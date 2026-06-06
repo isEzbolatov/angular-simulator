@@ -636,3 +636,230 @@ option {
     transform: scale(1.2);
   }
 }
+
+.popular-destinations {
+  @include flex-center;
+
+  flex-direction: column;
+  height: 893px;
+  gap: 50px;
+
+  &-title-wrapper {
+    @include flex-center;
+
+    flex-direction: column;
+    margin-top: 80px;
+    height: 66px;
+    gap: 8px;
+
+    .pre-title {
+      margin: 0;
+      color: var(--yellow-color);
+      line-height: 20px;
+    }
+
+    .destinations-title {
+      margin: 0;
+    }
+  }
+
+  .destinations-container {
+    @include flex-center;
+
+    height: 500px;
+    width: 1180px;
+    gap: 20px;
+
+    .destination {
+      position: relative;
+
+
+      .popular-destinations-img {
+        width: 380px;
+        height: 500px;
+      }
+
+      &-rating-wrapper {
+        @include flex-center;
+
+        position: absolute;
+        width: 65px;
+        height: 32px;
+        top: 50px;
+        right: 0;
+        padding: 4px 8px;
+        gap: 8px;
+        background: rgba(253, 253, 253, 0.4);
+        backdrop-filter: blur(2px);
+        border-radius: 4px 0px 0px 4px;
+      }
+
+      &-rating {
+        color: var(--green-color);
+        line-height: 18px;
+      }
+
+      .popular-destinations-description-container {
+        position: absolute;
+        height: 90px;
+        width: 380px;
+        top: 410px;
+        gap: 35px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(3px);
+        border-radius: 0px 0px 32px 32px;
+
+        .popular-destinations-description-wrapper {
+          @include flex-center;
+          justify-content: space-between;
+          padding: 20px 32px 23px 32px;
+
+          .destination-title {
+            margin: 0;
+            color: var(--white-color);
+          }
+
+          .destination-desc {
+            margin: 0;
+            line-height: 18px;
+            color: var(--white-color);
+          }
+
+          .destination-price {
+            line-height: 24px;
+            color: var(--white-color);
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+          }
+        }
+
+      }
+    }
+  }
+
+  .destination-rating-btn {
+    @include green-button;
+
+    width: 244px;
+    height: 52px;
+  }
+}
+
+.travel-blog {
+  width: 100%;
+  height: 1036px;
+  background-color: var(--gray-color);
+  margin-top: 95px;
+
+  &-container {
+    @include flex-center;
+    flex-direction: column;
+
+    .other-materials-btn {
+      @include flex-center;
+      @include green-button;
+
+      width: 220px;
+      height: 52px;
+      line-height: 20px;
+      margin-top: 50px;
+    }
+
+    .travel-blog-title-wrapper {
+      @include flex-center;
+
+      flex-direction: column;
+      width: 580px;
+      height: 66px;
+      gap: 8px;
+      margin-top: 85px;
+
+      .pre-title-blog {
+        color: var(--yellow-color);
+        line-height: 20px;
+        margin: 0;
+      }
+
+      .title-blog {
+        margin: 0;
+      }
+    }
+  }
+
+  .travel-cards-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 1180px;
+    height: 648px;
+    gap: 20px 24px;
+    margin-top: 40px;
+
+    .travel-card {
+      @include flex-center;
+
+      position: relative;
+      justify-content: space-around;
+      width: 580px;
+      height: 312px;
+      background-color: var(--white-color);
+      border-radius: 10px;
+
+      &-img {
+        height: 280px;
+        border-radius: 6px;
+      }
+
+      .desc-card-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        width: 294px;
+        height: 280px;
+        flex: none;
+
+        .card-title {
+          line-height: 32px;
+          margin-top: 16px;
+        }
+
+        .card-desc {
+          width: 294px;
+          height: 116px;
+          line-height: 20px;
+          color: var(--primary-color);
+        }
+
+        .data-card {
+          position: absolute;
+          bottom: 32px;
+          width: 76px;
+          height: 20px;
+          line-height: 20px;
+          color: var(--yellow-color);
+        }
+      }
+
+      .read-article-btn {
+        position: absolute;
+
+        line-height: 20px;
+        color: var(--green-color);
+        background: none;
+        right: 16px;
+        bottom: 32px;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+          filter: brightness(0.5);
+        }
+
+        &:active {
+          transform: scale(0.9);
+        }
+      }
+    }
+  }
+}
