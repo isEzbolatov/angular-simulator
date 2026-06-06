@@ -93,7 +93,8 @@
             <label id="participants-input" class="input-desc">выберите из списка</label>
           </div>
 
-          <button [disabled]="!participantsCount" class="search-programm-button">Найти программу</button>
+          <button [disabled]="!participantsCount || !date || !locationTour" class="search-programm-button">Найти
+            программу</button>
 
         </form>
       </div>
