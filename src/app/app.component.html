@@ -1,73 +1,157 @@
-<header class="header">
-  <div class="header-container">
-    <div class="logo-container">
-      <img class="mountains-logo" src="/images/mountains-logo.svg" alt="mountains logo">
-      <span class="company-name fs-14 fw-700">{{ companyName }}</span>
+@if (!loadingWebsite) {
+<div class="loading-screen">
+  <img class="loading-icon" src="/images/loading-icon.svg" alt="загрузка">
+</div>
+} @else {
+<div class="main-content-animated">
+  <header class="header">
+    <div class="controls-container">
+      <div class="header-container">
+        <div class="logo-container">
+          <img class="mountains-logo" src="/images/mountains-logo.svg" alt="mountains logo">
+          <span class="company-name fs-14 fw-700">{{ companyName }}</span>
+        </div>
+
+        <nav class="header-nav fs-18">
+          <a>Главная</a>
+          <a>Про гида</a>
+          <a>Программа тура</a>
+          <a>Стоимость</a>
+          <a>Блог</a>
+          <a>Контакты</a>
+        </nav>
+
+        <button class="consultation-button">Консультация</button>
+      </div>
+
+      <div class="header__widget">
+        @if (showTimer) {
+        <div class="timer-container">
+          <span class="header__widget-timer fs-18 fw-600">{{currentDate | date:'dd.MM.yyyy HH:mm:ss'}}</span>
+          <button (click)="toggleWidget()" class="counter-show-btn">Показать кликер</button>
+        </div>
+        } @else {
+        <div class="click-counter-container">
+          <div class="click-counter-wrapper">
+            <button (click)="incrementCount()" class="increment-btn fs-18 fw-600">+</button>
+            <span class="counter fs-18 fw-600">{{ count }}</span>
+            <button [disabled]="count === 0" (click)="decrementCount()" class="decrement-btn fs-18 fw-600">-</button>
+          </div>
+          <button (click)="toggleWidget()" class="timer-show-btn">Показать дату</button>
+        </div>
+        }
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-container">
+    <div class="main-content-wrapper">
+      <h1 class="description fw-400 fs-50">Насладись прогулкой в горах<br>с командой единомышленников</h1>
+
+      <div class="search-section">
+        <form class="search-form" action="/search" method="get">
+
+          <div class="input-group">
+            <div class="input">
+              <select [(ngModel)]="locationTour" name="location" id="location" aria-describedby="location-desc"
+                required>
+                <option value="" disabled selected hidden>Локация для тура</option>
+                <option value="Домбай">Домбай</option>
+                <option value="Сулакский каньон">Сулакский каньон</option>
+                <option value="Эльбрус">Эльбрус</option>
+              </select>
+
+              <img src="/images/arrow-list.svg" alt="arrow list" class="arrow-list">
+            </div>
+
+            <label id="location-desc" class="input-desc">выберите из списка</label>
+          </div>
+
+          <div class="input-group">
+            <div class="date-container">
+              <input type="date" [disabled]="!locationTour" [(ngModel)]="date" name="date" required class="date-input">
+              <span class="custom-placeholder">Дата похода</span>
+              <img src="/images/calendar.svg" class="calendar-icon" alt="calendar">
+            </div>
+            <span id="date-input" class="input-desc">укажите дату</span>
+          </div>
+
+          <div class="input-group">
+            <div class="input">
+              <select [disabled]="!date" [(ngModel)]="participantsCount" name="participants" id="participants"
+                aria-describedby="participants-input" required>
+                <option value="" disabled selected hidden>Участники</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+
+              <img src="/images/arrow-list.svg" alt="arrow list" class="arrow-list">
+            </div>
+
+            <label id="participants-input" class="input-desc">выберите из списка</label>
+          </div>
+
+          <button [disabled]="!participantsCount || !date || !locationTour" class="search-programm-button">Найти
+            программу</button>
+
+        </form>
+      </div>
+      <div class="live-input-container">
+        <input type="text" class="live-input fs-16 fw-700 line-height-150" id="live-input" name="live-input"
+          [(ngModel)]="liveText">
+        <span class="live-text fs-16 fw-700 line-height-150">{{ liveText }}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="history">
+    <div class="media-container">
+      <img class="media-container__image" src="/images/mountains.png" alt="mountains">
+      <div class="media-container__video-card">
+        <img class="media-container__video" src="/images/forest-image.png" alt="forest">
+        <button class="play-button">
+          <img src="/images/play-button-icon.svg" alt="play icon">
+        </button>
+      </div>
     </div>
 
-    <nav class="header-nav fs-18">
-      <a>Главная</a>
-      <a>Про гида</a>
-      <a>Программа тура</a>
-      <a>Стоимость</a>
-      <a>Блог</a>
-      <a>Контакты</a>
-    </nav>
-
-    <button class="consultation-button">Консультация</button>
-  </div>
-</header>
-
-<section class="hero-container">
-  <div class="main-content-wrapper">
-    <h1 class="description fw-400 fs-50">Насладись прогулкой в горах<br>с командой единомышленников</h1>
-
-    <div class="search-section">
-      <form class="search-form" action="/search" method="get">
-
-        <div class="input-group">
-          <div class="input">
-            <select name="location" id="location" aria-describedby="location-desc" required>
-              <option value="" disabled selected hidden>Локация для тура</option>
-              <option value="Домбай">Домбай</option>
-              <option value="Сулакский каньон">Сулакский каньон</option>
-              <option value="Эльбрус">Эльбрус</option>
-            </select>
-
-            <img src="/images/arrow-list.svg" alt="arrow list" class="arrow-list">
-          </div>
-
-          <label id="location-desc" class="input-desc">выберите из списка</label>
-        </div>
-
-        <div class="input-group">
-          <div class="input-wrapper">
-            <label for="date">Дата похода</label>
-            <img src="/images/calendar.svg" alt="calendar" class="calendarSVG">
-            <input type="date" id="date" name="date" aria-describedby="date-input" style="display: none;" required>
-          </div>
-          <span id="date-input" class="input-desc">укажите дату</span>
-        </div>
-
-        <div class="input-group">
-          <div class="input">
-            <select name="participants" id="participants" aria-describedby="participants-input" required>
-              <option value="" disabled selected hidden>Участники</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-
-            <img src="/images/arrow-list.svg" alt="arrow list" class="arrow-list">
-          </div>
-
-          <label id="participants-input" class="input-desc">выберите из списка</label>
-        </div>
-
-        <button class="search-programm-button">Найти программу</button>
-
-      </form>
+    <div class="description-container">
+      <h2 class="history-title fs-24 fw-400">о нашем походе</h2>
+      <p class="history-subtitle fs-32 fw-800 line-height-120">Исследуйте все горные массивы мира вместе с нами</p>
+      <p class="history-desc fs-18 fw-400 line-height-150">{{ loremIpsum }}</p>
+      <button class="program-tour-button">Программа тура</button>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section class="programs">
+    <div class="programs-wrapper">
+      <div class="offer-list">
+        <h2 class="offer-title fs-24 fw-400">наше предложение</h2>
+        <h3 class="data-title">{{ offerData.title }}</h3>
+        <p class="data-description fs-18 fw-400 line-height-150">{{ offerData.description }}</p>
+
+        @for (feature of offerData.features; track feature.id) {
+        <div class="feature-item scale">
+          <img [src]=feature.icon>
+          <div class="feature-wrapper">
+            <h2 class="feature-title fs-18 fw-700 ">{{ feature.title }}</h2>
+            <p class="feature-description fs-14 fw-400">{{ feature.description }}</p>
+          </div>
+        </div>
+        }
+
+        <button class="price-program-button">Стоимость программ</button>
+      </div>
+
+      <div class="tour-images-wrapper">
+        <img class="scale" src="/images/tour-program-images/mountain-canyon.png" alt="Горный каньон">
+        <img class="scale" src="/images/tour-program-images/dore-canyon.png" alt="Дор-Каньон">
+        <img class="scale" src="/images/tour-program-images/snowmobile-rider.png" alt="райдер на снегоходе">
+        <img class="scale" src="/images/tour-program-images/mountain-springs.png" alt="Горные источники">
+      </div>
+    </div>
+  </section>
+</div>
+}

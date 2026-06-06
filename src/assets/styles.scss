@@ -12,9 +12,11 @@
 }
 
 :root {
-  --primary-color: #000;
+  --primary-color: #18121E;
   --white-color: #fff;
   --green-color: #1A3E3E;
+  --yellow-color: #F2BE22;
+  --gray-color: #F3F5F4;
 }
 
 .fs-14 {
@@ -29,6 +31,14 @@
   font-size: 18px;
 }
 
+.fs-24 {
+  font-size: 24px;
+}
+
+.fs-32 {
+  font-size: 32px;
+}
+
 .fs-50 {
   font-size: 50px;
 }
@@ -37,6 +47,31 @@
   font-weight: 400;
 }
 
+.fw-600 {
+  font-weight: 600;
+}
+
 .fw-700 {
   font-weight: 700;
+}
+
+.fw-800 {
+  font-weight: 800;
+}
+
+.line-height-150 {
+  line-height: 150%;
+}
+
+.line-height-120 {
+  line-height: 120%;
+}
+
+.scale {
+  width: 250px;
+  transition: 0.3s;
+}
+
+.scale:hover {
+  transform: scale(1.1);
 }
