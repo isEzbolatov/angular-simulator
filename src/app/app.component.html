@@ -195,7 +195,7 @@
 
       <div class="travel-cards-container">
         @for (card of travelCards; track card.id ) {
-        <div class="travel-card">
+        <div class="travel-card card">
           <img class="travel-card-img" [src]=card.imageUrl>
 
           <div class="desc-card-wrapper">
@@ -215,8 +215,15 @@
 </div>
 }
 
-<ng-template #travelBlog>
-  <div>
-
+<ng-template #messageButton>
+  @for (message of messageTextData; track message.id) {
+  <div class="message-container">
+    <img src="images/letter-icon.svg">
+    <div class="message-wrapper">
+      <span class="type-message fs-16">{{ message.type }}</span>
+      <p class="message fs-14 fw-400">{{ message.textMessage }}</p>
+      <button class="close-button"></button>
+    </div>
   </div>
+  }
 </ng-template>

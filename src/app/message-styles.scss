@@ -1,0 +1,39 @@
+@use '../assets/mixins' as *;
+
+.message-container {
+    @include flex-center;
+
+    box-sizing: border-box;
+    position: absolute;
+    width: 350px;
+    height: 70px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+
+    .message-wrapper {
+        @include flex-center;
+
+        flex-direction: column;
+
+        .type-message {
+            font-weight: 716;
+            line-height: 20px;
+            color: var(--white-color);
+            font-stretch: 100;
+        }
+
+        .message {
+            line-height: 20px;
+            color: var(--white-color);
+        }
+
+        .close-button {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url(images/close-icon.svg);
+            background-repeat: no-repeat;
+        }
+    }
+}

@@ -84,3 +84,16 @@ h2 {
 .scale:hover {
   transform: scale(1.1);
 }
+
+.card {
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover .card-title {
+  text-decoration-line: underline;
+  color: #1A3E3E;
+}

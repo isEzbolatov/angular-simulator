@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Training } from './training';
 import { IUserInfo } from './training';
 import { colors } from '../enums/Color';
@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import { IDestination } from '../interfaces/IDestination';
 import { ITravelCards } from '../interfaces/ITravelCards';
+import { IMessage } from '../interfaces/IMessage';
+
 
 @Component({
   selector: 'app-root',
@@ -28,6 +30,7 @@ export class AppComponent {
   public loadingWebsite: boolean = false;
 
   public offerData: IOffer = {
+
     id: 1,
     title: 'Лучшие программы для тебя',
     description: 'Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.',
@@ -110,6 +113,7 @@ export class AppComponent {
       data: '01/04/2023'
     }
   ]
+  messageTextData: any;
 
   constructor() {
     this.saveLastVisitDate();

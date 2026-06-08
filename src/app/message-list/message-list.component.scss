@@ -795,6 +795,10 @@ option {
     gap: 20px 24px;
     margin-top: 40px;
 
+    .box:hover {
+      transform: scale(1.2);
+    }
+
     .travel-card {
       @include flex-center;
 
@@ -804,6 +808,7 @@ option {
       height: 312px;
       background-color: var(--white-color);
       border-radius: 10px;
+
 
       &-img {
         height: 280px;
