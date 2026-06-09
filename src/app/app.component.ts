@@ -11,11 +11,12 @@ import { ITravelCards } from '../interfaces/ITravelCards';
 import { IMessage } from '../interfaces/IMessage';
 import { MessageTextService } from '../message-text.service';
 import { MessageType } from '../enums/MessageType';
+import { MessageList } from './message-list/message-list.component';
 
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, CommonModule, NgTemplateOutlet],
+  imports: [FormsModule, CommonModule, NgTemplateOutlet, MessageList],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
