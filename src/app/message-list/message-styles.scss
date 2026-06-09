@@ -1,7 +1,7 @@
-@use '../assets/mixins' as *;
+// @use 'src/assets/mixins' as *;
 
 .message-container {
-    @include flex-center;
+    // @include flex-center;
 
     box-sizing: border-box;
     position: absolute;
@@ -12,7 +12,7 @@
     border-radius: 10px;
 
     .message-wrapper {
-        @include flex-center;
+        // @include flex-center;
 
         flex-direction: column;
 
@@ -32,7 +32,7 @@
             position: absolute;
             width: 20px;
             height: 20px;
-            background: url(images/close-icon.svg);
+            background: url(/assets/images/close-icon.svg);
             background-repeat: no-repeat;
         }
     }

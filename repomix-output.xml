@@ -1,0 +1,2985 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.editorconfig
+.gitignore
+angular.json
+package.json
+public/favicon.ico
+public/images/airplane.png
+public/images/arrow-list.svg
+public/images/backpacker.png
+public/images/bg-images/bg-mountains.png
+public/images/calendar.svg
+public/images/close-icon.svg
+public/images/forest-image.png
+public/images/letter-icon.svg
+public/images/live-input-arrow.svg
+public/images/loading-icon.svg
+public/images/manarola.png
+public/images/mountain-lake.png
+public/images/mountain-night.png
+public/images/mountain-yoga.png
+public/images/mountains-logo.svg
+public/images/mountains.png
+public/images/offer-icons/guide-icon.svg
+public/images/offer-icons/prices-icon.svg
+public/images/offer-icons/security-icon.svg
+public/images/play-button-icon.svg
+public/images/rating-star-icon.svg
+public/images/taj-mahal.png
+public/images/tour-program-images/dore-canyon.png
+public/images/tour-program-images/mountain-canyon.png
+public/images/tour-program-images/mountain-springs.png
+public/images/tour-program-images/snowmobile-rider.png
+README.md
+src/app/app.component.css
+src/app/app.component.html
+src/app/app.component.scss
+src/app/app.component.ts
+src/app/app.config.ts
+src/app/app.routes.ts
+src/app/collection.ts
+src/app/message-list/message-list.component.html
+src/app/message-list/message-list.component.ts
+src/app/message-list/message-styles.scss
+src/app/training.ts
+src/assets/_.normalize.css
+src/assets/_fonts.css
+src/assets/_fonts.scss
+src/assets/_mixins.scss
+src/assets/_normalize.scss
+src/assets/fonts/NunitoSans-Italic-VariableFont_YTLC,opsz,wdth,wght.ttf
+src/assets/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf
+src/assets/styles.css
+src/assets/styles.scss
+src/enums/Color.ts
+src/enums/MessageText.ts
+src/enums/MessageType.ts
+src/index.html
+src/interfaces/IDestination.ts
+src/interfaces/IMessage.ts
+src/interfaces/IOffer.ts
+src/interfaces/ITravelCards.ts
+src/main.ts
+src/message-text.service.ts
+tsconfig.app.json
+tsconfig.json
+tsconfig.spec.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="src/app/message-list/message-styles.scss">
+// @use 'src/assets/mixins' as *;
+
+.message-container {
+    // @include flex-center;
+
+    box-sizing: border-box;
+    position: absolute;
+    width: 350px;
+    height: 70px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+
+    .message-wrapper {
+        // @include flex-center;
+
+        flex-direction: column;
+
+        .type-message {
+            font-weight: 716;
+            line-height: 20px;
+            color: var(--white-color);
+            font-stretch: 100;
+        }
+
+        .message {
+            line-height: 20px;
+            color: var(--white-color);
+        }
+
+        .close-button {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url(/assets/images/close-icon.svg);
+            background-repeat: no-repeat;
+        }
+    }
+}
+</file>
+
+<file path="src/enums/MessageText.ts">
+export enum MessageText {
+    Success = 'Направления получены',
+    Info = 'Стоимость отправлена на почту',
+    Warn = 'Программа недоступна',
+    Error = 'Материалы недостпуны'
+}
+</file>
+
+<file path=".editorconfig">
+# Editor configuration, see https://editorconfig.org
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.ts]
+quote_type = single
+ij_typescript_use_double_quotes = false
+
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false
+</file>
+
+<file path=".gitignore">
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+__screenshots__/
+
+# System files
+.DS_Store
+Thumbs.db
+</file>
+
+<file path="public/images/arrow-list.svg">
+<svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.5007 0.171316L7.25321 6.26132L1.00571 0.171316C0.894086 0.0622883 0.744242 0.00124991 0.588208 0.00124991C0.432174 0.00124991 0.28233 0.0622883 0.170708 0.171316C0.116661 0.224272 0.0737233 0.287479 0.0444108 0.357236C0.0150983 0.426994 0 0.5019 0 0.577566C0 0.653232 0.0150983 0.728137 0.0444108 0.797895C0.0737233 0.867653 0.116661 0.930861 0.170708 0.983816L6.81696 7.46382C6.93368 7.57758 7.09022 7.64126 7.25321 7.64126C7.4162 7.64126 7.57274 7.57758 7.68946 7.46382L14.3357 0.985066C14.3901 0.932071 14.4334 0.868709 14.4629 0.79872C14.4925 0.72873 14.5077 0.653533 14.5077 0.577566C14.5077 0.501599 14.4925 0.426401 14.4629 0.356412C14.4334 0.286423 14.3901 0.223061 14.3357 0.170066C14.2241 0.0610378 14.0742 0 13.9182 0C13.7622 0 13.6123 0.0610378 13.5007 0.170066V0.171316Z" fill="#FDFDFD"/>
+</svg>
+</file>
+
+<file path="public/images/calendar.svg">
+<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1_277)">
+<path d="M16.3125 18H1.6875C0.75375 18 0 17.2463 0 16.3125V2.8125C0 1.87875 0.75375 1.125 1.6875 1.125H16.3125C17.2463 1.125 18 1.87875 18 2.8125V16.3125C18 17.2463 17.2463 18 16.3125 18ZM1.6875 2.25C1.3725 2.25 1.125 2.4975 1.125 2.8125V16.3125C1.125 16.6275 1.3725 16.875 1.6875 16.875H16.3125C16.6275 16.875 16.875 16.6275 16.875 16.3125V2.8125C16.875 2.4975 16.6275 2.25 16.3125 2.25H1.6875Z" fill="#FDFDFD"/>
+<path d="M5.0625 4.5C4.7475 4.5 4.5 4.2525 4.5 3.9375V0.5625C4.5 0.2475 4.7475 0 5.0625 0C5.3775 0 5.625 0.2475 5.625 0.5625V3.9375C5.625 4.2525 5.3775 4.5 5.0625 4.5ZM12.9375 4.5C12.6225 4.5 12.375 4.2525 12.375 3.9375V0.5625C12.375 0.2475 12.6225 0 12.9375 0C13.2525 0 13.5 0.2475 13.5 0.5625V3.9375C13.5 4.2525 13.2525 4.5 12.9375 4.5ZM17.4375 6.75H0.5625C0.2475 6.75 0 6.5025 0 6.1875C0 5.8725 0.2475 5.625 0.5625 5.625H17.4375C17.7525 5.625 18 5.8725 18 6.1875C18 6.5025 17.7525 6.75 17.4375 6.75Z" fill="#FDFDFD"/>
+</g>
+<defs>
+<clipPath id="clip0_1_277">
+<rect width="18" height="18" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+</file>
+
+<file path="public/images/close-icon.svg">
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect width="20" height="20" fill="url(#pattern0_7_107)"/>
+<defs>
+<pattern id="pattern0_7_107" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0_7_107" transform="scale(0.0208333)"/>
+</pattern>
+<image id="image0_7_107" width="48" height="48" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAADlklEQVR4nO2ayWsUQRTGS0nAqCc3SIImxoMrSnJXEfWkKIJbFhFRcnDDJXHBq0vEg6jJXKKeBEElMWJEDcYFN9SjBuI/oYJLYgI/qaRansX0dHVP98xE8qBO85bvVb169VX1KDUu/5EARUANsAHYBTQBx4D9wDagGpisChB0E/AY+AYMB4xfwHPgFFBVCAnsdgDtN4aAHmB1PhPYZIH6DHQA7UALcBa4BNwBPgK/fZJ5AixKEuhEoB6oAyZYv601iZQ5+JkBbAU6TTnZ5XXc9h8H+EnATRGoLia/c4DLaRK5B0xVMQWZBjyzAsSSgCe6dIAXVoy3erVUNgKUAK8txxdiX2L1t5udMRtbJhFtJTRI4IZwNggciBu4LcAeE8uL2xVpwswBJGe+UeVIGE1Cxm4O66AK+C4cXEwMrY8A50T8n8DCMMZdwviVrk+VY2F0T7wUOHpcDddYdV+dOFofARZbLXaVi1GHMGhVeRagVeB5FKRcDgwInjIvxHIHnsJCv8y1LIEKsQoaU6Vr53noGKAYeG9sUppyBNCRlNF9FyKJuwLXyUyKh4Tiekfn5VbLa0+XhAHfbumWOsbYLmyeBpWCvohsdHEs7FKZkvAB3xbC/0xxQuuWWhIGn0uAdABHksj0mwoX45OwXxZrAgFJZA1ei6Hfno8tKgPfr49K1nySyBq8FkO7PT/7lC0GeNZ0OUMSkcFrAU4LXyeULeZi7im0qIhiWGxbmgSuJp3ATqFwbSyW0Dp5pRuLm7haKPQXYBvtE/ZL/SjBV6E0u4AOslniIPvhe5AB3SJAQwFRiVph0+tK5rodnRcbYjYyqw5kri0CmevK2IEs6updqPWSzXcMUOQ6m0a/NAT4SoviVwYZ3I5Sp0kJ/+6vYIoPrBAGejVqcoLU/8FLXilXuho+EEYf8nSpLzYPCm7XSct4rvXW79SR4hTgvIiv7wALwjo4Ege5iyJAo9Vum6KSstp0z+k5AD8owHfGEt8kpJNpSGJPMFrzsmz0eANMiStAnbWxY+tOwBJrw3rgp8cVwz7OvRabcj3sMhxSKXFQybKJZ+atEjqc5kvkkOFQO1wIoCFmtYYeDFi+dLc5muieM7MmSZ89+s0nouumpvVHvitmVvusDxjDss+HbpVZJrIcuGV1jLBjSNMD5xM2oUQ0AWwG7gNfHEDrMunVrBKoUAX6V4PNwEFDz/XYq6+B+kFKf/HMN85xUTHKHzrOXBVYzWxFAAAAAElFTkSuQmCC"/>
+</defs>
+</svg>
+</file>
+
+<file path="public/images/letter-icon.svg">
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect width="40" height="40" fill="url(#pattern0_2_10)"/>
+<defs>
+<pattern id="pattern0_2_10" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0_2_10" transform="scale(0.01)"/>
+</pattern>
+<image id="image0_2_10" width="100" height="100" preserveAspectRatio="none" xlink:href="data:image/png;base64,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"/>
+</defs>
+</svg>
+</file>
+
+<file path="public/images/live-input-arrow.svg">
+<svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.171316 1.00698L6.26132 7.25448L0.171316 13.502C0.0622883 13.6136 0.00124991 13.7634 0.00124991 13.9195C0.00124991 14.0755 0.0622883 14.2254 0.171316 14.337C0.224272 14.391 0.287479 14.434 0.357236 14.4633C0.426994 14.4926 0.5019 14.5077 0.577566 14.5077C0.653232 14.5077 0.728137 14.4926 0.797895 14.4633C0.867653 14.434 0.930861 14.391 0.983816 14.337L7.46382 7.69073C7.57758 7.57402 7.64126 7.41747 7.64126 7.25448C7.64126 7.09149 7.57758 6.93495 7.46382 6.81823L0.985066 0.171982C0.932071 0.117553 0.868709 0.0742912 0.79872 0.0447521C0.72873 0.015213 0.653533 -4.76837e-06 0.577566 -4.76837e-06C0.501599 -4.76837e-06 0.426401 0.015213 0.356412 0.0447521C0.286423 0.0742912 0.223061 0.117553 0.170066 0.171982C0.0610378 0.283604 0 0.433449 0 0.589482C0 0.745517 0.0610378 0.89536 0.170066 1.00698H0.171316Z" fill="#FDFDFD"/>
+</svg>
+</file>
+
+<file path="public/images/loading-icon.svg">
+<svg width="59" height="59" viewBox="0 0 59 59" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g filter="url(#filter0_d_3_212)">
+<rect x="4" width="51" height="51" fill="url(#pattern0_3_212)" shape-rendering="crispEdges"/>
+</g>
+<defs>
+<filter id="filter0_d_3_212" x="0" y="0" width="59" height="59" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3_212"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3_212" result="shape"/>
+</filter>
+<pattern id="pattern0_3_212" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0_3_212" transform="scale(0.00195312)"/>
+</pattern>
+<image id="image0_3_212" width="512" height="512" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAQAElEQVR4AeydCZwcRfXH3+uZTQLhCJdospnpOUIgQkSCiHhFQMULxAtEUAFFVFAR0L83HuhfBRTEv4oCouCNCF6ggvFCRIJcBkLm6J5sIsh95NyZrv+vNgebZHczsztHH7/51Jue6emueu9bPV2vX1VXO8IXCZBApAnM3X33qbOy2b2KrntgIZs9OJ/Jv7rgukflXff4Yjb73kI2d2Y+434Kv30pn81dWMy6lxQy7o/w+zWFrHs95O+Q2/H7EiyXQR6FrIXUISsgD0P+A/EgiyG3I/+bsf1fCtncHwpZ99eQn0N+gHwvhXyjkM19Dsv3Ybuj85nMIfn+/D65XG53gE5BmEiABEJAgA5ACCqBKpDAWARc152GxvNZxZm5w22jikb83ELWvRJyC+TBFVO2eTIQXWSM/F1Er1cNfilGfqRGLjGiF4qYL6nKWSJ6pop5rxE5XlSOwu+vEZGDIQdC5opoUUSmQ3aE9EFsY70tljtBng7JQvaAzEX+zxHRFyDvQ0TklZAjIW9Gvm+HnIz1H8PyfGz3Q1XnD5oK7nACcx/0HYQ8CFkEWZDPZn8Ke75uHRQ4K+/Jw3mBrbPnzJkzCfkxkQAJdIyACB2ADsJl1iTQDIE9pu+xayGTmYfG8PVoBD+IK+sLcOV8NRpIXJW7j6aMPILG8zbjmKtF5Xw04h9Evq+DzIPsAolSUihrdd4Lyxer6Btgz3usg2JEv26dF9h6z5oVK1fms24FjsF1eUQtEK34APi8Kp/P7zFv3jzrnGB3JhIggYkQoAMwEXrclwRaIIAr291tI4ZQ/Vlo0Gz4/d/5rPtko2/tA6LOLWgMf4ZG8FwRPRVXzoeLCK7KxV6N42PiUkpFcqryMjgI71UjX1HRX2kjWPzogw+tgnNULmTca+EsfQ3L9+Uz+UMzmYyNVCQOFA0mgfEQsPvQAbAUKCTQZgL9/f075zK5l+KK/qNorNA/nl2KK9v7bCOGUP2n0KDZ8PscFZna5qKTkJ3tmsiLystF9BQsz0fk4Pd96jwMh8COY/ghlqfD0Xrx7Nmztxe+SIAERiRAB2BELFxJAs0TsI2MbWwK2dwZhYz7o0LWLU1OpR9y1PwOV/RnIyf0j2s/lkwdJ6B2HMPRInoOHK0F9dVr7IDGRXAIvoe6eR+WB8E520b4IoFEE1hnPB2AdRz4TgJNEbCNB67qn7e+MfkeGvtFtpGxjY2I+TKuRo9CRgUIUzgI2HPcXiJ6HOrmfCz/BufsCdTb7cWsezG6ZE5A14wd3Ch8kUDSCNg/R9Jspr0k0DQB13WnFFz3MFw5fg0Nxm2TU6nHcVV/4/rG5DhkhMaFg2nBIUrJdiHMNSInqOjF6JqxtzeW4NR9s5jJvdEOyoySMdSVBFolsGF7OgAbSHBJAusJ7NHfPwONwUlo+K9OGXlIjPxW0NeMBuNZWKaFrzgSKMCpe5dR85NG39r/5rPuvwrZ3Dk4Bg6z8yzE0WDaRAJ0AHgMkICIMxTWz+Y+Z0/8jVR6AI3Bt9Dw25H49j54MkoWAVWRfdGlczqOgd+umLLNI3AE/pzPuJ/KZ/Iv4G2IwlekCTylPB2Ap1jwU4IIuK47DeHeNyG0j3787P1G9Eac8D+27sSfIBA0tRkCfXAEXgiv4CzV4C+PPvjgw3AIfgw5as5uc7ZrJgNuQwJhJEAHIIy1Qp06QmBWNrsXwrpnFLLugpQxDxg1PxY7OEx0V+GLBJomoNvBIXgT5Edrtl35AByBqwuZ3Fs5D0HTALlhDwkML5oOwHAa/BwrAsVicXLRdV+Oq/wLENqv2OlyxY7UF3mxiLIvX/hqA4EpYuRwUXNZnzr3o5vgukLGPalQKDytDXkzCxLoKAE6AB3Fy8x7QcBOq1vMuv9nBuv3GSPXiuipCO3nhC8S6CyBPnQTvGxo/Ei98R84A3+CM/C+4owi54DoLHfm3jSBTTekA7ApD36LKIE9Z8zYxZ5sEd6/XdS5xYi8G6ZMgzCRQC8IOKryIjgD55t0vYYI1E151/2APU57oQzLJIGRCNABGIkK10WFgFO0IX7X/fFgum+5PdlCcTt/PhZMJBAaAvAF5Llq5Cs4TpfBUf1RPpM/FNohMIV3JhLoEoHNi6EDsDkRfg89gdnZbA79+p8pZFxvKMRv5E1QehKEiQTCTmAyHNWjVIPfIypQxnH8MTvvRNiVpn7xJEAHIJ71GjurXNedks9m34IQ//V10bKIfgIn0pnCFwlElAAu/3Mi+rlGKu0Xs9lfIpp1xHyZz8GpwldnCGyZq7PlKq4hgfAQ2DCgL2XkPyp6OTQ7GKIQJhKICwEc3vpqRLN+sTTr1fIZ9/PFmTMLcTGOdoSXQCQcAOsVFzOZZxZc9+hCNnd2Metegs9XF7LubxAG/gbCaKczjBbeg6xVzexAKdTr+1C/HNDXKjxuH3UCz1CVjxgnZR9rfEMxk3sjDEpBmEhgQgRG2jl0DoC9ZQYN+ivQAHyomM1dbhsBeMUrjDp3iZEfipiPGpHj8flwGPQKUTlZRM9BGK1qt0cobT/hK5IE8v35WcWse/EgB/RFsv6odFsJ2CjXS4yan+SzLpyB3CnTp0/ntNRtRczMeuYAFIvFHdDQH4Qr+Xfls7kLsfwzGvuHTbq+VER/g4b9i0bMW0TEjupuZoBXn93eiC5EPn+0EQPsyxQBArau0PBfoangbiNyAlRupr6xGRMJxJ8APIEcLny+tk3fpBrOmZ/BuXO3+FtNC9tLYOTcOu4AbB6+z7vuNWigPTNYf0xE/4Yr+W+qmPdi+UIR2QnSjjQfEYPr8/n8Hu3IjHl0hoCN1uBYuBJ1dSca/mNQCkOdgMBEAqMQ2EVEP4FzZw0R0m/aiJnwRQITINBWB8D2w8NDHQrf57PZ7+Oq7rbNw/dq5DXQNwvpdNpdG8EN9paxThfE/FsjgIb/eWj4f20QrcGer4PgIgfvTCRAAs0QmCIq70LE7B78j35edN0Dm9mJ2ySXwGiWj8sBmD179vZDJ3HXHQrf5zPun3AgPox++AFZH75X0WONyLNEpJfh3Bl10RsKhQJvF0NF9DrBOXwJjpPrzdCT9+SVvdaH5ZNAxAnY8/eRxsjf8d/6S3Fmzo6L0ojbRPW7SMAeQFstznXdp6PBP7GYzf0MJ/BqffWax4ZO4kaGwveq8iJk0q7wPbJqa3JlsPHttubIzFoigJPTK3Dc/E3gjImIvY0PCyYSIIH2EdAXGMfYO6PuLmZyxyLfps7t2I4p9gRGN3DMgySXy83GifsHKSPL0OB/x4h5PbJyIdHyMlXsE+EOgt5M3SOgaPiPxPGzUGxUSIT8hS8S6DiB2UbN9/Hfux2OgO1u7XiBLCC6BEZ1AArZ3ClOYP4N094MGXU7/BaJZEROi4Si0VcylXfdNxey7p0i+nMR2Q/CRAIk0FUCujccATvg+sai6764q0WzsFARGEuZERv2QjZ3pr3tBDumILFIKvryOXPm9HI8Qiw4jmaEvdsj77rHF1z3bjXyA2z3TAgTCZBAbwk8zxhZUMi6v0U37rN7qwpLDxuBLRyAfMb9JBr/L4VN0Tbos/2aFSte0IZ8mMVmBPKZ/KFLs94daPgvESOzNvuZX0mABHpP4DAjurCQcX/E2wd7Xxnd02DskjZxAOAhflBVPj32LhH+1ej+EdY+dKq7eOHK4kr7ZDMotxeEiQRIILwEEAiVozTVWFTIZi+yt22HV1Vq1g0CGx2A/v7+beAhfrQbhfaqDPSJ7dOrsuNUrj1Wiq57VsrI3bDL3sePBRMJkEA0CGhaRN/ZSKVLcAS+jP/zzsJXLAlszaiNDsCkdPpt2HgXSGyTI0oHYIK1m89mXz85lb4b/YqfQlZTIEwkQALRJID/r56B/3Mp77onwwQHwpQgAhsqXNF/+4G4221E9pov8+H9xt3S9ttn5+tHuP96xBB/hty7MZMjimEiARLoAoGdcP7/RsF1b8rPzO/fhfJYRFcIbL0Qx26Sz+RfheVsSNzTpIFMhc8HaKGW8/n8jjgxfNWo3obdOIkPIDCRQCwJGHmOOsE/Chn3G5lMZqdY2kijNiEw5ADg8n/+Jmtj/MU4jn26YIwtbJtpWsxmT9RGsESMvF/E9hsKXyRAAvEm4IjKyX3qLEa3wPEwVSFMESTQjMqO3Qg1bGf3sx/jL4bjALZWyUXXPbCQzd5sRL+DbXeDMJEACSSLwG7oFrikkHX/msvl7DNdkmV9QqwdcgACYxJzkuedAKMf2fij747w33eNkRtFdH/hiwRIIOkEDnICs9B2AxaLxR2SDiM69jen6ZADoCoPNbd59LeCV8s7ATarxnnz5vXhiv90/NHvRfjP3g2CoNBmG/ErCZBAUgmkBN2AZrC+OJ/NHpNUCHG0e8gBQOX+N47GjWJT1j7OeJTfErd6luvu++iDD/1LRM8REXr4gMBEAiQwIoGnq+gVhWzuD/l8PjPiFlwZCgLNKrHOAVCzpNkdYrCd1levZhRAxMEf+czAyD9Qp5y3HxCYSIAEmiFgDtFGcCe6Bd7ezNbcJrwEhhwAdZw7w6tiBzTTZA8EtN57IeteL2LsMx/4gKQOHGLMkgRiTmAHRI4vxXnkqkKh8LSY2xox85pXd8gBGAyCRDkAJsF3Atg+PHjvt+MQScytn7CViQRIoDMEXiv1xl2IBry2M9kz104SGHIAfN//DwpJzEBAMSZxXQCu606Dt/4DRR8e6noahIkESIAE2kFgN0QDrrJ3EPFOgXbgnFgerew95ACs3yExUQBVSZQDUHTd+alA7hCRN0OYSIAESKD9BFTeZgbrdxay2Ze0P3Pm2AkCwxwAkxgHACB3Ks4o9mMZ6zRnzpxJ+DN+yRi5XlRmxtpYGkcCJBAGAhkRvR5dAl/t7+/fRvjqMoHWitvoAKg49gpRkvIy6cFYRwHsw3tWr1j5DxE9U0Q21jM+M5EACZBAJwkougTePyWVvpUPF+ok5onnvbFhUE1UBEAkvgMBFX1x7zPq3KIi+wpfJEACJNADAkZkT3Uaf89n3A+jeJyO8M7UUQKtZr7RAehbse2/sTPqDO8JSHGcEnj2zJnT8We7FuH+81GFUyBMJEACJNBDAppWlf/FRclV+Xx+xx4qwqJHILDRAVj0wKIn8XsVkojkSLzmAshns6+rO6k78Gd7WSIqkEaSAAlEh4DKEdpo3JLL5eZGR+moadq6vs4muxhJzEBAhDr2mi/z05vYH8EvdlrjYta9REWvhPq7QJhIgARIIIQEtOgE5qaC69rnjYRQv+Sp5GxicrLGAUwayFRmb2J/xL4U+gvF+uo1N8GZOT5iqlNdEiCBZBLYRox8F07At4rF4uRkIuiM1ePJdRMHQE2ypgQ2jhPZOwFymdxLJdW4GZU+B8JEAiRAAtEhYOQkMzj4V3QJZKOjdPw03cQBqDsmUbcCSkTvBCi67mmOmt/icNwJwkQCJEACESSg+6cCcyuiAYdFUPmQqTw+dTZxADzP2dC0ngAAEABJREFUs08FXDO+rKK3V9TuBLAhs0LG/a4xch5opyBMJEACJBBZAui+3FmM/AYXNWfBiE3aI3xn6jCBzYE3UN4iSCKSGonMiNRsNvuMYLD+J1F5WyIqh0aSAAkkhYDiouZTuLj5zZ4zZnAg8zhqfby7bO4ACBqYxNwJICJZXFXvgGWoE/rJDkiL2ol9nhtqRakcCZAACYyXgMrLB9Ppm+zg5vFmwf1aI7ClA2A0SQ6AmMHBvVtD1t2ti5nccU5g/oRSp0OYSIAESCDGBLQoqfrfi9ns82JsZJtNG392WzgAiZsSWDWsdwKkCtncOUbN91C9nNUPEJg6RmAtcn4UsgwRwCUqcjs+/13E/FVU/onPdnDwYiw9yH8gj0BWQmyXIRZMJNBOArqrEb0hn82+vp25Mq8tCWzhAAwaY//sW24Z0zUmhHcCuK47Df1hv8YJ+PSYYqdZ7ScwaETsTJ4LxMh3VeXTKuYdavQoI+bVOJYOdlQOlCC1j2OCQkPlGdqX3rHse2nIZMhOkP6y5+1R8r198fmgsu+/EN8PKPvesyB7QnKQ6ZCdIVMhdt/01NWrtgscfbrNG+UcIipvhg7vF9Gz8f3bIvILEbkRn0tYPg5hIoGtEZiioj9FJOCDW9sw6b9PxP4tHADf962H/9BEMo3Svoh4zA2Tvmj83ZSRf+Ak+vIw6UVdek5gNTS41xj5HRrSb0M+job9WGOcF0o6lUFjPKXie3ksX1KueceXPO+sku9fXKpVf1Lx/V+Xff+PSzzvH+Wl5buW1GoVz/PuK5VKtjGe6FV84477719RrVbvt3mjnBvgNPwIOlxQ9qsfx/eTyr53JOT5Zd+fVfa9HdNTJu8A52Q/65xYO+AsXAbb4CDIA1gykcAGAmpEzy1ks1/Dii3aKqxjmiCB0aAmZxyAkdCMAbCP8EXj/zfU6R4QpkQSMHUjchsaxm+L0ZPsVbu9ukbDuS1kdqXmvbzs+2hU/bPRsF9RqVX+Wi6Xl4pIAIlEWrx48RNwTv5lnRPYcjachbeXfQ8Ogvc0k3KmmcB5jlE5Bs7Op+Dk/AxG2a4HLJiSSUBPKbjuVdOnT982mfaPZfXEfhvFATDJcQBEdirOKPZPDOPE9y667oFGnb8gJw72A4SEJLRzco+I+T4a+/fhqvighur2Fd97dtk28rXqt+1Vu726Bg/4BXiPeapUKo9VllZuQYjih3B2PlPx/TeWfS/XVx/cFd0ah4HVx4EAXQpmAEumpBAwcvg2kyYtyOVyuyfF5G7YObIDkLQpgdOD+3QD9mhloPF/eWDkD/idM/sBQoyThxb/pyL6ITRkB6MPflrJ9/Yq+/5by7Xq10q+/3eE5m2oX/jalMA9y5Y9VPK868Dq7PJQl4I/00ZGECF4NSIFZ4nor0XEdmlgwRRLAkae4wTmJnST7hlL+8Zh1ER3GdEBUMckKQKAc3Hv7gRAaOsonMB+qSJTJ1qZ3D90BO7FZftXcIC9MjU4aTc0XDlc2b4JfeNfLqNPfn0ffOiUjopCNjKCCMGvESn4NJi+uux7OyNK8DwR/YSILBCRNRCmeBGwY6RuxEXTi+NlVm+sGdEBmLRi27ugDs5deE9AUtWeDATMu+67xcgPgLgPwhR9AmvR2P8BV/mnSSNlB7zNrvjeB8u+/9t7l9/7YPTNC70FjZLn3QRn4HNl33vJmkZ9J3X05aLyJWh+KyQy4ySgK9PoBHbCRdPvcPH02tE3ScIvE7dxRAdg0QOLnkTW9pYiLOKfjJiudwEUsrlPqJH/A90R6wDrmaJB4D5Eby7BMfT69JTJu5Z9/6W4yv9qeaBciob68dVyYGBgVala/V3Z8z5c9r15cAh2U6NvRH1dCnk4vpYnwrJJYsxPi5ncGxNhbYeMHL3xMZKkboA958v8dIcYb56twnP9Kq4UP7P5D/weCQIGV5T/xBXIWXa0OhqW6SXfO7Hi+z+3o9sjYUFClYRD8HCpVv0Z6uuEft/d3RjnpXAEvgEc90GYIkdA00bND/PZ7DGRU70NCrcjC2fUTDRR4wAmDWQqs0dl0aYfrJOBg/V7CPu/v01ZMpvuEBhEnV2N0P4JgaPPwBXlAbbfubK0cguKNxCmiBFYIAvqlVrlD3AG3gMnbgacgReqETjmUhO+okQgpaLfx0XV26OkdFh0HdUB0KTdCeA4He0G6O/v32YgW70KB+uxYal86rFVAncjUnOGpFP95Zr3WoT2L7UDz7a6FzeIGoEAzsBfSzXvNDgDWRvZgTPwvzCiAmEKPwFHjFxSyOTeGX5V26Vhe/IZ3QHQIEldAGIC6dhAwLm77z51kpO+1oi+uj3Vxlw6R8A8iXq6WMUchMZgTtn3zy2Xy//tXHnMOWwEbGQHzsBHyr5XVJWXwGm/AjqugjCFlwCqyXyrmM2+N7wqhk+zUR2AJb5/L9RNzG00jnZmIKDrulNWTNnmGpxIXgSeTKEloH+zIf6pq1c/veJX31Hy/b+HVlUq1i0CpuR5C0p+9diGynQ4hbZxsXcTdKt8ltMaAQRu9MKi657W2m7R27pdGo/qAKCAhhFBCBSfEpCMaNu7AObMmTMpZeQq4DsYwhQ+AvcjxP9l9OvvWfarL7AhfjuvffjUpEa9JuB53qNwCv8PUYF5jsqzcb74OnSyT0XEgilMBIyR8/IZ98Nh0imsuozlAAiuWu8Iq+Id0CtbLBZ3aFe+8+bN61uzcuVPkd9hEKbwEGjgSv+XOLZfO9N3+8u+/yH069tH3YZHQ2oSagJLPO82RIlOsVEBI+YtomKn8A61zklTDv/v/7W3WsfT7vZZNaYDIEaTNQ5gcHDvNqFNPfLQQ1eIkcPblB+zmSABI7JCRM9NB40MrvQPR2j3ajsSXPgigXESQFRgdcX3f1D2vBchKnAgsvk5hJMNAUI4kvlMIZv9bDh0CacWYzoAmqxbAcVoW2YEdPLZ7HfRGcUJKsJxzD+KMP9nJ9UHs2W/esbipUuXh0MtahEnAogK/KPse683DWdPMfIt2LYawtRzAvpxdAd8qudqtFGBdmY1pgOQajQSFQEQM+FxAJrP5i5SUd7q186jdHx5PYAw4Ee1L42G3/+kfZjM+LLhXiTQPIHKQGVJueadLOlUVkTPVhHOOCi9feE8cNbQtOu9VSOUpY/pANirpSQdwIh4TGggIBr/r6mYE0NZ08lRaplROW3V4FoXYf4v8IE7yan4MFlqbx1FxOnj265elTFGPiAiPoSpRwQQkb0wHtMGtxfgmA6ALcqIJCcKYGTcDkAhmzsHjf97LTNK9wngOK2KysmTp26br3jeV5cvX76y+1qwRBLYlIC9q6RS886f6btFnB/eIUaWbroFv3WJgGPUXJ7PZA7pUnmRKGarDoCISY4DIDKtOKPY32rNofH/HDid3up+3H7iBBChukeNvjXju3uUPe9bixYtWjvxXJkDCbSXgB1wWvL9i3VSehZC0h/E+YJPh2wv4mZym6TqXFXIZOY1s3EYt2m3Tlt3AIyTpFsBJUgPtjQjIBr/j+PP/LF2VwzzG5sAGv7b0fC/seR7zyzVqt+3J9ix9+CvJNB7AuiSWlPyvK+kp0zJwxH4NDR6AsLUPQLbizq/yffnZ3WvyPCWtFUHQJ1ERQDQljc/ELCQcU/CDrzNpKvHt3kQYdR3oeHfDw3/z1A0b7sCBKZoEbBPjix53lmpwUl5dF99BdonZtZV2Nrr9DRNBb/LZrPP6LUirZXf/q236gBMWrHtXSgWxyjeE5Acbc4ByGVyLxU1djawBFAJhYkNOFsXDhqzR7nmXQSN2PADAlO0Cdy7/N4HK773QUmnZiGqdQmswXGOd6ZOE3DTote6rjut0wWFOf+tOgCLHlj0JFp/L8xGtFM3I1t/JkAxk5njqPmpiKaFr24Q+JNpOM8u+/6ptVrtkW4UyDJIoJsEyuXyUkS1TlQT2C7IBd0sO8FlzU2JXAMnYEoUGHRCx606ALZQVUnSQMA97TS+1u6RpFAoPM2o82v8tiOEqaMEzICoHF32vfmVgUqSjsGOUmXm4SVQqtUW4Xh/CS5E3gIt74MwdZKAkRfCCfgxisAC7wlLTTkAkqwpgSc9+t9HZ490HAx5ivXG1fjNhTB1jsAaET171eDg7LLn2T+n8EUCSSJQ8f0faF96Nhzg82E3uwUAoWPJyOHFrGu7FTtWxMQz7kwOTTkAaiRRdwKYVGOfEXArXMTLsN7O+Y0FU0cIqFzjmGBO2a9+nPfyd4QwM40IgVKp9Dgc4A8Ejtrb1m6MiNqRVBPd3CcUsrkzI6n8BJRuzgHQIFnh12DLCYFwcHxWjLxpAqy569gE7sXVzitwwjtiSa1WGXtT/koCySFQrVZvR7fAC4zKCbD6AQhTRwiY/y267ss7kvUEM+3U7k05ADP83BIogLAs3hOQHN10IGDBdd8mYnivf2fqfjUcqw9P23WXvdH4X9uZIpgrCUSegKl43qWDJpiN/4t92BAuWiNvU9gMcIyRHyVpjoCmHIAFsqCOo+3usNVWp/Qxohu7AOARvhh/uET2D3WK74Z8jchtaoJ55Zr3pYULFw4KXyRAAmMSsHfB4P9ycmAUV6pmYMyN+eN4CEzTVHD17Nmztx/Pzp3Zp3O5NuUA2OI1WVMCZ4vF4g75fH4PNP4/h/2TIEztIxAgovLlKVO3fW6pVlvUvmyZEwkkg0C1Vv19Q3UfI+byZFjcVSv3qq9ZY7lqV0vtQWFNOwAiTrLGAaxpzNdG49e4St25B/US3yKHHoZiDi37/oc4b398q5mWdZ6A53mPVnz/ODgBr4dDzWcLtBO5kcML2exn2pnlePPq5H7NOwCarCmBjRNcIaJF4at9BIz8uOHIXDT+f2xfpsyJBJJNAE7AzyWdfqaoXJNsEu22Xj9WzOTe0O5cw5Rf0w5AutFI1K2AIrqd8NUuAo+r0ePKNe9oe9XSrkyZDwmQwDoC5XL5v2XPO2L9nQKPr1vL9wkS0EDNd3O5nJ2dcYJZjXf3zu7XtAOweOnS5SrycGfVYe7xI2D+2lB5VqlWtX1q8TOPFpFAiAhUPO9Sk3LsIGZOJ9yGekGbN1UD84s9Z8zYpQ3ZhS6Lph0Aqzn6w5M1DsAaTRkvgUEV8zGE+1+Mq/7EPEtivLC4Hwm0i0ClUqmVfe9QY+QLyBOnbbwzjZsAnIDcYLrvJ/Nlftef/TJupZvc0Wlyu/WbJWscwHqjuWidwGITOAeVfP/z2DWAMJEACXSXQKNS8z6KGPZrUexjEKaJETh4qeudO7Eswrd3aw5Asp4JEL7aioRG5jurBtfuV1lauSUS6lJJEogxgdLS6jXSSO0PExM2hgsWtzsZeV93BwW224At82vJAdCE3QmwJS6uGYPAWjHyrrLvv5Nz+I9BiT+RQJcJlAfKpTWN+oGi8r0uFx2/4tR8a/bMmdPjYlhLDkBqypS7YDj7lACBaRMC94mYl5RrHmdM3AQLv5BAOAgMDAysKnve2xKjiToAABAASURBVIzKu6HRWgjTOAig8du57jj2oXA6jt1b2qUbG7fkACxevPgJAOCArm7UTETKUCM3pxr1/XHlz6eVRaTOqGZyCVQ875uBoy9EtG5pcilM1HI9NO+6759oLmHYvyUHwCqsKrwTwIKg4KJfviuT0i+6d2BgmfBFAiQQCQLVavXmVH3SfsbInyOhcAiVxIXP/xZmFvbunGrdybllB0A4ELA7NRPqUkxdjLwfIf/jS6VSYp4SGeoqoXIk0AKBe5ff++CU7bZ9KeLYP2hhN276FIHJ4jSuKBaLk59aFb1PrTsAHAgYvVpuq8bGzjn+MjT+F7Q1W2ZGAiTQVQL2WRwl3ztWRO3tusJXywTmmsHG2S3v1cQO3dqkZQdAg4BdAN2qnbCVo7IkLXIA+vs5l3/Y6ob6kMD4CJiyX/2Yir4TfXr18WWR5L3MBwvZ7MFRJdCyA9Bfy98LYxn2BYRkJXOLptPPX+z71WTZTWtJIP4ESn71O6r6alj6BISpeQKKTS/LZDI7Ydmm1L1sWnYAFsiCOiy+p3sqsqSeEzBy3dTVq+ejv/+BnutCBUiABDpCoOR51w3dISDCQb0tEdb+PnG+0dIuIdm4ZQfA6m3EcFYpCyIBgrq+fNpuu7zmjvvvX5EAc2kiCSSaQLVavT3VqD8XEHiOB4Smk8pRxUzu2Ka3H2PDbv40LgdAxOE4gG7WUs/KMudUfP+tCxcuHOyZCiyYBEigqwTsbb3pKZNfgEJvgDA1ScCo+Xoul8s2uXkoNhufA8A7AUJReR1UwqjKB8u+fybKMBAmEiCBBBGwk76tadRfbYz8LkFmT9TUHRxjvo9MxteuYkeR7r6NS9FUvc4IQHfrqZulDSLsfyz6A7/SzUJZFgmQQLgIDAwMrHImpQ+HVr+BMDVDwMgLi6774WY2DcM243IAbIgIyj8CYYoXgUEN9A0I+3NykHjVK60hgXERKJVKayZP3fZIUblmXBkkcCdETT5dzGb3G4/p3d5nXA6AVRJGMgpgQcRHBhH2f2NpaZV/9PjUKS0hgQkTsBMGTdtllzcgo59DmLZOoE9Er+jv799GQv4atwOgyjsBQl63rag3CA//TQj7X93KTtyWBEggGQTsQOCZvnsUzhM/SYbFE7PSiOw5KdX35dZy6f7W43YAhM8E6H5tdabEQRFzVNnzftGZ7Luaq5Pvz8/KZzKHFDO5N+Vd9/hcJvfSQn+h2FUtWBgJxJCAnQMG54ljFFe3MTSv7SapmPfkcrkD2p5xGzMctwOACAC7ANpYEb3JytSNmKPLvn9Vb8off6mFQuFpQw29655WzLqXFLLZfxay7pOaCu5Vdf5g1PxYjVziqPmdpBpL8Pud1iGI+sM7xk+Me5JAWwg0Sn71rWLksrbkFu9MNNUwX4OJCtlq6sUG43YAUlOm3AWFEenAO1MECdjGX46q+H6o+/WmT5++bX5m/jn5bPaEYsb9SiGb+0Mh694v9cb9aht6I+fhIDxeRPcXkTH63HRv6xCYwbpfyOY+HtWpO2EjEwn0mkBQrnknQIkfQpjGIGBUDsC5C+enMTbq4U/jdgDsfaLQ24cwRY7AUON/dMgafyefz++BP8vri657ViHrXllw3Xu36Zv0hDrBzSp6Mf5MH0B3xSHA/TTIeNPuyOOzfer8dY/pe+w63ky4HwkknEAwbddd3oZIwHUJ57BV83Hu+gLObTuOvWFvfh23A2DVxQn5TrukRIqAwRXz29D4X9krrdEvtns+kz8UDf368L17Cxr8J7URLMaf5WdQ8FPQ7XU4uczCckLHKPYfLc2p9639PSMBo+HhehIYm4AdGDh1zarX43zyj7G3TPyvT3PqwVlhpDChk6tyIGAY63QrOpkz0fh35T7/4eF7XM1/FY389ZD/OoG5TzX4PRr69eF7mQelxwjf49cOJBXZd5I41xaLxR06kD2zJIHYE7DPCJlUH3wVDL0bwjQKAaPmlGIm88xRfpZerZ+QAyC8FbBX9Tauco3oeWXfP3dcO4+901D4vpjJvQFX9Z9GI//zQja7ZHj4Hlfz70cWB0N2g4QmIYp1gBms/yg0ClEREogYgXuWLXtI0qmX4z++NGKqd1FdTRt1LuhigU0VNSEHQIOAXQBNYQ7FRj+s+NUzJqqJ67pPz2VyLy1msx8sZNxL0dhvDN/Dy/0pruo/iTKOFFF7692Eji/p3usVeXRJdK84lkQC8SJQLpeXOmpeDqsegjCNTOBge5G05U+9WzOhE3R/LX8vVF8LYQo1Ab1+8tRt3w4VDaSpNHf33aeir/4ANPQnFlx3Y/g+ZeQ/+KP/zoieKyo2z3ky5uh7/BqBpGpC2UcXAXRUkQSGCCzx/bsDR19pRFYMreDbFgRwkXRumGYInJADYCeGQD8q+362qObwrMCf8bb0lElH2uk8R9EqhYZ+tvVM14fvr8JVfWnFlG2eQF/9P4zodxDaC2X4fhR7xrnaHGTnFhjnztyNBEgABKrV6s2Oo6/Dx0EI05YEMpNTqY8MX93LzxNyAKzigRh2A1gQ4RQvUHnF+ls2ZUP4Hv3zpxcy7nfR0C+EPImG/h54phvC96+FKQUIfDu8JyepDgYvS465tJQEOkOgVK3+DtHBd3Ym9zjkqmfOzmZzYbBkwg4A7wQIQzWOqIMRMT9NiXwEjfwNaPQf2BC+F9Fz8Ad9m4jsB5kCYbIE1BxkFxQSIIGJESh73mVq5KvC10gEptRFz1v3Q2/fJ+wAiDIC0NsqHLV0XMHrmQjfvw9bvEREOemNjP0yYvYZewv+SgIk0CyBUs07Q0SvF75GIvDaYi7X84jjhB2AVKNxx0jWcR0JRI+A0gGIXqVR4/ASaKxpDL4J6lUgTJsTCMz58+bN69t8dTe/T9gBuHdgYBkUfgTCRAJRJ7BjPp/PRN0I6k8CYSEwMDDwsASpI9Ad+WRYdAqLHuij3fPRBx+2A6x7ptKEHQCruTHCgYAWBCX6BBoNRgGiX4u0IEQEykvLd6Gxs2OOsAiRYj1XxSpgPmkHZ9tPvZC2OACiSgegF7XHMttPQNkN0H6ozDHpBCq+/3NV+WzSOYxg//YpY740wvqurGqLA6AcCNiVymIhnSegRuZ2vhSWQALJI1DyvLPEyNXJs3xki59aq8cWMhk7odpTq7r0qS0OgBjeCdCl+mIxHSfAOwE6jpgFJJWASW8z+TgYvwjC9BQBFXU+9tTX7n1qiwOgfX13QWUDYSKBiBPQ2b0emRtxgFSfBEYlYCclMw3naGywBpLgtIXpry1mMs/cYm2HV7TFASiVSo9DTx/CRAJRJ9D3yP2P7Bl1I6g/CYSVQGWgcqeK+WhY9euRXjYK0HUmbXEALDCjwoGAFgQl+gRSDY4DiH4t0oIQEyj5/lckwZMEyQgvhNCPKvQXiiP81LFVbXMA1PBOgI7VEjPuKgGHdwJ0lTcLSyQBk2oM2lsDOYfMU9WfMqngf5762vlPbXMAOCVw5yuLJXSHgDHCuQC6g5qlJJiAnUQOF44nJw/B6Baja+St3ZyMrG0OgAYBuwBGr1f+EiUCdACiVFvUNcIESrXqT0TM9yNsQrtV75OG+VC7Mx0tv7Y5AP21/GIUshbCRALRJqAy03XdadE2gtqTQDQIaF/fKdDUgyQibc1IRAFOxPnn6Vvbrh2/t80BWCAL6ipydzuUYh4k0GsC2lB2A/S6Elh+IgjYu8iMcez8AEEiDN66kVNSxpy+9c0mvkXbHACrSiCG3QAWBCXyBFJOQAcg8rVIA6JCoFKr/FVE/1di/2rawJP3nDFjl6a3HueGbXUAlHcCjLMauFvYCBjDCEDY6oT6xJvAtF13PgsWLoQwiW43mE53/EmBbXUAeCcAj9vYEFA+EyA2dUlDIkFg4cKFg4Gjb4GyKyGxTK0ZpacWi8UdWtunta3b6gBovY9dAK3x59bhJbB3eFWjZiQQTwLVanWxUTkjnta1bNU0qdff2/JeLezQVgegtKw0gLI5sQMgMEWewA65XC4beStoAAlEjEDF874hRq6LmNpNqNv6JsbIadOnT9+29T2b26OtDsBQkSr2wUBDH/lGAlEmoLwTIMrVR92jTCBI2VsDeVu5yG5TJk06qVNV2XYHwBi9o1PKMl8S6CYBR/lMgG7yZlkksIFAeaBcMkbO3fA9Dsvx2qBGziwWi5PHu/9Y+7XdAVDlrYBjAedv0SFgRHkrYHSqi5rGjMB2a1adLWJst3LMLGvZnOmmXn97y3s1sUPbHQAxdACa4M5NokGADkA06olaxpDAHfffv0JUz4yHaRO0woidHlgnmMsWu7fdAdC+Po4B2AIzV0STgJk9Z86cSdHUnVqTQPQJlD3vR7DiT5Ckp3w+kzm43RDa7gDYaR2hpA9hIoGIE9D0qlWr9oq4EVSfBCJNwDScU2FAAxLZ1A7FVZ0T25HP8Dza7gDYzJVTAlsMlBgQSDWE3QAxqEeaEF0ClYHKnSLmG9G1oG2aH5nJZHZqW27IqCMOQGAUFYbcmUgg4gSMY+gARLwOqX70CTRUPwEn4MFoWtI2raf0acrOlNi2DDviAKgjvBWwbVXEjHpKwDAC0FP+LJwEQMDzvEdVnI9I4l/mhHYi6IwDEASMALSzlphXLwnM7WXhLJsESGAdgZJfvQRRgFvWfYvOe5s1fXYxm312u/LsiAPQX8svhoKcxQkQmCJPYEa7+90iT4QGkEBvCASqagcEmt4UH45SA2nfYMCOOAALZEEdqO6BMJFA5AlMTqU4DiDytUgD4kCg5Hk3iZHLomNL+zVVMce4rjulHTl3xAGwiqlwIKDlQIk+gcCYfPStoAUkEA8CQUr/B5Y8Dklq2gkN95HtMB75tCObLfPASZPjALbEwjVRJGDMLlFUmzqTQBwJVKvV+0XMBVGwrVM6qtG2zAnQMQdA+EyATtU98+0yAfQ77tDlIlkcCZDAGAT66vWvGpEVY2wS85/MwegGcCdqZMccAKfex1sBJ1o73D8cBIzBFUc4VKEWJEACIvcsW/YQupm/GW4WHdVO0yLHT7SEjjkApWUl+xSnRyeqIPcngV4TCEQ84YsESCBUBOoSnAuF1kASmUww5ABMqA2f0M5bpa7CcQBbhcQNwkzAhhnrxvw9zDpSNxJIIgHf9/+jIpeE1faO66Uys+i6L51IOc5Edt7avoZTAm8NEX8POQEVc2mtVnsk5GpSPRJIJIG6ypdEjL3tPJH2Izo5ocGAHXUAOBAwkcdknIwONAi+GieDaAsJxImAh5cYvSJ8NnVHIzVyxJ4zZoz7LqWOOgA4ebILoDvHAUvpDIGrS0uXljuTNXMlARJoB4EgpV9APgEkiWnS2lTfseM1vLMOwKRJdADGWzPcr9cEViL8/7leK8HySYAExiZQrVYXG5Urx96qu792szR1ZNzdAB11AEqlkp2tye8mDJZFAm0g8EQQ6GEl37+1DXkxCxIggQ4TSIl8vsNFhDd7I/sUZhb2Ho+CHXUArEKkWcqRAAAQAElEQVS4imIUwIKgRIXAY6rysurS6l+iojD1JIGkE1jiebeJ6K8lFK/uK2G08arxlNpxByDgnQDjqRfu0xMC5kETOIcOPXCkJ+WzUBIggfESUAnOHu++Ud8P3QDhdADEEUYAon50xV//x3HV/2mTShUrSyu3xN9cWkgC8SOALjs7X8cfe21ZT8o3clAmk9mp1bI7HgHQRooOQKu1wu07TeAxEf2bET0PEaqXNVR2x1X/WZVKBeuFLxIggYgSMCaxUYBU2nEOa7XaOu4ATHvatMVQai2EiQS6TWBQxNyFQn+IK/yPGjGvNiknW/a9aWW/+oKKXz29Wqv+3vO81diGiQRIIOIEKrXa9TDhXkiPUu+KdYy23A3QcQdg4cKFOAnLPb3DwpITQcDIUtj5GzT0X0RDf6xpOHOn7brL1LLv71P2vWNwhf+Fiu//Glf5NWzHRAIkEFMCxiRzemCc92wEoKU2vaWNx3u8qCi7AcYLj/ttTuBxQfhejHxTxbw3CPRFCOHvVK55GTT0r0JD/z9o6K+oDFTuXO98Cl8kQALJIRA4chkifz2ZHrjHlHcpZLMHtqJDVxyAwBg6AK3UCre1BBA5Gha+N85rAkddNPI72vA9Gvx3l3z//6pLq39BCJ9PnbTEKCRAAoLzwX1iknpLoNNSN0BXHAA+E4D/yrEJGPvo6I3hezT0z5o8ddvtysPD97XKr6rVKieVGhskfyUBEgABI853sOhyCkNx5tWtaNEVB0DTaUYAWqmV+G6L8L3cKGaz8L3vzyz73sbwPRr6OxYtWsSBo/E9DmgZCXSUQKVW+S0KWA5JWppbnFHsb9borjgA5XLZDtBimLbZWon8dsb2v/0bZvxIVT5qNgnfe89n+B5kmEiABDpJoGGMHQvQySI2zTss30xfvelugK44AOvAGHs71rqPfI8RAWPD978VlS8ZMceuC99PnYor+r0hby553hfgjTN8H6MapykkEAUCjmlcDD0NJFEJBofPAUCfzB2JqoX4GbshfP8tFXOKHX0/aIKdy+vC968se96H7eh7hu/jV/G0iASiSGD9o7z/1B3dw1OKGjnEdd0pzWjUvQiA8k6AZiqk99sMC9+L+ZgaPRxX9etH3w+F708u+f7X7ej7Wq32SO/1pQYkQAIkMDIBnL9sFGDkH+O7dtuUMS9pxryuOQAaBBwI2EyNdHWbp8L3+KMch4Z+38lTh4Xvff/zpVr1l7iq5+j7rtYLCyMBEmgHgdXB4JXIp+Pjz1BGqBIi7k11A3TNATDpNMcA9O4QeQJF29H3Q+F7x9EXbx6+R0N/ORr62zn6HqSYSIAEYkFgYGBglRH9QSyMacEIdNOGywGorHvQCqdhbaESW990KHy/CPv9CAfAUPi+oZIr+96OEDv6fih8v6Ra/TPD96DERAIkEHsCjgQdnhMglAjdYiYzZ2uadS0CsE4RTgm8jkNb3pchl2vt6PvNwvfPRGP/ZvTTD4XvPbywnYEwkQAJkEDiCOBc+C8YbQWL5CR0A2x1UqCuOgDKKYHHc/TZ8P3f0dBfhKv6U54K33v9aOhfUfa8D5dqVYbvx0OW+5AACSSCgFH5SacMDW2+Ki/fmm5ddQCMI7cJX6MQWB++N/JjEfNxDfSIYeH7g9DQvwue7NcZvh8FH1eTAAmQwGgE6s6vR/spxuv3h20KGTV11QFIT578G8SiV4yqTXJ+WBe+F/NlhO/f6qg8W/v6tsMV/TPLNe/osu+fXVpavQbRew9IgAzvTCRAAiRAAuMiUBmo3CnrHhk+rv1H3ynUv+zguu7ssTTsqgOwePHiJ9TIT8dSKGa/bQzfi+ipqjJ/TaO+S9lfH773/Q8hfP/9JZ53W6lUWiN8kQAJkAAJdIrAbzqVcVjzTQdqowCjqtdVB2CdFnEckWns3Pd3w8PcGL5Pi8mjobej74fC92W/emHJ8/40MDDw8DoOfCcBEiABEugWAZX2PyK4W7qPtxzjmOeMtW/XHYByrfY3KLQYEtW0HA39dein3zx8P2d4+H6x71dhIMP3gMBEAiRAAr0msO2alTdAh2RFWo2EywFABYga/TiWASTEyTwJ5W5CQ/9t2TR8PwMN/WFlhu+FLxIgARKICoE77r9/BS7eFrRP30jktO98mZ8eTVNntB86uR793j9TMSehjDBcITegx90ydJuIfsKOvl8Xvvd3KPve88q+fxLD9yDERAIkQALRJ5C0cQDb+Dn/maNVW08cAKtMyfcvFtH3SXdfG8L354jRtzlDo+/T9tG1c8qedxQa+s/Z0fcM33e3UlgaCZAACXSDgJpG224H7Ia+7SgjFYzeDdAzB8Aahgb3QoTYz8DnNncHDAvfG32fqrykrz64a9n3NoTvzyzXqt/j6HuQZyIBEiCBhBAoLV1ahqlRHoMG9VtLRkcfCNhTB8CaUfb9cxsqz1TRK/C9AWkl2e2fCt+rvNYxQQF5PhW+r1W/VvK8BfcsW/ZQKxlzWxIgARIggfgRQL9zG7oBIsRljIGAPXcALEbP8+4p+dVjTcPZCxGBc7DuWsjwSXBshGCT8L2K2U/7Ngvfe97VS2q1CvZFHeOdiQRIgARIgASGEzBB0roB9nZdd8pwBBs+h8IB2KBMZaCyBFfvZ5Z97xWQ3JpGfaqkU7vj8yTIJuH7ku//i5PnbCDHJQmQAAmQQDMEpmy33V+w3ROQcaeI7djXJ/KskXQOlQOwuYIDAwOryuXyf7HehvqxYCIBEiABEiCB8RNYtGjRWuz9B0hiUmB0xPkAQu0AJKZ2aCgJkAAJkEDXCKjoBMYBdE3N9hVkzIhTAtMBaB9i5kQCJEACJBAFAqbx9yio2TYddeRbAekAtI0wMyIBEiABEogCgVKtdreIsbO9tqxuRHfYc85uc7bbXHc6AJsT4XcSIAESIIG4EwhEdKEk5+Wsnbpy3ubm0gHYnAi/kwAJkAAJJICA+WfrRkZ3DzPCOAA6ANGtT2pOAiRAAiQwTgJqnEQ5ADLCnQB0AMZ58HA3EiABEiCB6BKoO+bmVrWP9PYqe2+uPx2AzYnwOwmQAAmQQOwJeHiJmAdjb+hGA01248f1H+gArAfBBQmQAAmQQNIIaAvdAFFno9v19/fvPNwKOgDDafAzCZAACZBAYgioSoIcAJEpqdQmUQA6AIk51GkoCZAACZDAcAJB0PxAwOH7RfWzUaUDENXKo94kQAIkQALtI6B9mqiBgCYQOgDtO3yYEwmQAAmQQFQJrH/YXG3r+sdkC6UDEJOapBkkQAIkQAITJaCSnIGAKnQAJnq8cH8SIAESIIGYEAjM1mcEjImp1gzXvm0QDgLcQIJLEiABEiCBBBIIbkmQ0RwDkKDKpqkkQAIkQAJjEUinl4z1s0isft1l7u67T91gESMAG0hwSQIkQAIkkDgClUplGYxuQBKRVk6evDEKQAcgEVVOI0mABEiABEYhYBt/6wSM+HPcVg6fC4AOQNxql/aQAAmQAAm0RkDFb22H6G5NByC6dUfNSYAESIAE2kzAGDOKA9DmgkKQnTNsMiBGAEJQIVSBBEiABEigdwRUnMQ4AGbYZEB0AIQvEiABEiCBRBMwZsTZAGPKhIMAY1qxNIsESIAESKBFAuokZwwA0NABAAQmEiABEiABEpC6jOQAxBbMM+bNm9dnrWMXgKVAIQESIAESSCyBtWvXJqkLwHn8gQdm2sqmA2ApUEiABEiABBJLYPny5Sth/AOQjSnOHwLVp1v76ABYChQSIAESIIGEEzCJuRMgMM7QdMB0ABJ+yNN8EiABEiABS0CHdQPY7/GVlGO2tdbRAbAUKCRAAiRAAokmYBI0EDAQoQOQ6KOdxpMACZAACTxFwDx1J8BTK+P5yTGMAMSzZmkVCZAACZBA6wTUJGYQoDHKMQCtHyHcgwRIgARIII4EVNXeCSAicbRuU5uMwy6ATYnwGwmQAAmQQGIJJMkBUHYBJPY4p+EkQAIkQAKbEQga6yIAm62O6VeHgwBjWrM0iwRIgARIoEUCjjZWtLhLZDdX4SDAyFYeFScBEiABEmgvgYbjrBRpb55hzc0YjgEIa91QLxIgARIggS4TcJLkAKjhXQBdPr5YHAmQAAmQQEgJ9K1evTKkqrVdLRXlGIC2U2WGJEACJEACkSSwuq8vMWMAUEF0AACBiQRIgARIgATE87zVwBBAYp+UYwBiX8c0kARIgARIoAUCRmRVC5tHdlOjvAsgspVHxUmABEiABNpLwOamIomYDdAIpwK29U0hARIgARIggQ0EEjEOAI4OxwBsqHEuSYAESIAEkkxgo+2JiADAWjoAgMBEAiRAAiRAAusJGDoA60lwQQIkQAIkQAKxJ/CUgfrkU59j/cmBdSn7hiUTCZAACZAACSScgMp/E0FApQQ7G3QAQIGJBEiABEggqQSeslsDWf7Utxh/MrLQWkcHwFKgkAAJkAAJJJ5A4MgdyYBgbrF2tuwAFIvFyblc7lmzXPe5wwXrDhgu+Zn552wm++P7RilkMvM2l2I2u99m8mx83ygob9/hgvJmQ58drCEUEiABEiABEmiVwPDt02sn/RLfG5BYJ1VtLgJQKBRmFjLuSYVs9qJC1l1oButPOIG5LTBy03DBun8MF3WCmzeTf+L7RhF1btlcjOjCzeRWfN8oKO9fwwXl3QN9HoNeVn5ezOSO6+/v3ybWNUfjSIAESIAEOkLg3uX3Piii10qMXyry8KQV295iTRwrAqC4+n6vqTfuFpVvieg7RWQ/SB8kbMlGAY40ar43OZ2+HZGF54dNQepDAiRAAiQQNgJb6tNQc4qIie3dAIGY9y16YNGQfSM6ALMymTyuqm/A1feF8BambokoxGuMzEJk4c+FbO4c13WnhFhTqkYCJEACJBAyAh5eRvXMkKnVHnVUrqn4/hUbMtvCASi47msb6tiBEPM3bBTBJewyp6eM3Ga7MCKoP1UmARIgARLoMIHRsq943jcRBfjDaL9HdP0jdWNOHq47Gsqnvmaz2WeIkUsid9X/lAmbf5ot9folm6/kdxIgARIgARIYk0A6fQJ+XwyJfDIiK9CVf4Lv+/8ZbswmDkBaFV6P7DR8g+h/1kPzrruJ1xN9m2gBCZAACZDAxAiMvXe5XF7aUNlXRM8VkQAS1bQgZYK5Zc/7xeYGbHQA8tnsW3D1f/jmG8ThuxrzZRevONhCG0iABEiABLpDwPO81WW/eoaY4EWisqQ7pbanFHvVr2JOKfvewUtqtcpIuQ45AHN2m7OdI3rBSBvEY51ulzJ6YTxsoRUkQAIkQAITJdDK/uVa7W9r6vVnqdG3Yr+rII9DwpYGodCtIubbuJh/l6ZTe5V8/+tYB18A7yMkx65bO3Xl/thiZ/s5vmIO22P6HrvG1z5aRgIkQAIk0CkCAwMDq0q16vdxRf06yI7al94xcHRPR+XZwwVX3fttJvPwfaMgmrD/5mIC5zmbyQH4vlFQznOHC8o7cLjgt32hz/bQa17Z8hm4LgAAEABJREFU908q17yLbBfG1lgMOQDGmHlb2zAGv6fqk9a+JgZ20AQSIAESIIEJEZj4zqVS6fFqtbp4iefdNlxw1f2vzeRWfN8oiCYs3FwqSyu3bCb/xPeNgnJuHi4o7x/DBb/dDn3WtGrVkAMgovtLAl5OIHMTYCZNJAESIAESIIGtEljnAKgkIQIgxpHpWyXCDUiABEiABGJNgMatI2AdgJQYKa77GvN3I0+LuYU0jwRIgARIgASaImAdAPvkoyjf49iUoes2MtutW/KdBEiABEggmQRo9QYC1gGwn1fat/iLbht/G2khCZAACZAACWydQMIcAKEDsPVjgluQAAmQQGwJ0LCnCAw5AEYkIREAmfqU6fxEAiRAAiRAAsklMOQAqJgVSUAAR4cRgCRUNG0kARIggREJcOVwAuscAKOJiACoyDbDjednEiABEiABEkgqgSEHwGhiugAc13WnJLWyaTcJkAAJJJkAbd+UwJADgFWJiADATpkyOMhxABYEhQRIgARIINEEhhwAIyYxDsDglCkcB5DoQ57GkwAJJJMArd6cwJADoEYTMQjQGh8EAR0AC4JCAiRAAiSQaALrHIDkjAGQFB2ARB/wNJ4ESCCZBGj1lgSGHAAjybgLwJofmBTHAFgQFBIgARIggUQTGHIARILEjAFwUoZdAIk+5Gk8CZBA8gjQ4pEIDDkARpMTATCGDsBIBwLXkQAJkAAJJIvAkAOgQWLmARA6AMk6wGktCZAACZDAyATWOQCajKmAhxAY3W1oyTcSIAESIAESSDCBIQcgSFAXgKhkE1zfNJ0ESIAEEkaA5o5GYMgBwFtiBgGq0AEY7WDgehIgARIggeQQQNsv0giSMwhQxGSSU720lARIgASSTYDWj05gyAFwNEjMTIAiyi4A4YsESIAESCDpBNY5AMbclyAQu02fPp1zASSowmkqCZBAUgnQ7rEIDDkAO+y221JsFEASkSZNmsRugETUNI0kARIgARIYjcCQA7Bw4cJBbPAfSCJSmgMBE1HPNJIESCDZBGj92ASGHID1m/jrl7FfmIB3AsS+kmkgCZAACZDAmAQS6QCIKrsAxjws+CMJkAAJRJ0A9d8agY0OgBpJTgRAAt4JsLUjg7+TAAmQAAnEmsBGByBwkuMAqCodgFgf1jSOBEgg6QRo/9YJbHQA1JjERADECB2ArR8b3IIESIAESCDGBJLpAIjMQJ2mIEwkQAIkQAKxI0CDmiGw0QHYds2a5EQARFL5fN46Ac0w4jYkQAIkQAIkEDsCGx2AO+6/304H/FDsLBzNoHp91mg/cT0JkAAJkEB0CVDz5ghsdADWb56gKICz/3qbuSABEiABEiCBxBHY3AHwkkLAUX1OUmylnSRAAiSQHAK0tFkCmzgARpJzK6ARQweg2aOE25EACZAACcSOwCYOgCRoMiDUZCaXy+2OJRMJkAAJkEBMCNCM5gls4gBogiYDsoi0wW4Ay4FCAiRAAiSQPAKbOgBJmgwIde04AbsBwIGJBEiABOJBgFa0QmATB2B1o5GguwBEjBE6AK0cLdyWBEiABEggNgQ2cQAGBgYeRrP4ZGys26ohHAi4VUTcgARIgAQiQoBqtkZgEwdg3a6aoCiA7uritc5uvpMACZAACZBAcghs6QAYuSs55oukAz0gSfbSVhIgARKIJwFa1SoBZ4sd1Pxzi3UxXmGUAwFjXL00jQRIgARIYBQCWzgAqnrLKNvGdDVvBYxpxdIsEiCBBBGgqa0T2MIBmLRi24XIJoAkJJl5MHQLDljHRAIkQAIkQAKxJbBFw7fogUX2LoB7YmvxFobpdsVMZq8tVnMFCZAACZBARAhQzfEQ2MIBGMrESKLGAYimnjdkN99IgARIgARIICEERnYAEjYOwIh5ZULqm2aSAAmQQOwI0KDxERjRAXASdicA0B06Z86cSVgykQAJkAAJkEAiCIzoAAyK3A7rscB7MtL2q5988oXJMJVWkgAJkECcCPTOlmKxOLmYzT67kMm9tZDNfrmQca8tZN0ByH8hdlkuZt27ixn3H/jtfbNnz96+d9puWfKIDoDneauxaaImBBJ1XgWbmUiABEiABEhgcwI6K5PJF133iEI29/GC6/64kHUXmcH6CiN6q6i5TETPEJWXi8gMyG4Qu8wbkT2NygH47fz66jVL81n3vNnZbA6/9zyN6AAMaaWSqIGAKsJxAEMVzzcSIAESiA6Bdmu654wZu6Chn1/I5E7FVf1FaOj/juXjgTplY+QXIuazYuRNImLvHkth2UraEW3NaXXRJcjz9FZ27MS2ozoAajRRDgDgzi7OnFnAkokESIAESCDmBGz4fpbr7ouGfnj4ftlguu9BNPR/xFX9BSL6ThE5UES3k/a+4DjoOYVs7pT2ZttabqM6AA0nWREAi81oit0AFgSFBEiABCJBoCkl1YbcizNzh6PB3SR8Hxj5Fxr64eH76U3l2LaNzAXFbPbEtmXXYkajOgDZavbfyGsVJEmJ3QBJqm3aSgIkECsC/f39OyN8/2I09KcgxL4xfI+Qe8U45uoJhu87wUqN6EXFTO4Nnch8a3mO6gAskAV17HwbJDlJZf7c3XefmhyDaSkJkAAJRI/AhvA9Gs7j0NB/qbBu9P2yyan0QwjfL0BD/zXpXPhe2vxyjJrPtTnPprIb1QEY2jthAwFh8+SVk7c9GEsmEiABEiCB3hMYFr7PfgwN/Y8KWTv6fvBJG75Hw/k9ET1T1o2+73L4Xtr5ml3IZJ7fzgybyWtMB0CDxA0EFCOG4wCaOXK4DQmQAAm0kcAm4XvX/RYa+hshj9VF14fv9XNo6I9CkXuJaFpEYvZy3tFtg8Z0AOqOuaXbCoWgPI4DCEElUAUSIIF4EtgifJ91f4uGfmCT8L2Rk2C9fUbL9lgmIhmVN3Z7oqAxHQDP8xaD/OOQ5CSVmfn+/D7JMZiWkgAJkEBHCKiL17rR9xvD9/82g5uF70UOQ+l20hwsmk9x21JFptbXrOnqBeiYDgAAG8gtkGSldMBugGTVOK0lARKYAIFMJrPTrFzuRcVs9r2FYeH7lJHqutH3uiF8P0diGb6Xtrw0kH2li6+tOQCCTvHruqhPKIrSdbM8hUIXKkECJEACYSFgH5qWy+WeVczkjkVD/8XC+vB9nzoPB4H5kxG9EG1GF8L3YSHSXj2Malejz1t1AFSCX7XXxEjk9mx4ss+OhKZUkgRIgATaT2Bd+D6Tew3OhR9FQ/9DyL/XrFixwgnMbUbN99HQfwjFMnwPCO1LJlwOQKlWWwTjPEiiUiDdH5GZKMA0lgRIIBQENgnfZ9xvoqH/G+SxofC9mmuM6NlQ9GhIaML30CWuKZPP53fslnFbjQBYRXAA/NoukyQq5pj+/v5tkmQzbSUBEogvgRHC978pZLNLNwnfq7wLBA6CJGb0PWwNVdJ6fe9uKdSUA6ASJM4BQAVMm+L0vR5LJhIgARKIFAH002fRTz88fH/XCOH7V4hov0TuFW+FjePM7ZaFTTkADdU/QqGVkEQl9HP17CENiQJNY0mABMZFwIbvczNzL0Q//XsLw8L36Kf3cP4aHr5/pnD0vUTh5Rjp2jiAphwAz/NWG5XrowCvzTq+mI8IbjNRZkcCJNAygfXh+7n5bPYt60ffbwzfO475M7ppL5Snwvc7tFxAhHaIu6pGujcQsCkHwAJXkSR2A2igKUYB7AFAIQES6AoBG77PZ/KvLrruRwpZ146+3xC+v11FL18/+p7h+67URi8K6d6tgM07AIPpJDoAoipvwyGQgjCRAAmQQNsIuK47bX34/j2FjPsNNPZDo+9t+F41+KUx8nkUZkffM3wPEOtSIt53LBQKM7thadMOQGlZaQAK3QFJWpqez+ThbSfNbNpLAiTQDgLDw/e4qv9fNPS/tqPvU0YeWR++/7qonIyy7Oh7hu8BIunJ1Otzu8GgaQdgnTKaxEmB8N8Muv6UpnW8+U4CJBAlApuF73+Ahv7ONStWPomr+qHwPa7qPwx7XikcfS/jeSVmny7NCNiiA5DI2wFF1LzKdd2nC18kQAIkAAI4H2wWvs/9FVf2j6Gh94aF798sonuLSB+EiQSaJtCtOwGcpjXChmXfvwmLhyAJS5p2gqGxAAmzm+aSQLIJzJs3r88+HdSOvt8Yvs+4tS3D9+b5IMXwPSB0LiUnZ6PSlVsBW3IAgD9Q0WuxTFxSlRMSZzQNJoEEEcjn8xk09K9CQ29H3w+F7x998KEVmgruwHnv8o3he5WuDNBKEHqaujkBI3ta53Pz1e3+3qoDIIGaRN4NAPB74PRwKJZMJEACESdQLBYn2/9zIZs7B2LD949qI/DR0P8KDb0dfc/wfcjqOGHq9D1y/yN7dtrmlh2AehDYCECj04qFMX/07X00jHpRJxIggeYIoOHfIZ9xP2kG6/fh//x7EXM6xIbvd2wuB25FAl0ikGp0vBugZQegVqs9Iio3dglB2Ip5SSGbtbfqhE0v6kMCJLAVAvmZ+f3N4GAZ3XmfxqbTIEyRIZA8RR3T+QmBWnYAbDWYQJLaDQDz9eN4YyIBEogQAfTrH6hO8AcR3VX4IoEIEDBduBVwXA6AmlSCHQB5RTGb3S8Cxw9VJAESAAE72x769X+HjwzzA0IUUzJ17vwzAcblAJSXlu9CN8CdyawU9BiKfiypttNuEogSAeusO46x45a2j5Le1JUEQCCTz+c76rSOywGAYoJugIvtMqFyZDGTmZNQ22k2CUSGgJGhLrttI6MwFR2BQIJX1aWjAwHH7QBMagxejmpZC0liUtEU7whIYs3T5sgQKM6cWYCyR0CYSCCaBJwgnA7APcuWPWRUro4m1YlrbcQcvf4EM/HMmAMJkEDbCRjH+QAydSBMESaQZNUdE9IIgK0U/LOS3A2QCpz0RywHCgmQQLgIZDKZnRD+Pz5cWlEbEmiNAC40wxkBsGaUPO/3YmSp/ZxEUTFv7dZzm5PIlzaTwHgJpFWfpyJTx7s/9wsLgaTr0dm5AHARPyHAgTpy6YRyiPbOfVKvfyjaJlB7EogfAZzYcvGzihYlkMCO+Xw+0ym78T+ZWNZ1GXIAzMRyifLe+o5cLrd7lC2g7iQQNwI4IfE/GYNKpQkg0OjclMATdgA8vET0Bknua4oTBKcn13xaTgLhI4Dw/6Ph04oakcA4CHRwRsAJOwDWHKMmyYMBxYi+pzij2G9ZUEiABHpPwKg+3HstqMHECHBvS6CTdwK0xQEIRK6Coo9AEplwtTHVpOtfTqTxNJoEQkjAUa2EUC2qRAItEzBi5ra8U5M7tMUBQC/AalwF/6DJMuO62dGzcrkXxdU42kUCUSKwptFI7FTlUaqnsXTlbxsI6Ox58+b1bfjWzmVbHACrkCNBorsBLIMgMF/DMgVhIgES6CGBWq1mI5LLeqgCiyaBdhHoe+T+R/ZsV2bD82mbA1Dy/X8hYytYJDbNLWazJyfWehpOAuEicEe41KE2zRPgltDdNdoAABAASURBVJsQSHXmToC2OQDrlNVL1i2T+46ukM/uMX2PXZNLgJaTQEgIqLAbICRVQTUmRsAxnZkQqK0OwKBpXAEzV0OSnHZqTFp7dpIB0HYSCAMBDZQOQBgqYhw6cJdNCRiVjgwEbKsDsL7fzd4RsKn2Sftm5B3FbHa/pJlNe0kgTAQaKUYAwlQf1GUCBDr0UKC2OgDWPGM4GBAcHHQFXIilQphIgAR6QGCbbba5W8TUe1A0i5wQAe68BQGVma7rTtti/QRXtN0BqNRqdlZA3oMr8rxCJnfcBOuHu5MACYyTwKJFi9aK6GLhiwRiQMAJnL3bbUbbHQAoiItf+RKWTGq+OHv27O0JggRIoGcEOA6gZ+jHVzD3GoWAE+wzyi/jXt0JB0A0nf4uNFoOSXp6en316k8mHQLtJ4FeEVAxdAB6BZ/ltpWABu0fCNgRB6BUKq0xKpwad6j69f3ou9lz6CPfSIAEukogMCnOBdBV4hMtjPuPSqADDwXqiANgDVi9du1FWD4ASXrqSxnlgMCkHwW0vycETIoRgJ6AZ6EdIGAiMQZgyPDly5evVJWvDH1J/Js5pJBxT008BgIggS4TqFarPop8HMIUAQJUcUwCO+bz+cyYW7T4Y8ciAEN6pNNfx/JRCJPKF4uZzDMJggRIoOsE7up6iSyQBDpBoNHeKYE76gCUSiV43sY+IKcTKKKW55RAncvnzJkzKWqKU18SiDQBIxwHEIkKpJJbI+CotnVGwI46ANaYvnr9fBHzpP2cdFGRfdesXPnZpHOg/STQTQKqhncCdBM4y+oYAWOkrbcCdtwBuGfZsodA45sQJkvAyBlF132x/UghARLoPIFG4NAB6DzmCZfADJohYKLlAFiTGqrnYpn0hwQBwVBy4MV9L5/P7zj0jW8kQAIdJcA7ATqKl5l3lYDObmc3cscjAJaN53n3GdGL7WfKEIGM0zB2gOTQF76RAAl0jgDOP4+KkaWdK4E5T5wAc2iSQN/qx1fPbnLbrW7WFQdgSIuU2umBB4c+8w3nI/OWguseTRQkQAJdIKDCboAuYGYRXSCQarRtIGDXHIBKpVJDFOB7XcATnSKMfKM4o9gfHYWpKQlEk4DSAQh1xVG55gk4bZwRsGsOgDVPG87/YtmAMK0jMM2k65fho0KYSIAEOkQgMLwToENomW2XCZg23gnQVQegPFAuoaX7cZd5hb24gwvZ7AfDriT1I4FIE2jwmQDhrT9q1hKBqDoAQ0aa4PNYGgjTRgJ6di6Xa1u/zsZs+YEESGCIwE6773QPPnAMEiAwRZyAykzXdae1w4quRgCswqVa7d9Y/gLC9BSByU5gfjh79uztn1rFTyRAAu0isHDhQjT+ZnG78mM+7SPAnFonoA1ty3wAXXcAhkw1wdlYMgoACMPSnPqqNd/Hd/SS4J2JBEigzQSUdwK0mSiz6w2BlBNE1wEo12oLRczlvUEX4lJVjii67lkh1pCqkUBkCRjlMwHCV3nUaDwEjIlyBAAWN1Q/hMUTEKZhBIyRT+Sz2dcNW8WPJEAC7SDAOwHaQZF5hIFAm24F7E0XAAB6nnefiH5G+NqcgKIP4LLCzMLem//A7yRAAhMgkEqxC2AC+DqxK/McL4H2PBOgZw6ANXvarjufj8bOjs61XykbCeh24jSu7u/v33njKn4gARKYEAE7GRkyeAzCRAJRJ7BDLpfLTtSInjoAQyNzHX3/RI2I6f75yam+n8C2FISJBEigLQQ4IVBbMLYlE2YyEQLahjsBeuoAWONL1ervsORtgYCwZTKHFDPuOVuu5xoSIIHxEFDhnQBb52YexDZ/FJULRMyX8Zl3bAFC2JLThjsBeu4AWKhpMXYmPD4u2MLYTIzKBwqu+7bNVvMrCZDAeAgYvXE8u8V0H3vOvVWMXIaG/ozA6MsaKs8o+/5uZd87uCHyBRF9o4iodODFLCdGwLRhRsBQOACLfb+KA9B6mhMjEte9jXy7mMu9LK7m0S4S6BYB0+fYiGPSrmitvWUw/oWqfEaNvjFwdE808ttB5pVr3tvLvn9utVb9/brB2SJ2UjLHyG+xjwthCiWBiQ8EDIUDYNmuaTTgbUrNfqZsQaAvCMzPc7ncAVv8whUkQAJNEyiXy/8ViXUU4AERuQHX7OermHegoX/u1NWrti/7XhFyZMnzPlWqVX9WrVbtrIi4yMfWm6U5c+ZMqq9eexUu+/fd7Kc2fmVWEyegs21dTSSf0DgAAwMDq+CZnj4RY+K8L/6MU53A/GZWNrtXnO2kbSTQaQLGaBwm21oFTgsRvv8uGvrTnwrfe09DQ39I2fM+UPL9i9HQ33zH/fevwLbNJl2zYuV3EZE9pNkduF3PCPStWrVqz4mUHhoHwBphPVMsb4AwjUxgF/zRrysUCjNH/plrSYAEtkagUqv8AdvY8DYWoU8BGuMStLxqQ/jepJzZaORt+H5/hO+PR0N/3vDwPbYdd8pnc3bQ8ZvHnUGTO3Kz9hDQYGJTAofKAbBI1ATvwwFft58pIxBQmSn1xnV7zpixywi/chUJkEATBLQvfbQaubmJTbu5ycbwvRFzogmcA1YNrkX43p+FBv91G8L3lUrlXigFxwDvbUyFbPZ0RBPsgOw25sqsOknAmeCMgKFzAEq12r/V6IWdhBaDvPdam+779dzdd58aA1toAgl0nUCpVHp8rQSHGZHbpPuvofC9ilyKq/oPGuO8FH31T0cjvzF8X/H9SypLK/9cvnz5ym6ol89mjxHRLg3EFr7aRMAYmTuRrELnAFhjgrRzFpb/hTCNQgAnj+eumLzNlfPmzesbZROuJgESGINArVZ7JD046aXYZBGkEykQlSXI+Odo6D9txLxhePi+5Hsn4Kr+K7ZLAn3192O7niQ0/q/H+eQyFI4F3pkiRGBidwI4YbQUIa7H8Gf5SBh1C5VOKi9/9MGH7B83lPUYKlZUhgRGIHDv8nsfHDTBC0T0EyIykUYYFyx6vRr5Ks5dT4XvPW8PXNm/Hg39WRXfvxLnto6E76H7uBIa/9eh1f+RiKalSy8W004C2u+67rTx5hjahgN/lkvxZwpbH914OXdyvzcXMu4lKCC0dQndmEggtARsJKDsVz+nfemsUTlBxNw1hrII35tb0GiuD98Hh0o6tTsaeUj10FLNOw3nrq6G78fQdcyf1jf+PxY2/hLllzZ0n/HqH+ZGwzRSeioMQzcd3plGJ6DytmI29z1swOcGAAITCYyHQKlUWlPxvEvLvr+PNFKzAqMvsw6BGj3KmOBQ03Ds1fx2+P05T4Xva9evm1tgPCX2bp9CNnukivbgyr93Nse15NQEpgQOswMg6Be72Yj+X1wrrp12Iez4loLr/mC+zGcor51gmVciCZQHyiV7a511CEq16k8qtdr1lYGK7c8Pog4E54nXiiiu/IXjhyT6L2N07nitcMa7Y7f2W9sYPFNF7ulWeZEux8iblma9H3NgYKRrkcqTQMcIFF33CDHyExTQk8Yf5TK1m4BKLLsAhjDZGQLRJ/cWfBmEMG2dwOsefeihn010isitF8MtSIAEokSgODN3uDHyU+jMxh8QYpT2Hq8toY8AWMNKvn+rqnzKfqY0QcDI4WtWrLyqWCxObmJrbkICJBBzAvls9hjjmJ/BzB42/iidqRMEdsjlctnxZBwJB8AaVvK8L4rKX+xnSlMEXhmsrV/T39+/TVNbcyMSIIFYEkDY/zQVvRzGsfEHhDgmHeedAJFxAFBpQaB6HJaPQ5iaIICoycsmp9K/so/2bGJzbkICJBAvAlrIZr+MsP95MEshPU0svHMEHG2MayBglBwAe1eAr0ZP6RzGWOZ8cH31mr/u0d8/I5bW0SgSIIEtCNiBwAj7f09EzxC+Yk/AiI5rIGCkHABbi6Va9ftixN7CYr9SmiMwt5FK/wP9RM9qbnNuRQIkEFUC9hkhjz7w0C9V9Njw2EBNOkwgGQ6AhTgowbtFzID9TGmawAwnMH9Bf+DLm96DG5IACUSKQLFY3G3FlCkLRIX/80jV3ESVNbPHc+dX5CIAFpOduhPLt0EMhKl5AtsbY35VzObe0fwu3JIESCAKBGZnszlTr/9NRPeXkL2oTqcJaHrVqlV7tlpKJB0Aa2TZ928QUTu4RfhqhYCmjZhvF7K5s7GXQphIgAQiTqDouvPrIjeje3SW8JVIAqlG648GjqwDYGtY+1Ifw/IOCFPLBMxHi1n38vGEjVouijuQAAl0jACc+VMQ2fu9iO4qoXxRqW4QMI5peRxApB2AUqm0RoKUnSVwTTcAx60M9J8cs/rJlb/fY/oePHHErXJpT+wJoL9/Mpz4i0XM14RP9JPEv0zrUwJH2gGwFV5eWr7LqPyP/UxpnYCqvKiRXntrLpc7oPW9uQcJkEAvCGSz2WeYwfoCOPEn9KL8Vsrktt0ikLAIwAasFc87H17wHzZ857JFAioz7R0Cedc9ucU9uTkJkECXCcxy3eemRW9BsQdCmEhgPQHtz2QyO63/0tQi8hGA9VaadBC8TUUeXv+di9YJTFIj3yi47mWcPrh1eNyDBLpBAP/PtwdG/oSypkMikKhiNwlMTqVaGgcQFwdAFi9dulyMvqubsGNZlpG3Tk6lbyr0F4qxtI9GkUAECbiuOyWfzX1djFwK9fmQL0Bg2pKACYJkOgAWRalW/ZmoXGA/UyZEYK6kGrfYx4dOKBfuTAIkMGECCPnvmzKyUMW8Z8KZdTkDFtddAsZoch0Ai3qm556O5Q0QpokR2NE45hf5jPt5ZJOCMJEACXSXgFPIuB9CyP8fKHYOhIkExiagkmwHYIEsqPfVB99kRKpjk+KvTRBQVflIIev+IZ/PZ5rYnpuQAAm0gYD9v+F/dz0iml9EdpMgEUxUuQcE9m6lzNiMARhu9D3Llj1kHH0tnIAVw9fz87gJzNdGcGfedY8fdw7ckQRIoCkC+J+9Gf+327HxfAgTCbRCYAcXr2Z3iKUDYI2vVqt3OEbfjs/wA/DONFECO6iRSwque3WhUHjaRDPj/iRAApsSwFX/jsWsewX+Zz/AL9MgkU7hUd48GR5dOq9JOmh+HEBsHQCLeWhQoBg75739SmkHASOHS73+73w2+7p2ZMc8SIAERIqu+2Jc9d+Bq5VjyKOtBDzk9iZIcpI2fydArB0AW+Nl3/8k+tGusZ8p7SKgu6rolXACvu+6Lq9U2oWV+SSOgH0WB6JqXzRG7MDlTHwAhMKSx9QEr1rTaCyANgEkEckIIwDDK9qkJ08+FivuhjC1kQCcgGNTxtyZy+Re2sZsmRUJJIJAMZOZs3rFyn+IkQ/B4NhfjMHGLiZTN8Z5Q6lWWzQwMLAKBZcgSUlN3wmQiINu8eLFT5iGcwRq/1EIU1sJaL+j5rpCxv1mpsVpKNuqBjMjgYgQmDdvXh/+Lx8y6ixUkX0lhq9em6TivLtSq2ycHl5F75TEvMxsG1lqxtxEOAAWRGWgskRVjsbnxISCYGu3Ev5f8q6K1HbLAAAQAElEQVQ+dRbn3aE7BbRbBbMcEogSAYT7D3v0wYfuQrekvb1vSpR0j4yuKl8q+dXvDNc3QKRy+Pd4f9b0qlWr9mrGxsQ4ABZGyfOuE9H/Eb46RWA3tXcKZN2/5nK5Z3WqEOZLAlEjMCuTyaPxvxrh/t9C9z0gMU69M01Fryx73pbneDUJigCIpBrNTQiUKAfAHpZlv/plFbnEfqZ0jMBBTmAW4oT31WKxuEPHSmHGJBByAtOnT9+2kM19LlBnERr/w0OubqTVw8XHzasbg8fBCAPZJGkjfccmK2L+xTjNPRo4cQ6ArfeS752EEBzvDLAwOicpnPDebwbri/PZLG9t6hxn5hxSAnCAj9qmr2+xiPkYVEzMA3xgay+S30jp4esH/G1RfnmgXMHKlZBkJMMIwFgV3WiIHAUn4C9jbcTf2kLg6Sp6RSHr/tGOem5LjsyEBEJMIN+f3wfH+wI4wD8S0X7hq9MEHre3+1Wr1fvHKCjA+f7fY/wet5/mNmNQIiMAFozneavhBNiQ3B32O6XjBOYbde4oZt2LC4XCzI6XxgJIoMsE7F0whWz2a5oK/oWiXwxJYOq2yaaujr6xVKtttXFHF0GSxgHMsMfj1mojsQ6ABQMn4NG6mMPw2c4WhQVThwmk0Dl3gtQbS/JZ97w9pu+xa4fLY/Yk0A0C9ql9J/Wp3iuip4gIn54JCF1JRt9bqlZ/10xZgUqSHACZnErtszUuiXYALBzf9/9jGs7L8Pm/EKbuEJisIqc1+tZWiq571uzZs7fvTrEshQTaSsApZnJvQFTrVoSXvyWiiXdopasv/US55l3UdJFBkCgHwAQBHYBmDg47R4CY4JXY9gkIU/cIbG+MfKq+erV1BE4rFoscKNU99ixpnATmy/w0Gv7j0PD/26j5KaJavOV1nCzHv5ueXfarn2tlf+3rS5YDYLY+JbDTCsA4b1uu1RYaExwJG9dCmLpKQHeFI3CeWVtfUsxmT7Qn2K4Wz8JIoAkCdna1guu+q5b17kXD/z00/Hs2sVuCNumWqXouGv+Pt1pauVy2UV4rre4aze1VtjoQkA7AsKqt1GrXq1H73IBg2Gp+7BYBlZlG9DtLs14577ofmLPbnO26VTTLIYHRCNh7+e3xuGbFyooY+Sa6r3Kjbcv1nSWA88PX0fifMf5SkjQlsOwNTjhc8T5KogOwGZhSrfpTo2IH8mz2C792kUBGjXxlzbYrl+Yz7uez2ewzulg2iyKBIQLoktqh6Lof2aZvkmePR6ycAWEahUCnV6Pxv7jiV0+dSDmaqCmBZXvXdbNj8aIDMAKdiud9AyHps0b4iau6S2CaqnwkLeqhv/XiWdlsU/Nbd1dFlhY3AnvOmLFLIZv9jBms+8bI52HfbhCmHhIwYi5H438SVDCQcacgYVMCp4OxxwHQARjlUKrUvE+LmJYGmYySFVdPnMAk/OtPCET/Xcxmfzkrl3vRxLNkDiSwKYHZM2dOL2Rz56xN9/ki+gkRmSZ8NUmgc5shIvvTiu+/HSUEkImlIJWogYCiY98JQAdgjMOp7Ps4Cegnx9iEP3WXACKx+uogMH8quO7N6Jc9fu7uu0/trgosLU4E5sv8NML8R+BYuqbupGpw+k9HpymPqbBUsso1O+2yy1ugTgMy4bS6sdpOGDRxR2LCmnQnA2N0zIGATnfUiG4pZb/6WWNky6dLRdekeGhu5DnwBi5ZMWWb/8AZ+FZ+Zv458TCMVnSDQC6Xm40w/5eWZr0B/L9/gWPpNSiXE/gAwnhSh/a5dvK2275x4cKFg+3Kf/ny5Svh5NnnArQry3Dno2M/E4AOQBPVh+6AL6Iv+oNNbMpNuk9gezFykjrBzYWse3shkzu1mSkwu68mS+w1ARstwpX+8YVs7q9OYO4R0TNFZHcIU/gI3NBQOXLRokUduC1bEzT9u9nD3r46WvXSARiNzGbrS573FRVj7w5Ad/RmP/JrWAjMFTUX9KmzvJh1r8AV3kugGCK6eGdKLIFiNvu8fDb3nRVTptyHK/1LcAX4/MTC6Ijh7c0UEZk/T1296nDP81a3N+d1ueFiLkHjADS9atWqvdZZvuU7HYAtmYy6puT7Xxej78IGdAIAIcRpCiroGBG9oZB1S8WM+4X8zPz+wldiCBQKhafBATwd9b/IiN4I5/1EEeW8EhLuF+rpV2uD+mF33H//ik5pGiTrVkBJNUbvBqAD0OJRVq5Vvy0qJ2C3xAwkga1RTnmj8j/oIvgnGgMfzsBX8pn8C2AQj31AiFPK5XK7D4X4M+4vpN4YENFzRGTUqx/8xtQGAu3Kwt7q1+/njhwYGFjVrjxHzCeVrDsBjAZzR+SAlTwJAkKrqex538XBehz2a8vIVOTD1B0CGTgDH1AN/gJnYBm6Cf4PzsChdiR4d4pnKW0moDayk8+4nyq47s3o1//PUIhf5QiU0wdhigoBlfMrvv/WBbKg3mmVK5VKCWV01slAAeFJOupDgegAjLOWcLD+QI2+Gf2JHT9gx6kidxubwNONyLvhDPx+IOvdD2fgkmIm94b+/v6dx96Nv/aSgH1yZD6bfR3q62I4ccttZAd9umeJEXsXCMd7dL1y2lGgfhIXVR9ATgbSjWSjt4u6UVBIyqAD0ImKsNMGi+obkXcHRqoiV6auEMBZZ2fI8UbNTyen0g+gYVmIK8ovFnO5l8Eh2KYrSrCQUQkU+gtFhPY/gD7939dXr3lQRa9EfdluuKePuhN/iAKBABG599hbrbuurJEEDQSUGaPdGcUIwASPPHiuv8AVyMuQzSMQpugTsP+J/XBF+SETmOvgEDwCh+CPhWzu40XXPRDm8V5xQOhk2mP6HruisX9FPuueV8i6iyXVWKJGviKih4rIJAhTSAhMQI1BUTnGTrs+gTzGvasmbErgyanUiFEAe7IbN0TuuI5AyfP+1FA5CN88CFO8CEyGOfPR1WMnhPo7GqSHC9ncr2y/M0LRr7IDz/A70zgJ2AfuoLF/CZieiav8nxSybrXRt/YBEf2NipwmIntAmGJEANGbFbhoeg0unn7cK7MaxklSBECCYORHA9MBaNMR6HnePYGjB4rKP9uUJbMJJ4Ed4Ay8Ciews1T0V05g7kMDtrSQcX9RQJQAXQeH2SvYcKreW61c151i78kvZHKngtn30I9/txmsPyqiN4Dpl3CVb7vTXOErIgTGpeYjjsqhuGi6blx7t2kn45hEOQCihhGANh07o2ZTrVbvX7V27Xw4AdeMuhF/iCEB7UedH4FG7LNi5Lf2CraQdT3IlesjBcfkZ+afgwYwKQ+XURsZmeW6z0Vj/0409hchnP+vlDFPGNEbcTK6QESPMyJ7ioCc8JUQAsvVBC9E439Tr+3FBdt9+L8+2Gs9ula+GXkuAEYA2lwDdq5phLaOxMF1YZuzZnbRImCfw/269ZGCK9QJbk4ZeQSNoR1keCMiBZcVEDEoZnJvwlXxs+3o9giZ5xQKhZn5TP4F6AZ5C2z6GOQiODvXFdBnD1lpIyOBkZvQ2F8kou9UkX1FNC18xYZAi4bci27S55dqNfswnhZ37dTmmqQowN6giL8h3oclOgDDYLTxY1D2/VNVzOnIExc6eGcigSECuisWz0Ok4K1wEj9r1PzYiN5aX73mcTScj6EhXYLl3woZF10K2YsK2dzn8Pl9cBiOxm8HF2YW9rZX13Zee+STgkwkpWwfvOu6T5+VyeRt3kNX7dnsS9Cwv2q9c3Ji0XXPgg6XFrLuH3ElX8FytdQbNdXgLyp6uYh+DvJOODsvk3V99lOwZCKBDQSuReP/XFx1h2uMlCbqToDt8T+3FyUb6mRoSQdgCENn3kq+f54RY/s1OzKndWe0Zq49JLCDiBZF5CAExtGloO+Ek/AxfD4fDsMPRfR6cRp32qvrFVO2eRINcX29rMDyYchySBVyD+R2OA03w2mwkx7diP722/D9XqwfgCAS4a7Bso4++McQmfhPoE7Z5j101Y4+eTTsv1rvnHzHGPkUdHi7iMxXkZyIcJIdQEh2atZ68+Wy770Kjf+jze7Rre3UJCoCIOmGbjEjoNMt2Ektp+L7VyIScLCISU5/U1Iruzd22yjAtih6J8gzIC5kNmSuDE2Ooy/A5+cZkWeJkVn4PAMyDcLb6QCBqWMEVuPi59iy738IJdiJd7AIV2o4kqCnAqIFcoItBgLSAejCMYlIwN+lkX4eqqDUheJYBAmQAAl0lMDYmZsBMcELcPFzxdjb9fbX7VeutOMR4Bv3Vo+ulW6UDkDXYG9WUHmgXOqr1w/EVdh1m/3EryRAAiQQEwL6t8Bx9i/XagvDbtD6Jw5Wwq5n2/TTLe8EYASgbXS3ntE9y5Y9VK55r1SVT2Pr5HieMJaJBEggLgRGs8N8Z/LUbQ62t0OPtkUI1yfoTgCzR7FYtBObbawGOgAbUXTtQ1DyvLNE5ZUq8nDXSmVBJEACJNARAqauYk5Bf/87Fy1atLYjRXQsU5MgB0DTWq/vNRwlHYDhNLr4uex51zYc3U/E3NLFYlkUCZAACUyIwKY7mwdV9aUl3//6puuj8U0TNiWwCTYdB0AHoIfHKUJlvvb1vQDRgIt6qAaLJgESIIGWCSCCeXtD9TmIaC5oeeeQ7FBP2JTARje9E4AOQI8PxFKptAbRgHfBCbD3Wa/qsTosngRIgATGILD+JyPfXDm49iAPr/VrIrmA+kugeILmaWEEAPUdvgQn4LKhhwmJ4a2C4aseakQCJLCOwH+NcV5TrnnvttOer1sV6fcGtL8bkpS0ya2AjACEqNrRJXCHSaX2FyNXh0gtqkICJEAComJ+JenUPpVa5VexwpGsKYFn9Pf377yh/ugAbCARkmWlUnkM3vWRxsj/iJh6SNSiGiRAAsklsNKovLvk+68pl8v/jR2GhE0JPCWd3hgFoAMQzqPZVGreF02Qep6K3BNOFakVCZBAAggsRNfkfhXP+6ZIPK1VTdKtgLisHDYjIB2AEB/TlaWVW1Y36vsh9nY+1OTEQYDARAIk0BUCAaKQX5i26y7PQ9fk4q6U2KNCUo1GguYCAGQ1jAAAQyTSwMDAqrLnfQB+2yFQuAZhIgESIIFOEvCDQOcjCvnRhQsXDm4oKK7LxUuXLodtD0GSkcxTUwIzAhCRKi/7/h+1D303Ri6LiMpUkwRIIGIEjJjLcZ6ZW11a/UvEVJ+oukmKAuwNWOhdFqEDABJRSaVS6fFyzXu7qBwJnR+AMJEACZBAOwg8KipHV3z/OHue2TLDuK9J1DiA7Wdns66tUToAlkLEBF0Cv5B0ynpxv4iY6lSXBEggfAT+qPX0Pjiv/Dh8qnVJo4RNCdwInH0sWToAlkIExd6OU/a9I+G1Hw/1H4cwkQAJkEArBNaK6Jk4jxxSWlYakDFecf9JkzYlsLNuSmA6ABE/suG1f9ekrDen10fcFKpPAiTQPQL/Dhw9oOxXz0GRib/DaNKKbe9KEgcVLcBejgGwEKIulUqlhj/yYp9RrQAADCBJREFUoUbMW2DLfRAmEiABEhiJAKKF5oxpu+7y7Gq1evtIG2y5Lv5rFj2w6El4QV78LV1nYaCyq/3ECIClEBOp+P4PtC89G90Cdt4AO8d1TCyjGSRAAhMkgOsDsc8b2aPs++cm4fa+VnlpgqYEVpFpghcdAECIU7IjeNEt8AGE9+bBrhshTCRAAokmYG5B43aQvYMIV/33t4oiMdsnaEpgNTo0pTMdgJge3fij3172vRcYlRNgIm8ZBAQmEkgYgQdUzDvKvn9AyfNuSpjtrZuboCmBjchQdwcdAIn1y1Q879JBE8wWI9+EpQGEiQRIINYETN12A5qUM6vk+xfDVJzv8T6ulJydNAgSMxmQMbrA1iwdAEsh5lKr1R5B+O/dJnCeixPDP2NuLs0jgSQTuEGN2dd2A1YqlceSDKJV2/tr+XuxzxpI3NPiSq3ya2skHQBLISFiHy6EE8OB6BZ4N0x+BMJEAiQQDwK+EfOGsu8dUqrV/t0uk5KUzwJZUFeRe+JuM87/X4WNQ1EhOgAgkbAUoFvgm2sa9aKIsfcAr06Y/TSXBOJEYLWqfBr/570qvn9lnAzrhS2BxH5K4IfW1usbnydDB6AXR1kIyhwYGHi47PtnptY5At+GM1APgVpUgQRIoHkCP2+o7FXyvLPwf17V/G7Nbpm87TTmdwKomM8PP1boACTvGN/E4nsHBpbBETjJNFJzxIidC3woNLTJRvxCAiQQJgJ3G+O8tOx7r/fwCpNiUdfFSelNUbdhNP2NkU+VfP+84b/TARhOI8GfKwOVJeWadzQ8RDt/wLUJRkHTSSCcBFSWoP/2hJm+O7dSq/yh00omMf8l1epfYPfQLXJYxijphyo17zObG0QHYHMiCf8OD/FfuLJ4BfoV5wPF3yFMJEACvSXwbzT8x5Q9b6+K5126QBawu65z9YEIqPl+57Lves4NET217Fe/LCO86ACMAIWrRNCv+Cc4AgehT+xwEWMflEEsJEAC3SVwK/57r8P/cB80/D9E0TiZ470rKbmFaBBsHCQXYQp2zpcfBo4+E43/haPZQQdgNDJcP0SgVKv+suz7z4IjcBxWLIYwkQAJdJbAjWj4X1n2vXll378KReGqFO9MXSFQWrq0jIJ+A4lSsseIp6JXqph3NFRmlH3vmGq1OuY5mw5AlKq4d7oGcAQuxwG1lwZ6BE5Of+2dKiyZBGJL4Ab8tw7G/+z5Zd//bS+tTHrZaxp1e8FjJwYKI4qHoNSfcKxcKEbehQb/oPSUyTuWfS9X8qtvQDfuxZ7n3YdttproAGwVETcYRsCUllavKfv+C1XleVhvr05sqAkfmUiABMZJ4Df2JF72vUPKvv/HcebB3dpIYGBg4GFppF6FRvbBNmbbalarscOtaOTRJaFn4px7WDpo2Cv7Xcu+N7/s+6eWa95FaPD/vnjx4iewbcuJDkDLyLiDJVDyvJvKvvc603D2xAH6LayzBysWTCRAAk0QsCHbn6PhR5jfe5U9iTexT5c2YTGWQHmgXDImdSQqaoX93kHBRZQpIf+r0Mh/Ro2+EX33e+L8uh1kHhr5t6Mf/xycc69bvHTpcmzXtkQHoG0ok5lRZd3tgydrXzoDb/mzoPAQhIkESGBkAg0V+YGaYB+c3F+Phv/WkTfj2jAQqNQqf0036rNtnbVJn/+K6PVq5KtGzIkmcA5YNbh2+7LvzyrjggqN/KfQ3fqz9X33HR/0SQdA+GoHgVKp9EDZ9z+JgxmOgJ4Kr7najnyZBwnEhMBaNCKXIGK2V8n33lIK8Xz9MeHdNjPsZGm2zkTM8yG3NJnxSvvgtaE6VznNmOBQSad2L/sepHpoqeadVvH9SypLK/9cvnz5yibzbPtmdADajjTZGdqDGeGqCyu+N0uNvgk0bJ8m/AF8YiKB5BG4A11k7++rD05HI3JiBRGz5CGIh8Vl378R8py6mOkI1R+Gev2wil4B635jRC8W0U/CQXidNFL2an77sucdMFTnnvfVSq12fblc/q+E7EUHIGQVEiN1Gghl/bTsewdr0JhljHwBtv0HwkQCcSfwqIp8Q0ywP47/Z5Vr3gX3LFsWka6xuFfNxO3zff8/CNVfh3r9UsmvHos6flXFr74DFz6fLfv+VXbsAEpBvz7eQ57oAIS8guKgnr2vtlLzPjrTdzPwnF+rYn4Fuzrev4UymEigWwQMCroB/brHopP/Gbjye0+5VluIdUwkEFoCdABCWzXxU8xOYQrP+eqS778m1ahnES77OM6a1fhZSosSQ8DIUhzHn02LKZR975CK71/heV5k74hJTL3R0CECdACGMPCt2wTswJqy759d8b2CMc5L0Z9mn0S4ptt6sDwSGAeBtaLyE0SzDkMY2MVx/MnFvk9HdhwguUtvCdAB6C1/lo7Lp0qt8gecSI/uqw/OMHbErMg/AAbBAbwzkUB4CNwBR3VoQF/Z845CNOs6qBaJvl7o2UTiJkkjQAcgaTUeYnvtQKmKHTHrewdqPZ2xJ1tj5M9QmSdZQGDqCQEO6OsJdhbaDQJ0ALpBmWW0TKC0rDSAqMAFlZr3YkmnngFn4F1wBn6HjAYhTCTQSQIVBKa+ZkP82pd+esn3EjGgr5NAmXc4CdABCGe9UKthBOz9s3AGLoIz8PJBE+wuRt+GPthrsAkHWwEC04QJWKfyBhVzekNlr7LvFcq+/z4b4i+VShyXMmG8zCCsBOgAhLVmqNeIBGq12iPlWvV76IM9YvLKbXeDI3A05Ce4YntyxB24kgRGJnC/ilxqxLwBV/n24SqHlHz/PM/z7hl587ivpX1JJEAHIIm1HhObFz2w6Ek4Aj+GHDVt1113NsZ5IboJzoJD8BeYaK/qsGAigSECBsfFP+3xYQLnOWXfs/fqn1Dx/Stxlf/40BZ8I4GEEaADkLAKj6u5CxcuHKzUKn9FN8Gn4RC8aOrqVTvhhP8KET3XiNwmCBFAmJJF4DEj5mc4Do4PHH0GjosD7PFRWVqx87njsEgWjLGs5W/JJEAHIJn1Hnur77j//hU44V9b9qtnVHzv2anBSU9T+2wCI9+C8WUIU/wIrFEjN8PXO0dVXjJt1112q/j+G3EcfLdard4fP3NpEQlMjAAdgInx494RIXDv8nsfHHo2Qc07GeHfIq4IXVwdnoh+4Etgwh2QBoQpOgRsfd1h7ENYVE5WMfPQ4G9fqnnPLfv+mSXPW2CjQtExp5easuykEqADkNSaT7jduCL0cXV4Scn3Tiz73rPWNOrb48rx+WLk/Vh+H3juhgQQpt4TMFDhXhW9An34H0D9PN/Wl623oYeweN63Sr5/Kxt8UGIigRYI0AFoARY3jS+BgYGBVWX7uM+adwGWby373pz0lMnTEEqejwbnDFj+IyxLWDJ1nkANjf2VaOz/B8wPMSlnJ9TH7JJfPRZ9+OeXUU+2vjqvRjJKoJXJJUAHILl1T8u3QmDx4sVPlDzvT2hwzi373pvLvj9r0AT2bgP77AIbKbhQjNjpYCvIyoaksWBqlgAu61dg20VG5Zdo7M8yYl4t6dTuZd/LorF/Axr7L5Z9/4ZKpfIYtmMiARJoMwE6AG0GyuziTcDOQ1BZ9+wCGyk4tVzzDiv7XgH9z9vgSnW2bcTQoJ1mRL+ORu13RsQ+JCapzoFtuO8QlWtwJf819NOfDj5vEBPsnxqctFvF97YDu2dWPO9wNPafrvj+r+2kT/E+gsJmHfVJMgE6AEmufdreNgK2/xlXqvfaRgwN2lfRN30KGrWXV3wvP3nqttsGju5pjPMaNILvhWOAq139PzSGP4MCf4LY8QYPYQl/Ae/RSVbnhVD350b0PDHyfg30CNi6b0PFhu2noYF/VtnzjijbmfV8/7yK719ZrtUW2kGZ2I+JBEighwToAPQQPotOBoFFixatrVarixE5+FXJ9/8PjgGudqvvRWP4xrLvzYfMgdjZ6PrQeD7dNJy5xgSH4sr5zYJGVUTPxvKbkO+KyA8hV0F+I6LX48r6r9junyJyB+ReiA+5D/IIZCXERh/spEiP4fNybG/HMdhtb8L3GxCt+CXy/bEOzYqnX8fvX7YOioh+CM7KKfj9BOR/tHVe8NshqvI8R8ycqatX2at3q/P+0P31cHhORzTkgtLS6jWw9XbP8x4VvkJPgAomm8D/AwAA///ziaY9AAAABklEQVQDAO2rEGk59ounAAAAAElFTkSuQmCC"/>
+</defs>
+</svg>
+</file>
+
+<file path="public/images/mountains-logo.svg">
+<svg width="138" height="29" viewBox="0 0 138 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.154619 17.8942C0.400803 17.8362 24.9963 12.0149 43.5151 3.86077C45.5752 2.95377 47.2431 2.41607 48.6481 2.16267C47.074 3.73727 37.814 7.66267 45.2096 8.35827C51.9954 8.99717 40.8172 16.9908 35.6929 19.897C22.2142 24.1397 13.4663 25.8059 13.309 25.8355L13.4945 26.8171C13.5404 26.8084 14.3239 26.6593 15.7417 26.3479C23.1718 24.7154 48.1134 18.6021 76.7281 4.63167C80.7409 2.67247 84.016 1.58597 86.7724 1.18277C85.9643 5.29857 76.6083 14.4 91.5501 16.6982C105.178 18.7942 77.8487 24.1161 67.6632 26.8258C66.1942 27.2167 65.0813 27.5533 64.5001 27.8177C60.0031 29.8654 112.281 28.0235 135.659 27.9302C136.422 27.9569 137.2 27.9722 138 27.9722V26.9733C117.119 26.9733 109.723 17.4936 103.78 9.87657C97.6048 1.96087 92.727 -4.29228 76.2844 3.73527C72.4637 5.59947 68.6012 7.37817 64.7 9.07017C61.2525 7.85217 59.1645 6.10037 57.3353 4.56267C53.9293 1.69947 51.4682 -0.369561 43.2438 3.25247C24.7824 11.3806 0.245513 17.1886 0 17.2462L0.154619 17.8942Z" fill="#FDFDFD"/>
+</svg>
+</file>
+
+<file path="public/images/offer-icons/guide-icon.svg">
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="50" height="50" rx="4" fill="#E5EEEB"/>
+<g clip-path="url(#clip0_1_115)">
+<path d="M19.0345 31.9277H22.678V32.2301H19.0345V31.9277ZM35.0395 31.9277H43.0001V32.2301H35.0395V31.9277ZM34.8446 20.8785C35.1761 21.3344 35.4439 21.7347 35.6571 22.0913C35.726 20.9453 35.9244 20.2458 36.1207 19.8439V23.0016C36.223 23.2606 36.2964 23.5329 36.3004 23.8194C36.3007 24.0229 36.2609 24.2096 36.1814 24.3775C36.164 24.4151 36.1427 24.4512 36.1207 24.4869V30.3886C36.1207 30.6192 36.2123 30.8403 36.3753 31.0034C36.5384 31.1664 36.7595 31.258 36.9901 31.258C37.2206 31.258 37.4418 31.1664 37.6048 31.0034C37.7678 30.8403 37.8594 30.6192 37.8594 30.3886V24.0419H38.1852V30.3886C38.1852 30.6191 38.2768 30.8402 38.4398 31.0033C38.6028 31.1663 38.8239 31.2579 39.0545 31.2579C39.285 31.2579 39.5061 31.1663 39.6691 31.0033C39.8321 30.8402 39.9237 30.6191 39.9237 30.3886V23.2884C37.9405 21.1586 36.5848 18.8081 36.2571 18.2166C36.1947 18.2374 36.1291 18.2637 36.0609 18.2982C35.6828 18.4856 35.2751 18.8957 34.9898 19.6227C34.8698 19.9258 34.7665 20.2863 34.6864 20.7173C34.7465 20.7633 34.7997 20.8176 34.8446 20.8785ZM34.5091 23.3365L34.5105 23.3967L34.5426 23.4034C34.5316 23.381 34.5204 23.3587 34.5091 23.3365Z" fill="#45766A"/>
+<path d="M37.4385 19.6933C38.046 20.6196 38.8962 21.7998 39.9236 22.9309V19.8456C39.9653 19.931 40.0073 20.0291 40.0488 20.1435C40.2469 20.6928 40.4136 21.5941 40.413 23.0006C40.413 23.3883 40.4006 23.8142 40.3732 24.2819C40.3687 24.3584 40.3799 24.4351 40.4061 24.5072C40.4324 24.5793 40.4731 24.6452 40.5257 24.701C40.5784 24.7567 40.6419 24.8011 40.7123 24.8315C40.7827 24.8618 40.8586 24.8774 40.9353 24.8773C41.0787 24.8771 41.2166 24.8221 41.3209 24.7237C41.4252 24.6252 41.4879 24.4907 41.4963 24.3476C41.5231 23.8991 41.537 23.4499 41.5379 23.0006C41.5351 20.8787 41.1963 19.7043 40.7339 18.9981C40.5031 18.6478 40.2328 18.4228 39.9832 18.2981C39.7339 18.1726 39.5148 18.1473 39.3903 18.1478L39.388 18.1479C39.3853 18.1478 39.383 18.1471 39.3802 18.1471H36.664C36.6608 18.1471 36.6576 18.1481 36.6545 18.1481H36.6539C36.603 18.1483 36.5522 18.1519 36.5018 18.1591C36.6579 18.4375 36.9781 18.9916 37.4385 19.6933Z" fill="#45766A"/>
+<path d="M38.022 17.7464C38.8957 17.7464 39.6039 17.0382 39.6039 16.1645C39.6039 15.2909 38.8957 14.5826 38.022 14.5826C37.1484 14.5826 36.4402 15.2909 36.4402 16.1645C36.4402 17.0382 37.1484 17.7464 38.022 17.7464Z" fill="#45766A"/>
+<path d="M11.7654 25.8766V40.0222C11.7654 40.8484 12.4352 41.5177 13.2609 41.5177C14.0869 41.5177 14.7567 40.8484 14.7567 40.0222V29.1024H15.3174V40.0222C15.3174 40.8484 15.9871 41.5177 16.8129 41.5177C17.6388 41.5177 18.3086 40.8484 18.3086 40.0222V21.8822C18.3893 22.0491 18.4612 22.2203 18.5239 22.3948C18.8648 23.3399 19.1516 24.8904 19.1506 27.3107C19.1506 27.9777 19.1291 28.7105 19.0824 29.5153C19.0512 30.0488 19.4585 30.5064 19.9922 30.5379C20.2484 30.5528 20.5001 30.4653 20.6918 30.2947C20.8835 30.1241 20.9996 29.8843 21.0146 29.6281C21.0635 28.7893 21.0862 28.0193 21.0862 27.3109C21.0813 23.6596 20.4982 21.6391 19.7031 20.424C19.3056 19.8209 18.8407 19.434 18.4113 19.2198C17.9951 19.0101 17.6293 18.9637 17.4116 18.9616C17.3992 18.9611 17.3866 18.9596 17.3738 18.9596H16.806L16.5086 21.2845L15.3292 19.8631L16.1445 18.9596H13.9293L14.7446 19.8631L13.5652 21.2845L13.2678 18.9596H12.7003C12.6641 18.9596 12.6284 18.9622 12.5933 18.9663C12.1649 18.9721 11.7247 18.9969 11.2983 19.0084C11.1776 19.0115 11.0573 19.0145 10.9397 19.0144C10.249 19.0217 9.65036 18.9237 9.37238 18.7514C9.22855 18.666 9.15017 18.5879 9.07577 18.4534C9.00392 18.3179 8.93594 18.098 8.93545 17.7246C8.93473 17.3214 9.02122 16.7486 9.24912 16.002C9.32378 15.7565 9.29787 15.4913 9.17707 15.2649C9.05628 15.0385 8.85049 14.8693 8.60497 14.7945C8.59844 14.7925 8.59203 14.7915 8.5855 14.7897V12.2679C8.84981 11.8438 9.52419 11.0864 10.7023 11.7888C13.8942 13.6914 14.0893 9.24825 14.0893 9.24825C14.0893 9.24825 12.4159 10.1758 11.2062 9.08713C10.1824 8.16573 8.94235 8.6883 8.58538 8.87072V8.4823H8.1418V14.77C7.96856 14.8029 7.80764 14.8826 7.67643 15.0005C7.54522 15.1183 7.44872 15.2697 7.39737 15.4384C7.1321 16.3129 7.00097 17.0582 7 17.7243C6.99952 18.3345 7.11552 18.8885 7.36629 19.3609C7.74152 20.0794 8.40792 20.5099 9.0419 20.7069C9.68363 20.9118 10.3297 20.9476 10.9397 20.9496C10.9731 20.9496 11.0061 20.9489 11.0394 20.9487C11.2897 20.9465 11.5336 20.9386 11.7653 20.9294L11.7654 25.8766Z" fill="#45766A"/>
+<path d="M15.4808 18.2337C16.7729 18.0217 17.7586 16.9005 17.7586 15.5486C17.7586 14.0453 16.5402 12.8269 15.0368 12.8269C13.5337 12.8269 12.3151 14.0453 12.3151 15.5486C12.3151 16.9005 13.301 18.0217 14.5929 18.2337C14.7374 18.2574 14.8856 18.2704 15.0368 18.2704C15.188 18.2704 15.3363 18.2575 15.4808 18.2337ZM29.223 24.1174C29.101 22.8997 28.8281 22.1248 28.4882 21.6051C28.2574 21.2548 27.9871 21.0298 27.7376 20.9054C27.4881 20.7797 27.2691 20.7546 27.1444 20.7551H27.1442C27.1409 20.7551 27.138 20.7541 27.1347 20.7541H26.6504C26.8713 21.6864 26.9292 22.5453 26.9292 23.1876C26.9292 23.5745 26.9084 23.8826 26.8898 24.082V25.3736H24.6634V24.0837C24.6363 23.7858 24.6231 23.4869 24.6237 23.1877C24.6237 22.5453 24.6817 21.6866 24.9027 20.7543H24.4184C24.4152 20.7543 24.412 20.7552 24.4089 20.7552H24.4083C24.2838 20.7548 24.0645 20.7796 23.8153 20.9055C23.437 21.0929 23.0295 21.5032 22.7442 22.2299C22.4554 22.9597 22.2615 24.0147 22.2605 25.6078C22.2608 26.0195 22.2737 26.4672 22.3026 26.955C22.311 27.0981 22.3738 27.2326 22.478 27.331C22.5823 27.4294 22.7202 27.4843 22.8635 27.4844C22.8747 27.4844 22.8858 27.484 22.8971 27.4835C23.046 27.4747 23.1853 27.4072 23.2844 27.2957C23.3835 27.1842 23.4343 27.0379 23.4256 26.889C23.3996 26.4624 23.3863 26.0352 23.3856 25.6078C23.3831 23.9048 23.6313 22.9498 23.8754 22.4508V32.9959C23.8754 33.2264 23.967 33.4475 24.13 33.6105C24.293 33.7736 24.5141 33.8651 24.7447 33.8651C24.9752 33.8651 25.1963 33.7736 25.3593 33.6105C25.5224 33.4475 25.6139 33.2264 25.6139 32.9959V26.6492H25.9397V32.9959C25.9397 33.2264 26.0313 33.4476 26.1943 33.6106C26.3574 33.7737 26.5785 33.8653 26.8091 33.8653C27.0397 33.8653 27.2608 33.7737 27.4238 33.6106C27.5869 33.4476 27.6785 33.2264 27.6785 32.9959V22.4532C27.7201 22.5385 27.7621 22.6365 27.8034 22.7507C28.0017 23.3002 28.1683 24.2013 28.1678 25.608C28.1678 25.9955 28.1552 26.4215 28.1281 26.8893C28.1162 27.0942 28.2166 27.2781 28.3747 27.3857C28.431 26.3378 28.5879 25.4955 28.8512 24.8296C28.963 24.5435 29.0904 24.3097 29.223 24.1174Z" fill="#45766A"/>
+<path d="M24.8344 23.1876C24.8344 23.5101 24.8493 23.7759 24.865 23.9675H26.688C26.7035 23.7759 26.7184 23.5101 26.7184 23.1876C26.7184 22.5465 26.6582 21.6845 26.4325 20.7542H25.1203C24.8946 21.6846 24.8344 22.5466 24.8344 23.1876Z" fill="#45766A"/>
+<path d="M25.7765 20.3537C26.6502 20.3537 27.3584 19.6455 27.3584 18.7718C27.3584 17.8982 26.6502 17.1899 25.7765 17.1899C24.9029 17.1899 24.1947 17.8982 24.1947 18.7718C24.1947 19.6455 24.9029 20.3537 25.7765 20.3537Z" fill="#45766A"/>
+<path d="M25.775 25.104C25.9933 25.104 26.1704 24.9269 26.1704 24.7085C26.1704 24.4902 25.9933 24.3131 25.775 24.3131C25.5566 24.3131 25.3795 24.4902 25.3795 24.7085C25.3795 24.9269 25.5566 25.104 25.775 25.104Z" fill="#45766A"/>
+<path d="M31.2881 20.6253H33.4501C33.1707 20.1774 32.6751 19.8784 32.1082 19.8784C31.2346 19.8784 30.5264 20.5866 30.5264 21.4602C30.5264 22.3339 31.2346 23.0422 32.1082 23.0422C32.6971 23.0422 33.2099 22.7197 33.4822 22.2422H31.288V20.6253H31.2881Z" fill="#45766A"/>
+<path d="M32.6357 21.8672C32.8751 21.8672 33.0692 21.6731 33.0692 21.4337C33.0692 21.1942 32.8751 21.0001 32.6357 21.0001C32.3962 21.0001 32.2021 21.1942 32.2021 21.4337C32.2021 21.6731 32.3962 21.8672 32.6357 21.8672Z" fill="#45766A"/>
+<path d="M36.0585 23.8227C36.0535 23.462 35.9287 23.1175 35.7053 22.6731C35.4787 22.231 35.1392 21.6952 34.649 21.0209C34.6056 20.9611 34.5508 20.9105 34.4878 20.8719C34.4248 20.8334 34.3548 20.8076 34.2818 20.7961C34.2088 20.7845 34.1343 20.7875 34.0625 20.8048C33.9907 20.8221 33.9229 20.8534 33.8632 20.8969C33.8035 20.9404 33.7529 20.9951 33.7144 21.0581C33.6758 21.1211 33.6501 21.1911 33.6386 21.264C33.627 21.337 33.63 21.4115 33.6473 21.4833C33.6646 21.5551 33.6959 21.6228 33.7393 21.6825C34.2077 22.326 34.519 22.8229 34.704 23.1853C34.8226 23.4122 34.8849 23.5882 34.9137 23.6987C34.7538 23.6945 34.497 23.6454 34.2486 23.5865C34.1147 23.5555 33.9812 23.523 33.8515 23.4962C33.7424 23.4744 33.6398 23.4553 33.5219 23.4483C33.5035 23.4464 33.4854 23.4426 33.4666 23.4426H30.7503C30.7471 23.4426 30.7441 23.4436 30.7408 23.4436H30.7402C30.6154 23.4431 30.3965 23.4682 30.1471 23.5938C29.769 23.7815 29.3614 24.1915 29.076 24.9183C28.7874 25.6481 28.5935 26.7033 28.5925 28.2961C28.5925 28.7082 28.6058 29.1556 28.6345 29.6433C28.6432 29.7922 28.7107 29.9316 28.8222 30.0307C28.9336 30.1298 29.0799 30.1806 29.2288 30.1718C29.3777 30.1631 29.517 30.0957 29.6161 29.9842C29.7153 29.8728 29.7661 29.7265 29.7574 29.5777C29.7316 29.151 29.7183 28.7236 29.7175 28.2961C29.7151 26.5934 29.9634 25.6386 30.2071 25.1394V35.6842C30.2071 36.1646 30.5964 36.5535 31.0764 36.5535C31.5564 36.5535 31.9457 36.1646 31.9457 35.6842V29.3378H32.2714V35.6842C32.2714 35.9148 32.363 36.1359 32.526 36.2989C32.689 36.4619 32.9101 36.5535 33.1407 36.5535C33.2549 36.5535 33.3679 36.5311 33.4734 36.4874C33.5789 36.4437 33.6748 36.3797 33.7555 36.299C33.8362 36.2183 33.9003 36.1224 33.944 36.017C33.9877 35.9115 34.0102 35.7984 34.0102 35.6842V24.6856C34.0766 24.7009 34.1447 24.7163 34.2155 24.7314C34.444 24.7789 34.6875 24.8229 34.9448 24.8241C35.1606 24.821 35.406 24.799 35.6582 24.6312C35.7894 24.5411 35.8945 24.4179 35.9628 24.274C36.032 24.1275 36.0587 23.9714 36.0585 23.8227Z" fill="#45766A"/>
+</g>
+<defs>
+<clipPath id="clip0_1_115">
+<rect width="36" height="36" fill="white" transform="translate(7 7)"/>
+</clipPath>
+</defs>
+</svg>
+</file>
+
+<file path="public/images/offer-icons/prices-icon.svg">
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="50" height="50" rx="4" fill="#F3F1E1"/>
+<path d="M33.3006 16.4461L26.0547 11.8351V8.05469C26.0547 7.47222 25.5825 7 25 7C24.4175 7 23.9453 7.47222 23.9453 8.05469V11.8351L16.6994 16.4461C16.5497 16.5414 16.4265 16.6729 16.3411 16.8284C16.2557 16.9839 16.2109 17.1585 16.2109 17.3359V41.9453C16.2109 42.5278 16.6832 43 17.2656 43H32.7344C33.3168 43 33.7891 42.5278 33.7891 41.9453V17.3359C33.7891 16.9754 33.6048 16.6398 33.3006 16.4461ZM25 24.2969C23.0615 24.2969 21.4844 22.7198 21.4844 20.7812C21.4844 19.21 22.5205 17.8765 23.9453 17.4275V18.3203C23.9453 18.9028 24.4175 19.375 25 19.375C25.5825 19.375 26.0547 18.9028 26.0547 18.3203V17.4275C27.4795 17.8765 28.5156 19.21 28.5156 20.7812C28.5156 22.7198 26.9385 24.2969 25 24.2969Z" fill="#F2BE22"/>
+</svg>
+</file>
+
+<file path="public/images/offer-icons/security-icon.svg">
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="50" height="50" rx="4" fill="#E3E6EE"/>
+<path d="M38.4036 14.0611C38.3342 13.7483 38.2162 13.4484 38.0537 13.1723C38.0537 13.1723 34.151 7 23.9992 7C13.8505 7 9.94482 13.1723 9.94482 13.1723C9.80108 13.3988 9.6438 13.7984 9.59413 14.0611C9.59413 14.0611 8.83934 18.0638 10.0886 23.8012C11.2392 29.0758 14.4194 36.6365 23.0541 42.6997C23.3309 42.8948 23.6613 42.9996 24 42.9996C24.3387 42.9996 24.6691 42.8948 24.9459 42.6997C33.5776 36.6358 36.7593 29.0758 37.9092 23.8012C39.1622 18.0638 38.4036 14.0611 38.4036 14.0611ZM34.5822 23.0758C34.5499 23.227 34.51 23.385 34.4723 23.5401H23.9992V39.1741C17.2625 34.0613 14.579 27.9793 13.5254 23.5401H23.9992V10.4052C31.2274 10.4052 34.446 14.0445 35.0842 14.8738C35.1895 15.6384 35.5176 18.79 34.5822 23.0758Z" fill="#6276AA"/>
+</svg>
+</file>
+
+<file path="public/images/play-button-icon.svg">
+<svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.74267 0.241409C2.46389 0.0821678 2.14819 -0.00107431 1.82714 1.04681e-05C1.50609 0.00109524 1.19096 0.0864689 0.913263 0.24759C0.63557 0.408711 0.405057 0.63993 0.244785 0.918114C0.0845135 1.1963 0.000103536 1.51169 0 1.83274V13.3406C0.000103536 13.6616 0.0845135 13.977 0.244785 14.2552C0.405057 14.5334 0.63557 14.7646 0.913263 14.9257C1.19096 15.0868 1.50609 15.1722 1.82714 15.1733C2.14819 15.1744 2.46389 15.0911 2.74267 14.9319L12.8113 9.17708C13.0917 9.01666 13.3248 8.785 13.4869 8.50555C13.6489 8.22611 13.7343 7.90879 13.7343 7.58574C13.7343 7.26269 13.6489 6.94538 13.4869 6.66593C13.3248 6.38648 13.0917 6.15482 12.8113 5.99441L2.74267 0.241409Z" fill="#1A3E3E"/>
+</svg>
+</file>
+
+<file path="public/images/rating-star-icon.svg">
+<svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.55696 13.6975L12.707 16.2075C13.467 16.6675 14.397 15.9875 14.197 15.1275L13.097 10.4075L16.767 7.2275C17.437 6.6475 17.077 5.5475 16.197 5.4775L11.367 5.0675L9.47696 0.6075C9.13696 -0.2025 7.97696 -0.2025 7.63696 0.6075L5.74696 5.0575L0.916957 5.4675C0.0369575 5.5375 -0.323043 6.6375 0.346957 7.2175L4.01696 10.3975L2.91696 15.1175C2.71696 15.9775 3.64696 16.6575 4.40696 16.1975L8.55696 13.6975Z" fill="#F2BE22"/>
+</svg>
+</file>
+
+<file path="README.md">
+# AngularSimulator
+
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.5.
+
+## Development server
+
+To start a local development server, run:
+
+```bash
+ng serve
+```
+
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+## Code scaffolding
+
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+
+```bash
+ng generate component component-name
+```
+
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+
+```bash
+ng generate --help
+```
+
+## Building
+
+To build the project run:
+
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+</file>
+
+<file path="src/app/app.component.css">
+.header{display:flex}.company-name{width:132px;height:22px;font-weight:700;font-size:16px;line-height:22px;letter-spacing:.4em;color:#fff}
+</file>
+
+<file path="src/app/app.routes.ts">
+import { Routes } from '@angular/router';
+
+export const routes: Routes = [];
+</file>
+
+<file path="src/app/collection.ts">
+// (ДЗ 15.5) Файл collection.ts, который реализует внутри себя класс Collection, работающий с любым типом данных.
+export class Collection<T> {
+  private items: T[] = [];
+
+  add(item: T) {
+    this.items.push(item);
+  }
+
+  getAllElements(): T[] {
+    return this.items;
+  }
+
+  getSpecificElement(index: number): T | undefined {
+    return this.items[index];
+  }
+
+  clearCollection(): void {
+    this.items = [];
+  }
+
+  deleteSpecificElement(index: number): void {
+    this.items.splice(index, 1);
+  }
+
+  changeSpecificElement(index: number, newItem: T) {
+    this.items[index] = newItem;
+  }
+}
+
+const fruits = new Collection<string>();
+fruits.add('apple');
+fruits.add('orange');
+console.log(fruits.getSpecificElement(1));
+
+const cars: Array<{ [key: string]: string }> = [{ Mercedes: 'W211' }, { LandRover: 'Range Rover' }];
+const collectionCars: Collection<Array<{ [key: string]: string }>> = new Collection();
+collectionCars.add(cars);
+console.log(collectionCars.getAllElements());
+</file>
+
+<file path="src/app/message-list/message-list.component.html">
+<ng-template #messageButton let-message>
+    <div class="message-container">
+        <img src="images/letter-icon.svg">
+        <div class="message-wrapper">
+            <span class="type-message fs-16">{{ message.type }}</span>
+            <p class="message fs-14 fw-400">{{ message.textMessage }}</p>
+            <button class="close-button"></button>
+        </div>
+    </div>
+</ng-template>
+
+@if (renderTextService.messageTextData.length > 0) {
+@for (message of renderTextService.messageTextData; track message.id) {
+<pre>{{ message | json }}</pre>
+<ng-container [ngTemplateOutlet]="messageButton" [ngTemplateOutletContext]="{implicit: message}">
+
+</ng-container>
+
+}
+}
+</file>
+
+<file path="src/app/message-list/message-list.component.ts">
+import { Component, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
+import { MessageTextService } from '../../message-text.service'; 
+
+@Component({
+  selector: 'in-root',
+  imports: [FormsModule, CommonModule, NgTemplateOutlet],
+  templateUrl: './message-list.component.html',
+  styleUrl: './message-styles.scss',
+})
+export class MessageList {
+    renderTextService: MessageTextService = inject(MessageTextService);
+}
+</file>
+
+<file path="src/assets/_.normalize.css">
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%
+}
+
+body {
+  margin: 0
+}
+
+main {
+  display: block
+}
+
+h1 {
+  font-size: 2em;
+  margin: .67em 0
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible
+}
+
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em
+}
+
+a {
+  background-color: rgba(0, 0, 0, 0)
+}
+
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  -webkit-text-decoration: underline dotted;
+  text-decoration: underline dotted
+}
+
+b,
+strong {
+  font-weight: bolder
+}
+
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em
+}
+
+small {
+  font-size: 80%
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline
+}
+
+sub {
+  bottom: -0.25em
+}
+
+sup {
+  top: -0.5em
+}
+
+img {
+  border-style: none
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0
+}
+
+button,
+input {
+  overflow: visible
+}
+
+button,
+select {
+  text-transform: none
+}
+
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button
+}
+
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0
+}
+
+button:-moz-focusring,
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText
+}
+
+fieldset {
+  padding: .35em .75em .625em
+}
+
+legend {
+  box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal
+}
+
+progress {
+  vertical-align: baseline
+}
+
+textarea {
+  overflow: auto
+}
+
+[type=checkbox],
+[type=radio] {
+  box-sizing: border-box;
+  padding: 0
+}
+
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto
+}
+
+[type=search] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px
+}
+
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit
+}
+
+details {
+  display: block
+}
+
+summary {
+  display: list-item
+}
+
+template {
+  display: none
+}
+
+[hidden] {
+  display: none
+}
+</file>
+
+<file path="src/assets/_fonts.css">
+@font-face{font-family:Nunito Sans;src:url(./fonts/NunitoSans-Italic-VariableFont_YTLC\,opsz\,wdth\,wght.ttf);font-weight:100 900;font-style:normal}@font-face{font-family:Nunito Sans;src:url(./fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf);font-weight:100 900;font-style:italic}
+</file>
+
+<file path="src/assets/_fonts.scss">
+@font-face {
+  font-family: Nunito Sans;
+  src: url(./fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf);
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Nunito Sans;
+  src: url(./fonts/NunitoSans-Italic-VariableFont_YTLC\,opsz\,wdth\,wght.ttf);
+  font-weight: 100 900;
+  font-style: italic;
+}
+</file>
+
+<file path="src/assets/_normalize.scss">
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+/* Document
+   ========================================================================== */
+
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+
+/**
+ * Remove the margin in all browsers.
+ */
+
+body {
+  margin: 0;
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+
+main {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+
+a {
+  background-color: transparent;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+
+img {
+  border-style: none;
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+
+summary {
+  display: list-item;
+}
+
+/* Misc
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 10+.
+ */
+
+template {
+  display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+
+[hidden] {
+  display: none;
+}
+</file>
+
+<file path="src/assets/styles.css">
+@font-face{font-family:Nunito Sans;src:url(./fonts/NunitoSans-Italic-VariableFont_YTLC\,opsz\,wdth\,wght.ttf);font-weight:100 900;font-style:normal}@font-face{font-family:Nunito Sans;src:url(./fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf);font-weight:100 900;font-style:italic}/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:rgba(0,0,0,0)}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,[type=button],[type=reset],[type=submit]{-webkit-appearance:button}button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}*{font-family:"Nunito Sans"}.container{display:block;width:1920px}:root{--primary-color: #000;--white-color: #fff;--green-color: #1A3E3E}.header{position:absolute;width:1920px;height:120px;background:rgba(24,18,30,.5);box-shadow:0px 2px 4px rgba(0,0,0,.25)}
+</file>
+
+<file path="src/enums/Color.ts">
+export enum colors {
+  RED = "rgb(255, 0, 0)",
+  GREEN = "rgb(0, 255, 0)",
+  BLUE = "rgb(0, 0, 255)"
+};
+</file>
+
+<file path="src/enums/MessageType.ts">
+export enum MessageType {
+    Success = 'Success',
+    Info = 'Info',
+    Warn = 'Warn',
+    Error = 'Error'
+}
+</file>
+
+<file path="src/interfaces/IDestination.ts">
+export interface IDestination {
+    id: number;
+    imageUrl: string;
+    rating: number;
+    title: string;
+    description: string;
+    price: number;
+}
+</file>
+
+<file path="src/interfaces/IMessage.ts">
+import { MessageType } from "../enums/MessageType";
+
+export interface IMessage {
+    id: number;
+    type: MessageType;
+    textMessage: string;
+}
+</file>
+
+<file path="src/interfaces/IOffer.ts">
+export interface IOfferFeature {
+    id: number;
+    icon: string;
+    title: string;
+    description: string;
+}
+
+export interface IOffer {
+    id: number;
+    title: string;
+    description: string;
+    features: IOfferFeature[];
+}
+</file>
+
+<file path="src/interfaces/ITravelCards.ts">
+import { Data } from "@angular/router";
+
+export interface ITravelCards {
+    id: number;
+    imageUrl: string;
+    title: string;
+    description: string;
+    data: string;
+}
+</file>
+
+<file path="src/main.ts">
+import { bootstrapApplication } from '@angular/platform-browser';
+import { appConfig } from './app/app.config';
+import { AppComponent } from './app/app.component';
+
+bootstrapApplication(AppComponent, appConfig)
+  .catch((err) => console.error(err));
+</file>
+
+<file path="src/message-text.service.ts">
+import { Injectable } from '@angular/core';
+import { MessageType } from './enums/MessageType';
+import { IMessage } from './interfaces/IMessage';
+import { MessageText } from './enums/MessageText';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class MessageTextService {
+  private _messageTextData: IMessage[] = [
+    // {
+    //   id: 1,
+    //   type: MessageType.Success,
+    //   textMessage: 'Направления получены'
+    // },
+    // {
+    //   id: 2,
+    //   type: MessageType.Info,
+    //   textMessage: 'Стоимость отправлена на почту'
+    // },
+    // {
+    //   id: 3,
+    //   type: MessageType.Warn,
+    //   textMessage: 'Программа недоступна'
+    // },
+    // {
+    //   id: 4,
+    //   type: MessageType.Error,
+    //   textMessage: 'Материалы недостпуны'
+    // }
+  ]
+
+  readonly _messageType = MessageType;
+
+  readonly _messageText = MessageText;
+
+  public get messageTextData(): IMessage[] {
+    return [...this._messageTextData];
+  }
+
+  addMessage(text: MessageText, type: MessageType) {
+    const newMessage: IMessage = {
+      id: Date.now(),
+      type: type,
+      textMessage: text
+    }
+    this._messageTextData.unshift(newMessage);
+
+    setTimeout(() => {
+      this.closeMessage(newMessage.id);
+    }, 5000)
+  }
+
+  closeMessage(idMessage: number): void {
+    this._messageTextData = this._messageTextData.filter(item => item.id !== idMessage)
+  }
+}
+</file>
+
+<file path="tsconfig.json">
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "preserve"
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}
+</file>
+
+<file path="tsconfig.spec.json">
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/spec",
+    "types": [
+      "vitest/globals"
+    ]
+  },
+  "include": [
+    "src/**/*.d.ts",
+    "src/**/*.spec.ts"
+  ]
+}
+</file>
+
+<file path="package.json">
+{
+  "name": "angular-simulator",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "parser": "angular"
+        }
+      }
+    ]
+  },
+  "private": true,
+  "packageManager": "npm@11.6.2",
+  "dependencies": {
+    "@angular/common": "^21.0.0",
+    "@angular/compiler": "^21.0.0",
+    "@angular/core": "^21.0.0",
+    "@angular/forms": "^21.0.0",
+    "@angular/platform-browser": "^21.0.0",
+    "@angular/router": "^21.0.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "0.16.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^21.0.5",
+    "@angular/cli": "^21.0.5",
+    "@angular/compiler-cli": "^21.0.0",
+    "jsdom": "^27.1.0",
+    "typescript": "~5.9.2",
+    "vitest": "^4.0.8"
+  }
+}
+</file>
+
+<file path="src/app/app.config.ts">
+import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter } from '@angular/router';
+
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideRouter(routes),
+    provideZoneChangeDetection()
+  ]
+};
+</file>
+
+<file path="src/index.html">
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>angular-simulator</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+  <app-root></app-root>
+</body>
+
+</html>
+</file>
+
+<file path="tsconfig.app.json">
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "rootDir": "./src",
+    "types": []
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "src/**/*.spec.ts"
+  ]
+}
+</file>
+
+<file path="src/assets/_mixins.scss">
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin green-button {
+  color: var(--white-color);
+  background-color: var(--green-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+
+@mixin white-button {
+  color: var(--green-color);
+  background-color: var(--white-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+</file>
+
+<file path="src/app/training.ts">
+import { concatAll, reduce } from "rxjs";
+
+// (3) Функция, которая возвращает сумму двух чисел.
+export class Training {
+  firstNumber: number;
+  secondNumber: number;
+
+  constructor(firstNumber: number, secondNumber: number) {
+    this.firstNumber = firstNumber;
+    this.secondNumber = secondNumber;
+  }
+
+  getSumOfNumbers() {
+    const sum: number = this.firstNumber + this.secondNumber;
+    console.log(sum);
+  }
+}
+
+// (4) Переменная status, которая может быть только: "loading", "success", "error".
+let status: 'loading' | 'success' | 'error';
+
+// (5) Переменная textFormat, которая может быть только: 'uppercase', 'lowercase', 'capitalize'".
+let textFormat: 'uppercase' | 'lowercase' | 'capitalize';
+
+// (6)  Интерфейс, который описывает юзера. Поля на ваш выбор. Одно поле должно быть опциональным.
+export interface IUserInfo {
+  id: number;
+  name: string;
+  surname: string;
+  city: string;
+  language?: string;
+}
+
+// (7) Интерфейс, который расширяется интерфейсом User с задания №6 и имеет свои дополнительные поля.
+export interface IUserStatus extends IUserInfo {
+  status: boolean;
+}
+
+// (8) Функцию, которая принимает строку и вариант,
+// как именно форматировать строку (задание №5) и на основе этого возвращает форматированную строку.
+function getformatText(text: string, textFormat: 'uppercase' | 'lowercase' | 'capitalize') {
+  if (textFormat === 'uppercase') {
+    return text.toUpperCase();
+  } else if (textFormat === 'capitalize') {
+    return text[0].toUpperCase() + text.slice(1);
+  } else if (textFormat === 'lowercase') {
+    return text.toLowerCase();
+  } else {
+    return text;
+  }
+}
+
+// (9) Функция, которая принимает строку и символ, возвращает строку без переданного символа.
+function getRemoveChar(text: string, charsToRemove: string): string {
+  return text.replaceAll(charsToRemove, '');
+}
+
+// (10) Массив объектов на основе интерфейса с задания №6. Отфильтровать его по одному из параметров.
+const usersList: IUserInfo[] = [
+  {
+    id: 1,
+    name: 'Алексей',
+    surname: 'Петров',
+    city: 'Москва',
+    language: 'Russian'
+  },
+  {
+    id: 2,
+    name: 'Дмитрий',
+    surname: 'Иванов',
+    city: 'Минск',
+    language: 'Russian'
+  },
+  {
+    id: 3,
+    name: 'Елена',
+    surname: 'Сидорова',
+    city: 'Москва',
+    language: 'Russian'
+  }
+];
+
+const filteredUsers = usersList.filter(user => user.city === 'Москва');
+</file>
+
+<file path="angular.json">
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "cli": {
+    "packageManager": "npm",
+    "analytics": false
+  },
+  "newProjectRoot": "projects",
+  "projects": {
+    "angular-simulator": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "type": "component",
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "type": "directive",
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "type": "service",
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "typeSeparator": ".",
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "typeSeparator": ".",
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "typeSeparator": ".",
+          "skipTests": true
+        },
+        "@schematics/angular:resolver": {
+          "typeSeparator": ".",
+          "skipTests": true
+        },
+        "@schematics/angular:module": {
+          "typeSeparator": "."
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "src/main.ts",
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "src/assets/styles.scss"
+            ],
+            "polyfills": [
+              "zone.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "angular-simulator:build:production"
+            },
+            "development": {
+              "buildTarget": "angular-simulator:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
+    }
+  }
+}
+</file>
+
+<file path="src/assets/styles.scss">
+@use './fonts';
+@use './_normalize.scss';
+@use '../assets/mixins' as *;
+
+* {
+  font-family: 'Nunito Sans';
+}
+
+.container {
+  display: block;
+  width: 100%;
+}
+
+:root {
+  --primary-color: #18121E;
+  --white-color: #fff;
+  --green-color: #1A3E3E;
+  --yellow-color: #F2BE22;
+  --gray-color: #F3F5F4;
+}
+
+p,
+h2 {
+  margin: 0;
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+
+.fs-16 {
+  font-size: 16px;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
+
+.fs-20 {
+  font-size: 20px;
+}
+
+.fs-24 {
+  font-size: 24px;
+}
+
+.fs-32 {
+  font-size: 32px;
+}
+
+.fs-50 {
+  font-size: 50px;
+}
+
+.fw-400 {
+  font-weight: 400;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+.fw-800 {
+  font-weight: 800;
+}
+
+.line-height-150 {
+  line-height: 150%;
+}
+
+.line-height-120 {
+  line-height: 120%;
+}
+
+.scale {
+  width: 250px;
+  transition: 0.3s;
+}
+
+.scale:hover {
+  transform: scale(1.1);
+}
+
+.card {
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover .card-title {
+  text-decoration-line: underline;
+  color: #1A3E3E;
+}
+</file>
+
+<file path="src/app/app.component.scss">
+@use '../assets/mixins' as *;
+
+.loading-screen {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.loading-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.main-content-animated {
+  animation: fadeInPage 0.8s ease-out forwards;
+}
+
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  @include flex-center;
+
+  position: fixed;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 156px;
+  background: rgba(24, 18, 30, 0.5);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  width: 1180px;
+}
+
+.header__widget {
+  margin-top: 4px;
+  width: auto;
+  align-self: flex-end;
+
+  &-timer {
+    height: 24px;
+    line-height: 25px;
+    color: var(--white-color);
+  }
+
+  .timer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 375px;
+  }
+
+  .click-counter-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 270px;
+
+    .click-counter-wrapper {
+      @include flex-center;
+
+      justify-content: space-between;
+      width: 63px;
+      height: 24px;
+
+      .increment-btn {
+        line-height: 25px;
+        color: var(--white-color);
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+          filter: brightness(0.8);
+        }
+
+        &:active {
+          transform: scale(0.7);
+        }
+      }
+
+      .counter {
+        color: var(--white-color);
+      }
+
+      .decrement-btn {
+        line-height: 25px;
+        color: var(--white-color);
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+          filter: brightness(0.8);
+        }
+
+        &:active {
+          transform: scale(0.7);
+        }
+
+        &:disabled {
+          cursor: default;
+          opacity: 0.3;
+        }
+      }
+    }
+  }
+
+  .counter-show-btn {
+    @include white-button;
+
+    width: 157px;
+    height: 44px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .timer-show-btn {
+    @include white-button;
+
+    width: 157px;
+    height: 44px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.logo-container {
+  @include flex-center;
+
+  flex-direction: column;
+  width: 143px;
+  height: 61px;
+
+  .company-name {
+    margin-top: 10px;
+    width: 132px;
+    height: 22px;
+    font-style: normal;
+    text-transform: uppercase;
+    line-height: 22px;
+    letter-spacing: 8px;
+    color: var(--white-color);
+  }
+
+  .mountains-logo {
+    height: 29px;
+    width: 138px;
+  }
+}
+
+.header-nav {
+  @include flex-center;
+
+  justify-content: space-between;
+  width: 625px;
+  color: var(--white-color);
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+}
+
+.consultation-button {
+  @include flex-center;
+
+  flex-direction: row;
+  padding: 12px 24px;
+  width: 158px;
+  height: 44px;
+  color: var(--green-color);
+  background-color: var(--white-color);
+  border-radius: 4px;
+  border: 0;
+
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.hero-container {
+  @include flex-center;
+
+  position: relative;
+  width: 100%;
+  height: 985px;
+  background-image: url(/images/bg-images/bg-mountains.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main-content-wrapper {
+  position: absolute;
+  top: 551px;
+}
+
+.live-input-container {
+  min-width: 470px;
+  height: 52px;
+}
+
+.live-input {
+  background-image: url(/images/live-input-arrow.svg);
+  background-repeat: no-repeat;
+  background-position: 246px 17px;
+  background-color: transparent;
+  color: var(--white-color);
+  box-sizing: border-box;
+  margin-top: 15px;
+  padding: 0px 16px 0px 12px;
+  width: 270px;
+  height: 52px;
+  border: 1px solid #E1E3E4;
+  border-radius: 8px;
+}
+
+.live-text {
+  width: auto;
+  color: var(--white-color);
+  padding-left: 50px;
+}
+
+.description {
+  margin: 0;
+  margin-bottom: 41px;
+  width: 1080px;
+  height: 150px;
+  line-height: 150%;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--white-color);
+}
+
+.search-section {
+  @include flex-center;
+
+  width: 1180px;
+  height: 161px;
+  top: 742px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(3px);
+  border-radius: 10px;
+}
+
+.search-form {
+  display: flex;
+  justify-content: space-between;
+  width: 1095px;
+  height: 81px;
+}
+
+.input-group {
+  width: 270px;
+  height: 81px;
+  display: block;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+
+  select,
+  .input-wrapper {
+    width: 270px;
+    height: 52px;
+    box-sizing: border-box;
+    padding-left: 16px;
+    position: relative;
+    background: transparent;
+    border: 1px solid #E1E3E4;
+    border-radius: 8px;
+    outline: none;
+    color: var(--white-color);
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 700;
+    margin-bottom: 8px;
+    appearance: none;
+
+    &:disabled {
+      cursor: default;
+      opacity: 0.3;
+    }
+  }
+
+  .date-container {
+    position: relative;
+    width: 270px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+
+    .date-input {
+      width: 100%;
+      height: 100%;
+      padding: 0 16px;
+      background: transparent;
+      border: 1px solid #E1E3E4;
+      border-radius: 8px;
+      color: #fff;
+      font-family: inherit;
+      font-weight: 700;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+
+      &:disabled {
+        cursor: default;
+        opacity: 0.3;
+
+        &~.calendar-icon {
+          cursor: default;
+          opacity: 0.3;
+        }
+
+        &~.custom-placeholder {
+          cursor: default;
+          opacity: 0.3;
+        }
+      }
+
+      &:not(:focus):not(:valid) {
+        color: transparent;
+      }
+
+      &::-webkit-calendar-picker-indicator {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+        opacity: 0;
+      }
+    }
+
+    .custom-placeholder {
+      position: absolute;
+      left: 16px;
+      color: var(--white-color);
+      font-weight: 700;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+
+    .date-input:focus+.custom-placeholder,
+    .date-input:valid+.custom-placeholder {
+      opacity: 0;
+    }
+  }
+
+  .calendar-icon {
+    position: absolute;
+    right: 16px;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+  }
+}
+
+option {
+  color: #333333;
+  background-color: #fff;
+}
+
+.input {
+  position: relative;
+  cursor: pointer;
+}
+
+.arrow-list {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+}
+
+.input-wrapper {
+  @include flex-center;
+
+  justify-content: space-between;
+  padding-right: 17px;
+}
+
+.placeholder-input {
+  width: 210px;
+  height: 24px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.calendarSVG {
+  width: 18px;
+  height: 18px;
+}
+
+.input-desc {
+  align-items: flex-start;
+  padding: 0px 8px;
+  width: 270px;
+  height: 21px;
+  align-self: stretch;
+  color: var(--white-color);
+}
+
+.search-programm-button {
+  @include flex-center;
+  @include green-button;
+
+  width: 213px;
+  height: 52px;
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+}
+
+.history {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 100px auto;
+  max-width: 1180px;
+  height: 526px;
+}
+
+.media-container {
+  position: relative;
+  width: 480px;
+  height: 526px;
+  box-sizing: border-box;
+
+  &__image {
+    width: 350px;
+    height: 400px;
+    left: 0px;
+    top: 0px;
+    border-radius: 24px;
+  }
+
+  &__video {
+    position: absolute;
+    width: 350px;
+    height: 400px;
+    left: 130px;
+    top: 126px;
+  }
+
+  .play-button {
+    position: absolute;
+    @include flex-center;
+    width: 50px;
+    height: 50px;
+    left: 280px;
+    top: 301px;
+    border: none;
+    background-color: rgba(256, 256, 256, 0.6);
+    border-radius: 100px;
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+}
+
+.description-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  width: 580px;
+  height: 398px;
+
+  .history-title {
+    margin: 0;
+    color: var(--yellow-color);
+    line-height: 20px;
+  }
+
+  .history-subtitle {
+    margin: 8px 0 40px;
+  }
+
+  .history-desc {
+    margin: 0 0 40px;
+  }
+
+  .program-tour-button {
+    @include flex-center;
+    @include green-button;
+
+    width: 200px;
+    height: 52px;
+  }
+}
+
+.programs {
+  @include flex-center;
+
+  width: 100%;
+  height: 771px;
+  top: 1711px;
+  background-color: var(--gray-color);
+
+  &-wrapper {
+    display: flex;
+    max-width: 1180px;
+  }
+
+  .offer-title {
+    margin: 0;
+    color: var(--yellow-color);
+    line-height: 20px;
+  }
+
+  .data-title {
+    margin: 8px 0 40px;
+  }
+
+  .data-description {
+    width: 580px;
+    height: 81px;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+  }
+
+  .offer-list {
+    width: 580px;
+    height: 591px;
+    line-height: 20px;
+
+    .feature-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 0 0 40px;
+      padding: 0px;
+      gap: 16px;
+      width: 580px;
+      height: 64px;
+    }
+
+    .feature-title {
+      margin: 0 0 4px 0;
+      height: 20px;
+      line-height: 20px;
+      letter-spacing: 0.012em;
+      color: var(--primary-color);
+    }
+
+    .feature-description {
+      margin: 0;
+      width: 514px;
+      height: 40px;
+      line-height: 20px;
+      color: #000000;
+      flex: none;
+      order: 1;
+      align-self: stretch;
+      flex-grow: 0;
+    }
+  }
+
+  .price-program-button {
+    @include flex-center;
+    @include green-button;
+    width: 236px;
+    height: 52px;
+  }
+
+  .tour-images-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 510px;
+    height: 510px;
+    margin: 40px 0 41px 90px;
+    gap: 10px;
+  }
+
+  .box:hover {
+    transform: scale(1.2);
+  }
+}
+
+.popular-destinations {
+  @include flex-center;
+
+  flex-direction: column;
+  height: 893px;
+  gap: 50px;
+
+  &-title-wrapper {
+    @include flex-center;
+
+    flex-direction: column;
+    margin-top: 80px;
+    height: 66px;
+    gap: 8px;
+
+    .pre-title {
+      margin: 0;
+      color: var(--yellow-color);
+      line-height: 20px;
+    }
+
+    .destinations-title {
+      margin: 0;
+    }
+  }
+
+  .destinations-container {
+    @include flex-center;
+
+    height: 500px;
+    width: 1180px;
+    gap: 20px;
+
+    .destination {
+      position: relative;
+
+
+      .popular-destinations-img {
+        width: 380px;
+        height: 500px;
+      }
+
+      &-rating-wrapper {
+        @include flex-center;
+
+        position: absolute;
+        width: 65px;
+        height: 32px;
+        top: 50px;
+        right: 0;
+        padding: 4px 8px;
+        gap: 8px;
+        background: rgba(253, 253, 253, 0.4);
+        backdrop-filter: blur(2px);
+        border-radius: 4px 0px 0px 4px;
+      }
+
+      &-rating {
+        color: var(--green-color);
+        line-height: 18px;
+      }
+
+      .popular-destinations-description-container {
+        position: absolute;
+        height: 90px;
+        width: 380px;
+        top: 410px;
+        gap: 35px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(3px);
+        border-radius: 0px 0px 32px 32px;
+
+        .popular-destinations-description-wrapper {
+          @include flex-center;
+          justify-content: space-between;
+          padding: 20px 32px 23px 32px;
+
+          .destination-title {
+            margin: 0;
+            color: var(--white-color);
+          }
+
+          .destination-desc {
+            margin: 0;
+            line-height: 18px;
+            color: var(--white-color);
+          }
+
+          .destination-price {
+            line-height: 24px;
+            color: var(--white-color);
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+          }
+        }
+
+      }
+    }
+  }
+
+  .destination-rating-btn {
+    @include green-button;
+
+    width: 244px;
+    height: 52px;
+  }
+}
+
+.travel-blog {
+  width: 100%;
+  height: 1036px;
+  background-color: var(--gray-color);
+  margin-top: 95px;
+
+  &-container {
+    @include flex-center;
+    flex-direction: column;
+
+    .other-materials-btn {
+      @include flex-center;
+      @include green-button;
+
+      width: 220px;
+      height: 52px;
+      line-height: 20px;
+      margin-top: 50px;
+    }
+
+    .travel-blog-title-wrapper {
+      @include flex-center;
+
+      flex-direction: column;
+      width: 580px;
+      height: 66px;
+      gap: 8px;
+      margin-top: 85px;
+
+      .pre-title-blog {
+        color: var(--yellow-color);
+        line-height: 20px;
+        margin: 0;
+      }
+
+      .title-blog {
+        margin: 0;
+      }
+    }
+  }
+
+  .travel-cards-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 1180px;
+    height: 648px;
+    gap: 20px 24px;
+    margin-top: 40px;
+
+    .box:hover {
+      transform: scale(1.2);
+    }
+
+    .travel-card {
+      @include flex-center;
+
+      position: relative;
+      justify-content: space-around;
+      width: 580px;
+      height: 312px;
+      background-color: var(--white-color);
+      border-radius: 10px;
+
+
+      &-img {
+        height: 280px;
+        border-radius: 6px;
+      }
+
+      .desc-card-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        width: 294px;
+        height: 280px;
+        flex: none;
+
+        .card-title {
+          line-height: 32px;
+          margin-top: 16px;
+        }
+
+        .card-desc {
+          width: 294px;
+          height: 116px;
+          line-height: 20px;
+          color: var(--primary-color);
+        }
+
+        .data-card {
+          position: absolute;
+          bottom: 32px;
+          width: 76px;
+          height: 20px;
+          line-height: 20px;
+          color: var(--yellow-color);
+        }
+      }
+
+      .read-article-btn {
+        position: absolute;
+
+        line-height: 20px;
+        color: var(--green-color);
+        background: none;
+        right: 16px;
+        bottom: 32px;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+          filter: brightness(0.5);
+        }
+
+        &:active {
+          transform: scale(0.9);
+        }
+      }
+    }
+  }
+}
+</file>
+
+<file path="src/app/app.component.html">
+@if (!loadingWebsite) {
+<div class="loading-screen">
+  <img class="loading-icon" src="/images/loading-icon.svg" alt="загрузка">
+</div>
+} @else {
+<div class="main-content-animated">
+  <header class="header">
+    <div class="controls-container">
+      <div class="header-container">
+        <div class="logo-container">
+          <img class="mountains-logo" src="/images/mountains-logo.svg" alt="mountains logo">
+          <span class="company-name fs-14 fw-700">{{ companyName }}</span>
+        </div>
+
+        <nav class="header-nav fs-18">
+          <a>Главная</a>
+          <a>Про гида</a>
+          <a>Программа тура</a>
+          <a>Стоимость</a>
+          <a>Блог</a>
+          <a>Контакты</a>
+        </nav>
+
+        <button
+          (click)="renderTextService.addMessage(renderTextService._messageText.Success, renderTextService._messageType.Success)"
+          class="consultation-button">Консультация</button>
+      </div>
+
+      <div class="header__widget">
+        @if (showTimer) {
+        <div class="timer-container">
+          <span class="header__widget-timer fs-18 fw-600">{{currentDate | date:'dd.MM.yyyy HH:mm:ss'}}</span>
+          <button (click)="toggleWidget()" class="counter-show-btn">Показать кликер</button>
+        </div>
+        } @else {
+        <div class="click-counter-container">
+          <div class="click-counter-wrapper">
+            <button (click)="incrementCount()" class="increment-btn fs-18 fw-600">+</button>
+            <span class="counter fs-18 fw-600">{{ count }}</span>
+            <button [disabled]="count === 0" (click)="decrementCount()" class="decrement-btn fs-18 fw-600">-</button>
+          </div>
+          <button (click)="toggleWidget()" class="timer-show-btn">Показать дату</button>
+        </div>
+        }
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-container">
+    <div class="main-content-wrapper">
+      <h1 class="description fw-400 fs-50">Насладись прогулкой в горах<br>с командой единомышленников</h1>
+
+      <div class="search-section">
+        <form class="search-form" action="/search" method="get">
+
+          <div class="input-group">
+            <div class="input">
+              <select [(ngModel)]="locationTour" name="location" id="location" aria-describedby="location-desc"
+                required>
+                <option value="" disabled selected hidden>Локация для тура</option>
+                <option value="Домбай">Домбай</option>
+                <option value="Сулакский каньон">Сулакский каньон</option>
+                <option value="Эльбрус">Эльбрус</option>
+              </select>
+
+              <img src="/images/arrow-list.svg" alt="arrow list" class="arrow-list">
+            </div>
+
+            <label id="location-desc" class="input-desc">выберите из списка</label>
+          </div>
+
+          <div class="input-group">
+            <div class="date-container">
+              <input type="date" [disabled]="!locationTour" [(ngModel)]="date" name="date" required class="date-input">
+              <span class="custom-placeholder">Дата похода</span>
+              <img src="/images/calendar.svg" class="calendar-icon" alt="calendar">
+            </div>
+            <span id="date-input" class="input-desc">укажите дату</span>
+          </div>
+
+          <div class="input-group">
+            <div class="input">
+              <select [disabled]="!date" [(ngModel)]="participantsCount" name="participants" id="participants"
+                aria-describedby="participants-input" required>
+                <option value="" disabled selected hidden>Участники</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+
+              <img src="/images/arrow-list.svg" alt="arrow list" class="arrow-list">
+            </div>
+
+            <label id="participants-input" class="input-desc">выберите из списка</label>
+          </div>
+
+          <button [disabled]="!participantsCount || !date || !locationTour" class="search-programm-button">Найти
+            программу</button>
+
+        </form>
+      </div>
+      <div class="live-input-container">
+        <input type="text" class="live-input fs-16 fw-700 line-height-150" id="live-input" name="live-input"
+          [(ngModel)]="liveText">
+        <span class="live-text fs-16 fw-700 line-height-150">{{ liveText }}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="history">
+    <div class="media-container">
+      <img class="media-container__image" src="/images/mountains.png" alt="mountains">
+      <div class="media-container__video-card">
+        <img class="media-container__video" src="/images/forest-image.png" alt="forest">
+        <button class="play-button">
+          <img src="/images/play-button-icon.svg" alt="play icon">
+        </button>
+      </div>
+    </div>
+
+    <div class="description-container">
+      <h2 class="history-title fs-24 fw-400">о нашем походе</h2>
+      <p class="history-subtitle fs-32 fw-800 line-height-120">Исследуйте все горные массивы мира вместе с нами</p>
+      <p class="history-desc fs-18 fw-400 line-height-150">{{ loremIpsum }}</p>
+      <button class="program-tour-button">Программа тура</button>
+    </div>
+  </section>
+
+  <section class="programs">
+    <div class="programs-wrapper">
+      <div class="offer-list">
+        <h2 class="offer-title fs-24 fw-400">наше предложение</h2>
+        <h3 class="data-title">{{ offerData.title }}</h3>
+        <p class="data-description fs-18 fw-400 line-height-150">{{ offerData.description }}</p>
+
+        @for (feature of offerData.features; track feature.id) {
+        <div class="feature-item scale">
+          <img [src]=feature.icon>
+          <div class="feature-wrapper">
+            <h2 class="feature-title fs-18 fw-700 ">{{ feature.title }}</h2>
+            <p class="feature-description fs-14 fw-400">{{ feature.description }}</p>
+          </div>
+        </div>
+        }
+
+        <button class="price-program-button">Стоимость программ</button>
+      </div>
+
+      <div class="tour-images-wrapper">
+        <img class="scale" src="/images/tour-program-images/mountain-canyon.png" alt="Горный каньон">
+        <img class="scale" src="/images/tour-program-images/dore-canyon.png" alt="Дор-Каньон">
+        <img class="scale" src="/images/tour-program-images/snowmobile-rider.png" alt="райдер на снегоходе">
+        <img class="scale" src="/images/tour-program-images/mountain-springs.png" alt="Горные источники">
+      </div>
+    </div>
+  </section>
+
+  <section class="popular-destinations">
+    <div class="popular-destinations-title-wrapper">
+      <p class="pre-title fs-24 fw-400">по версии отдыхающих</p>
+      <p class="destinations-title fs-32 fw-800 line-height-120">Популярные направления</p>
+    </div>
+
+    <div class="destinations-container">
+      @for (destination of destinationData; track destination.id) {
+      <div class="destination">
+        <img class="popular-destinations-img" [src]=destination.imageUrl>
+
+        <div class="destination-rating-wrapper">
+          <img src="images/rating-star-icon.svg">
+          <span class="destination-rating fs-14 fw-700">{{ destination.rating }}</span>
+        </div>
+
+        <div class="popular-destinations-description-container">
+          <div class="popular-destinations-description-wrapper">
+            <div>
+              <h2 class="destination-title fs-24 fw-700 line-height-120">{{ destination.title }}</h2>
+              <p class="destination-desc fs-14 fw-400">{{ destination.description }}</p>
+            </div>
+            <span class="destination-price fs-20 fw-700">{{ destination.price }} &#36;</span>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+
+    <button class="destination-rating-btn">Рейтинг направлений</button>
+  </section>
+
+  <section class="travel-blog">
+    <div class="travel-blog-container">
+      <div class="travel-blog-title-wrapper">
+        <p class="pre-title-blog fs-24 fw-400">делимся впечатлениями</p>
+        <p class="title-blog fs-32 fw-800 line-height-120">Блог о путешествиях</p>
+      </div>
+
+      <div class="travel-cards-container">
+        @for (card of travelCards; track card.id ) {
+        <div class="travel-card card">
+          <img class="travel-card-img" [src]=card.imageUrl>
+
+          <div class="desc-card-wrapper">
+            <h2 class="card-title fs-24 fw-700">{{ card.title }}</h2>
+            <p class="card-desc fs-14 fw-400">{{ card.description }}</p>
+            <span class="data-card">{{ card.data }}</span>
+          </div>
+
+          <button class="read-article-btn fs-14 fw-700">читать статью</button>
+        </div>
+        }
+      </div>
+
+      <button class="other-materials-btn fs-16 fw-600">Другие материалы</button>
+    </div>
+  </section>
+</div>
+}
+</file>
+
+<file path="src/app/app.component.ts">
+import { Component, inject } from '@angular/core';
+import { Training } from './training';
+import { IUserInfo } from './training';
+import { colors } from '../enums/Color';
+import { Collection } from './collection';
+import { IOffer } from '../interfaces/IOffer';
+import { FormsModule } from '@angular/forms';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
+import { IDestination } from '../interfaces/IDestination';
+import { ITravelCards } from '../interfaces/ITravelCards';
+import { IMessage } from '../interfaces/IMessage';
+import { MessageTextService } from '../message-text.service';
+import { MessageType } from '../enums/MessageType';
+
+
+@Component({
+  selector: 'app-root',
+  imports: [FormsModule, CommonModule, NgTemplateOutlet],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
+})
+export class AppComponent {
+  renderTextService: MessageTextService = inject(MessageTextService);
+
+  public companyName: string = 'румтибет';
+  public loremIpsum: string = 'Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.';
+  public locationTour: string = '';
+  public date: string = '';
+  public participantsCount: string = '';
+  public currentDate: Date = new Date;
+  public showTimer: boolean = true;
+  public count: number = 0;
+  public liveText: string = '';
+  public loadingWebsite: boolean = false;
+
+  public offerData: IOffer = {
+
+    id: 1,
+    title: 'Лучшие программы для тебя',
+    description: 'Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.',
+    features: [
+      {
+        id: 1,
+        icon: 'images/offer-icons/guide-icon.svg',
+        title: 'Опытный гид',
+        description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
+      },
+      {
+        id: 2,
+        icon: 'images/offer-icons/security-icon.svg',
+        title: 'Безопасный поход',
+        description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
+      },
+      {
+        id: 3,
+        icon: 'images/offer-icons/prices-icon.svg',
+        title: 'Лояльные цены',
+        description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
+      }
+    ]
+  }
+
+  public destinationData: IDestination[] = [
+    {
+      id: 1,
+      imageUrl: 'images/mountain-lake.png',
+      rating: 4.9,
+      title: 'Озеро возле гор',
+      description: 'романтическое приключение',
+      price: 480
+    },
+    {
+      id: 2,
+      imageUrl: 'images/mountain-night.png',
+      rating: 4.5,
+      title: 'Ночь в горах',
+      description: 'в компании друзей',
+      price: 500
+    },
+    {
+      id: 3,
+      imageUrl: 'images/mountain-yoga.png',
+      rating: 5.0,
+      title: 'Растяжка в горах',
+      description: 'для тех, кто забоится о себе',
+      price: 230
+    }
+  ]
+
+  public travelCards: ITravelCards[] = [
+    {
+      id: 1,
+      imageUrl: 'images/manarola.png',
+      title: 'Красивая Италия, какая она в реальности?',
+      description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
+      data: '01/04/2023',
+    },
+    {
+      id: 2,
+      imageUrl: 'images/airplane.png',
+      title: 'Долой сомнения! Весь мир открыт для вас!',
+      description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации ... независимые способы реализации соответствующих...',
+      data: '01/04/2023'
+    },
+    {
+      id: 3,
+      imageUrl: 'images/backpacker.png',
+      title: 'Как подготовиться к путешествию в одиночку?',
+      description: 'Для современного мира базовый вектор развития предполагает.',
+      data: '01/04/2023'
+    },
+    {
+      id: 4,
+      imageUrl: 'images/taj-mahal.png',
+      title: 'Индия ... летим?',
+      description: 'Для современного мира базовый.',
+      data: '01/04/2023'
+    }
+  ]
+
+  constructor() {
+    this.saveLastVisitDate();
+    this.saveCountVisit();
+
+    setInterval(() => {
+      this.currentDate = new Date();
+    }, 1000)
+
+    setInterval(() => {
+      this.loadingWebsite = true;
+    }, 100)
+  }
+
+  // (ДЗ 15.2) Метод который проверяет, является ли переданный цвет основным и возвращает true/false.
+  public checkMainColor(color: string): boolean {
+    if (color === colors.BLUE || color === colors.GREEN || color === colors.RED) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  // (ДЗ 15.3) Метод, который сохраняет в локальное хранилище дату последнего захода на страницу.
+  private saveLastVisitDate(): void {
+    const lastVisit = localStorage.getItem('lastVisit')
+    let dateArray: string[] = [];
+
+    if (lastVisit) {
+      dateArray = JSON.parse(lastVisit);
+    }
+    const date: Date = new Date();
+    dateArray.push(date.toString());
+    localStorage.setItem('lastVisit', JSON.stringify(dateArray));
+  }
+
+  // (ДЗ 15.4) Метод, который сохраняет в localStorage количество заходов на страницу.
+  private saveCountVisit(): void {
+    const savedCount = localStorage.getItem('visitCount');
+    let count: number = savedCount ? parseInt(savedCount, 10) : 0
+    count++;
+    localStorage.setItem('visitCount', count.toString());
+  }
+
+  // (ДЗ 16.5) Счетчик кликов.
+  incrementCount() {
+    this.count += 1;
+  }
+
+  decrementCount() {
+    if (this.count > 0) {
+      this.count -= 1;
+    }
+  }
+
+  // (ДЗ 16.6) Кнопка, которая при нажатии отображает в шапке ИЛИ 4, ИЛИ 5 задачу.
+  toggleWidget() {
+    this.showTimer = !this.showTimer;
+  }
+}
+
+Collection;
+</file>
+
+</files>

@@ -1,0 +1,14 @@
+import { Component, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
+import { MessageTextService } from '../../message-text.service'; 
+
+@Component({
+  selector: 'in-root',
+  imports: [FormsModule, CommonModule, NgTemplateOutlet],
+  templateUrl: './message-list.component.html',
+  styleUrl: './message-styles.scss',
+})
+export class MessageList {
+    renderTextService: MessageTextService = inject(MessageTextService);
+}

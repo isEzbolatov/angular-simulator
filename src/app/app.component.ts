@@ -9,6 +9,8 @@ import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import { IDestination } from '../interfaces/IDestination';
 import { ITravelCards } from '../interfaces/ITravelCards';
 import { IMessage } from '../interfaces/IMessage';
+import { MessageTextService } from '../message-text.service';
+import { MessageType } from '../enums/MessageType';
 
 
 @Component({
@@ -18,6 +20,8 @@ import { IMessage } from '../interfaces/IMessage';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  renderTextService: MessageTextService = inject(MessageTextService);
+
   public companyName: string = 'румтибет';
   public loremIpsum: string = 'Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.';
   public locationTour: string = '';
@@ -113,7 +117,6 @@ export class AppComponent {
       data: '01/04/2023'
     }
   ]
-  messageTextData: any;
 
   constructor() {
     this.saveLastVisitDate();
