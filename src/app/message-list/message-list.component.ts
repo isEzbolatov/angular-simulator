@@ -6,6 +6,7 @@ import { MessageTextService } from '../../message-text.service';
 @Component({
   selector: 'in-message-list',
   imports: [FormsModule, CommonModule, NgTemplateOutlet],
+  standalone: true,
   templateUrl: './message-list.component.html',
   styleUrl: './message-styles.scss',
 })

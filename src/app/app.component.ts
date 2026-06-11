@@ -12,16 +12,19 @@ import { IMessage } from '../interfaces/IMessage';
 import { MessageTextService } from '../message-text.service';
 import { MessageType } from '../enums/MessageType';
 import { MessageList } from './message-list/message-list.component';
+import { LocalStorageService } from './local-storage.service.ts.service';
 
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, CommonModule, NgTemplateOutlet, MessageList],
+  imports: [FormsModule, CommonModule, MessageList],
+  standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
   renderTextService: MessageTextService = inject(MessageTextService);
+  localStorage: LocalStorageService = inject(LocalStorageService);
 
   public companyName: string = 'румтибет';
   public loremIpsum: string = 'Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.';
@@ -129,7 +132,7 @@ export class AppComponent {
 
     setInterval(() => {
       this.loadingWebsite = true;
-    }, 100)
+    }, 2000)
   }
 
   // (ДЗ 15.2) Метод который проверяет, является ли переданный цвет основным и возвращает true/false.
@@ -143,7 +146,7 @@ export class AppComponent {
 
   // (ДЗ 15.3) Метод, который сохраняет в локальное хранилище дату последнего захода на страницу.
   private saveLastVisitDate(): void {
-    const lastVisit = localStorage.getItem('lastVisit')
+    const lastVisit: string | null = this.localStorage.get('lastVisit');
     let dateArray: string[] = [];
 
     if (lastVisit) {
@@ -151,15 +154,15 @@ export class AppComponent {
     }
     const date: Date = new Date();
     dateArray.push(date.toString());
-    localStorage.setItem('lastVisit', JSON.stringify(dateArray));
+    this.localStorage.set('lastVisit', JSON.stringify(dateArray));
   }
 
   // (ДЗ 15.4) Метод, который сохраняет в localStorage количество заходов на страницу.
   private saveCountVisit(): void {
-    const savedCount = localStorage.getItem('visitCount');
+    const savedCount: string | null = this.localStorage.get('visitCount');
     let count: number = savedCount ? parseInt(savedCount, 10) : 0
     count++;
-    localStorage.setItem('visitCount', count.toString());
+    this.localStorage.set('visitCount', count.toString());
   }
 
   // (ДЗ 16.5) Счетчик кликов.

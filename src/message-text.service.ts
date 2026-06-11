@@ -7,28 +7,7 @@ import { MessageText } from './enums/MessageText';
   providedIn: 'root',
 })
 export class MessageTextService {
-  private _messageTextData: IMessage[] = [
-    // {
-    //   id: 1,
-    //   type: MessageType.Success,
-    //   textMessage: 'Направления получены'
-    // },
-    // {
-    //   id: 2,
-    //   type: MessageType.Info,
-    //   textMessage: 'Стоимость отправлена на почту'
-    // },
-    // {
-    //   id: 3,
-    //   type: MessageType.Warn,
-    //   textMessage: 'Программа недоступна'
-    // },
-    // {
-    //   id: 4,
-    //   type: MessageType.Error,
-    //   textMessage: 'Материалы недостпуны'
-    // }
-  ]
+  private _messageTextData: IMessage[] = [];
 
   readonly _messageType = MessageType;
 

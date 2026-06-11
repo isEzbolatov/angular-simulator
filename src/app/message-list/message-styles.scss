@@ -1,10 +1,10 @@
-// @use 'src/assets/mixins' as *;
+@use '../../assets/mixins' as *;
 
 .message-container {
-    // @include flex-center;
-
+    display: flex;
+    padding: 15px;
+    gap: 15px;
     box-sizing: border-box;
-    position: absolute;
     width: 350px;
     height: 70px;
     background: rgba(15, 23, 42, 0.85);
@@ -12,9 +12,8 @@
     border-radius: 10px;
 
     .message-wrapper {
-        // @include flex-center;
 
-        flex-direction: column;
+        justify-content: flex-start;
 
         .type-message {
             font-weight: 716;
@@ -32,8 +31,45 @@
             position: absolute;
             width: 20px;
             height: 20px;
-            background: url(/assets/images/close-icon.svg);
+            right: 7px;
+            top: 7px;
+            background: url(../../../public/images/close-icon.svg);
+            color: #FFFFFF;
             background-repeat: no-repeat;
+            border: none;
+
+            &:hover {
+                filter: brightness(0.8);
+            }
+
+            &:active {
+                transform: scale(0.9);
+            }
         }
     }
+
+    animation: fadeInPage 0.5s ease-out forwards;
+
+    @keyframes fadeInPage {
+        from {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+
+}
+
+.notification-container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 20px;
+    right: 20px;
+    gap: 10px;
 }

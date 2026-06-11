@@ -95,7 +95,9 @@
             <label id="participants-input" class="input-desc">выберите из списка</label>
           </div>
 
-          <button [disabled]="!participantsCount || !date || !locationTour" class="search-programm-button">Найти
+          <button
+            (click)="renderTextService.addMessage(renderTextService._messageText.Info, renderTextService._messageType.Info)"
+            [disabled]="!participantsCount || !date || !locationTour" class="search-programm-button">Найти
             программу</button>
 
         </form>
@@ -123,7 +125,9 @@
       <h2 class="history-title fs-24 fw-400">о нашем походе</h2>
       <p class="history-subtitle fs-32 fw-800 line-height-120">Исследуйте все горные массивы мира вместе с нами</p>
       <p class="history-desc fs-18 fw-400 line-height-150">{{ loremIpsum }}</p>
-      <button class="program-tour-button">Программа тура</button>
+      <button
+        (click)="renderTextService.addMessage(renderTextService._messageText.Error, renderTextService._messageType.Error )"
+        class="program-tour-button">Программа тура</button>
     </div>
   </section>
 
@@ -144,7 +148,9 @@
         </div>
         }
 
-        <button class="price-program-button">Стоимость программ</button>
+        <button
+          (click)="renderTextService.addMessage(renderTextService._messageText.Warn, renderTextService._messageType.Warn)"
+          class="price-program-button">Стоимость программ</button>
       </div>
 
       <div class="tour-images-wrapper">
@@ -185,7 +191,9 @@
       }
     </div>
 
-    <button class="destination-rating-btn">Рейтинг направлений</button>
+    <button
+      (click)="renderTextService.addMessage(renderTextService._messageText.Success, renderTextService._messageType.Success)"
+      class="destination-rating-btn">Рейтинг направлений</button>
   </section>
 
   <section class="travel-blog">
@@ -211,8 +219,12 @@
         }
       </div>
 
-      <button class="other-materials-btn fs-16 fw-600">Другие материалы</button>
+      <button
+        (click)="renderTextService.addMessage(renderTextService._messageText.Warn, renderTextService._messageType.Warn)"
+        class="other-materials-btn fs-16 fw-600">Другие материалы</button>
     </div>
   </section>
 </div>
+
+<in-message-list></in-message-list>
 }
