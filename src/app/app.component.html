@@ -21,7 +21,9 @@
           <a>Контакты</a>
         </nav>
 
-        <button class="consultation-button">Консультация</button>
+        <button
+          (click)="renderTextService.addMessage(renderTextService._messageText.Success, renderTextService._messageType.Success)"
+          class="consultation-button">Консультация</button>
       </div>
 
       <div class="header__widget">
@@ -93,7 +95,9 @@
             <label id="participants-input" class="input-desc">выберите из списка</label>
           </div>
 
-          <button [disabled]="!participantsCount || !date || !locationTour" class="search-programm-button">Найти
+          <button
+            (click)="renderTextService.addMessage(renderTextService._messageText.Info, renderTextService._messageType.Info)"
+            [disabled]="!participantsCount || !date || !locationTour" class="search-programm-button">Найти
             программу</button>
 
         </form>
@@ -121,7 +125,9 @@
       <h2 class="history-title fs-24 fw-400">о нашем походе</h2>
       <p class="history-subtitle fs-32 fw-800 line-height-120">Исследуйте все горные массивы мира вместе с нами</p>
       <p class="history-desc fs-18 fw-400 line-height-150">{{ loremIpsum }}</p>
-      <button class="program-tour-button">Программа тура</button>
+      <button
+        (click)="renderTextService.addMessage(renderTextService._messageText.Error, renderTextService._messageType.Error )"
+        class="program-tour-button">Программа тура</button>
     </div>
   </section>
 
@@ -142,7 +148,9 @@
         </div>
         }
 
-        <button class="price-program-button">Стоимость программ</button>
+        <button
+          (click)="renderTextService.addMessage(renderTextService._messageText.Warn, renderTextService._messageType.Warn)"
+          class="price-program-button">Стоимость программ</button>
       </div>
 
       <div class="tour-images-wrapper">
@@ -153,5 +161,70 @@
       </div>
     </div>
   </section>
+
+  <section class="popular-destinations">
+    <div class="popular-destinations-title-wrapper">
+      <p class="pre-title fs-24 fw-400">по версии отдыхающих</p>
+      <p class="destinations-title fs-32 fw-800 line-height-120">Популярные направления</p>
+    </div>
+
+    <div class="destinations-container">
+      @for (destination of destinationData; track destination.id) {
+      <div class="destination">
+        <img class="popular-destinations-img" [src]=destination.imageUrl>
+
+        <div class="destination-rating-wrapper">
+          <img src="images/rating-star-icon.svg">
+          <span class="destination-rating fs-14 fw-700">{{ destination.rating }}</span>
+        </div>
+
+        <div class="popular-destinations-description-container">
+          <div class="popular-destinations-description-wrapper">
+            <div>
+              <h2 class="destination-title fs-24 fw-700 line-height-120">{{ destination.title }}</h2>
+              <p class="destination-desc fs-14 fw-400">{{ destination.description }}</p>
+            </div>
+            <span class="destination-price fs-20 fw-700">{{ destination.price }} &#36;</span>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+
+    <button
+      (click)="renderTextService.addMessage(renderTextService._messageText.Success, renderTextService._messageType.Success)"
+      class="destination-rating-btn">Рейтинг направлений</button>
+  </section>
+
+  <section class="travel-blog">
+    <div class="travel-blog-container">
+      <div class="travel-blog-title-wrapper">
+        <p class="pre-title-blog fs-24 fw-400">делимся впечатлениями</p>
+        <p class="title-blog fs-32 fw-800 line-height-120">Блог о путешествиях</p>
+      </div>
+
+      <div class="travel-cards-container">
+        @for (card of travelCards; track card.id ) {
+        <div class="travel-card card">
+          <img class="travel-card-img" [src]=card.imageUrl>
+
+          <div class="desc-card-wrapper">
+            <h2 class="card-title fs-24 fw-700">{{ card.title }}</h2>
+            <p class="card-desc fs-14 fw-400">{{ card.description }}</p>
+            <span class="data-card">{{ card.data }}</span>
+          </div>
+
+          <button class="read-article-btn fs-14 fw-700">читать статью</button>
+        </div>
+        }
+      </div>
+
+      <button
+        (click)="renderTextService.addMessage(renderTextService._messageText.Warn, renderTextService._messageType.Warn)"
+        class="other-materials-btn fs-16 fw-600">Другие материалы</button>
+    </div>
+  </section>
 </div>
+
+<in-message-list></in-message-list>
 }

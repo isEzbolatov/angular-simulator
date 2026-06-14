@@ -1,0 +1,19 @@
+<ng-template #messageButton let-message>
+    <div class="message-container">
+        <img src="images/letter-icon.svg">
+        <div class="message-wrapper">
+            <span class="type-message fs-16">{{ message.type }}</span>
+            <p class="message fs-14 fw-400">{{ message.textMessage }}</p>
+            <button (click)="renderTextService.closeMessage(message.id)" class="close-button"></button>
+        </div>
+    </div>
+</ng-template>
+
+@if (renderTextService.messageTextData.length > 0) {
+<div class="notification-container">
+    @for (message of renderTextService.messageTextData; track message.id) {
+    <ng-container [ngTemplateOutlet]="messageButton" [ngTemplateOutletContext]="{$implicit: message}">
+    </ng-container>
+    }
+</div>
+}

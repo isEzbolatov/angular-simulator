@@ -1,0 +1,75 @@
+@use '../../assets/mixins' as *;
+
+.message-container {
+    display: flex;
+    padding: 15px;
+    gap: 15px;
+    box-sizing: border-box;
+    width: 350px;
+    height: 70px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+
+    .message-wrapper {
+
+        justify-content: flex-start;
+
+        .type-message {
+            font-weight: 716;
+            line-height: 20px;
+            color: var(--white-color);
+            font-stretch: 100;
+        }
+
+        .message {
+            line-height: 20px;
+            color: var(--white-color);
+        }
+
+        .close-button {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: 7px;
+            top: 7px;
+            background: url(../../../public/images/close-icon.svg);
+            color: #FFFFFF;
+            background-repeat: no-repeat;
+            border: none;
+
+            &:hover {
+                filter: brightness(0.8);
+            }
+
+            &:active {
+                transform: scale(0.9);
+            }
+        }
+    }
+
+    animation: fadeInPage 0.5s ease-out forwards;
+
+    @keyframes fadeInPage {
+        from {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+
+}
+
+.notification-container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 20px;
+    right: 20px;
+    gap: 10px;
+}

@@ -19,6 +19,11 @@
   --gray-color: #F3F5F4;
 }
 
+p,
+h2 {
+  margin: 0;
+}
+
 .fs-14 {
   font-size: 14px;
 }
@@ -29,6 +34,10 @@
 
 .fs-18 {
   font-size: 18px;
+}
+
+.fs-20 {
+  font-size: 20px;
 }
 
 .fs-24 {
@@ -74,4 +83,17 @@
 
 .scale:hover {
   transform: scale(1.1);
+}
+
+.card {
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover .card-title {
+  text-decoration-line: underline;
+  color: #1A3E3E;
 }
