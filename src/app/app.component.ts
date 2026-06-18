@@ -28,6 +28,7 @@ export class AppComponent {
 
   public companyName: string = 'румтибет';
   public loremIpsum: string = 'Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.';
+  public loremIpsumFooter: string = 'Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney.';
   public locationTour: string = '';
   public date: string = '';
   public participantsCount: string = '';
@@ -132,7 +133,7 @@ export class AppComponent {
 
     setInterval(() => {
       this.loadingWebsite = true;
-    }, 2000)
+    }, 100)
   }
 
   // (ДЗ 15.2) Метод который проверяет, является ли переданный цвет основным и возвращает true/false.

@@ -43,15 +43,27 @@
   @include flex-center;
 
   position: fixed;
-  flex-direction: column;
   top: 0;
   left: 0;
-  z-index: 100;
+  right: 0;
+  z-index: 1000;
   width: 100%;
   height: 156px;
   background: rgba(24, 18, 30, 0.5);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  animation: fadeInPage 0.8s ease-out forwards;
 
+  @keyframes fadeInPage {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 .controls-container {
@@ -864,6 +876,278 @@ option {
         &:active {
           transform: scale(0.9);
         }
+      }
+    }
+  }
+}
+
+.photo-report-container {
+  height: 1011px;
+
+  .photo-report-wrapper {
+    @include flex-center;
+
+    flex-direction: column;
+    height: 728px;
+    margin-top: 85px;
+
+    .title-photo-wrapper {
+      @include flex-center;
+
+      flex-direction: column;
+      height: 66px;
+      gap: 8px;
+
+      .pre-title-photo {
+        color: var(--yellow-color);
+        line-height: 20px;
+      }
+    }
+
+    .photo-container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 1180px;
+      height: 520px;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .our-pinterest-btn {
+      @include flex-center;
+      @include green-button;
+
+      width: 178px;
+      height: 52px;
+      margin-top: 50px;
+    }
+  }
+}
+
+.footer {
+  @include flex-center;
+
+
+  position: relative;
+  width: 100%;
+  height: 587px;
+  background-color: var(--green-color);
+
+  &-top {
+    display: flex;
+    height: 196px;
+    width: 1180px;
+    position: absolute;
+    justify-content: space-between;
+    top: -98px;
+    box-sizing: border-box;
+    padding: 40px 100px;
+    background-color: var(--white-color);
+    box-shadow: 0px 0px 15px rgba(24, 18, 30, 0.12);
+    border-radius: 6px;
+
+    &__title-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 380px;
+      height: 90px;
+
+      &-pre-title {
+        color: var(--yellow-color);
+        line-height: 20px;
+      }
+    }
+
+    &__right {
+      display: flex;
+      flex-direction: column;
+
+      .form-wrapper {
+        display: flex;
+        align-items: end;
+        gap: 16px;
+
+        .footer-top__subscribe {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 280px;
+          height: 72px;
+
+          #email-input {
+            box-sizing: border-box;
+            padding: 0px 16px;
+            width: 280px;
+            height: 44px;
+            background-color: var(--gray-color);
+            border-radius: 4px;
+            border: none;
+          }
+        }
+
+        .subscribe-btn {
+          @include green-button;
+
+          padding: 12px 24px;
+          gap: 10px;
+          width: 240px;
+          height: 44px;
+        }
+      }
+
+
+      .conditions {
+        width: 536px;
+        height: 36px;
+        line-height: 18px;
+        margin-top: 8px;
+        color: var(--primary-color);
+
+        a {
+          text-decoration-line: underline;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .footer-center {
+    display: flex;
+    justify-content: space-between;
+    width: 1180px;
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+      width: 480px;
+      height: 263px;
+
+      &-title {
+        width: 480px;
+        height: 24px;
+        line-height: 24px;
+        color: var(--gray-color);
+        margin-bottom: 17px;
+      }
+
+      &-desc {
+        width: 456px;
+        height: 60px;
+        line-height: 20px;
+        color: var(--white-color);
+        margin-bottom: 80px;
+      }
+
+      .contacts {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 24px;
+        width: 480px;
+        height: 18px;
+        margin-bottom: 32px;
+
+        .email-footer {
+          line-height: 18px;
+          text-decoration-line: underline;
+          color: var(--white-color);
+          cursor: pointer;
+        }
+
+        .phone-number {
+          line-height: 18px;
+          text-decoration-line: underline;
+          color: var(--white-color);
+          cursor: pointer;
+        }
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 16px;
+        width: 176px;
+        height: 32px;
+      }
+    }
+
+    .nav-services {
+      display: flex;
+      flex-direction: column;
+      width: 280px;
+      height: 232px;
+      gap: 16px;
+      padding-right: 120px;
+
+
+      a {
+        display: flex;
+        flex-direction: column;
+        background-image: url(/images/icons-footer/arrow-right.svg);
+        background-repeat: no-repeat;
+        width: 280px;
+        height: 18px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        color: var(--gray-color);
+        text-decoration: none;
+        padding-left: 18px;
+      }
+    }
+
+    .nav-for-travel {
+      display: flex;
+      flex-direction: column;
+      width: 280px;
+      height: 232px;
+      gap: 16px;
+
+      a {
+        display: inline-block;
+        flex-direction: column;
+        background-image: url(/images/icons-footer/arrow-right.svg);
+        background-repeat: no-repeat;
+        height: 36px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        color: var(--gray-color);
+        text-decoration: none;
+        padding-left: 18px;
+      }
+    }
+
+    .nav-title {
+      height: 24px;
+      color: var(--gray-color);
+      padding-bottom: 4px;
+    }
+  }
+
+  .footer-bottom {
+    @include flex-center;
+
+    position: absolute;
+    justify-content: center;
+    bottom: 0;
+    width: 100%;
+    height: 66px;
+    background: #18121E;
+
+    .footer-bottom-wrapper {
+      display: flex;
+      justify-content: space-between;
+      width: 1180px;
+      height: 18px;
+
+      .proprietor-company-name {
+        line-height: 18px;
+        color: var(--white-color);
+      }
+
+      a {
+        color: var(--white-color);
       }
     }
   }

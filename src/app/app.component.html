@@ -3,49 +3,49 @@
   <img class="loading-icon" src="/images/loading-icon.svg" alt="загрузка">
 </div>
 } @else {
-<div class="main-content-animated">
-  <header class="header">
-    <div class="controls-container">
-      <div class="header-container">
-        <div class="logo-container">
-          <img class="mountains-logo" src="/images/mountains-logo.svg" alt="mountains logo">
-          <span class="company-name fs-14 fw-700">{{ companyName }}</span>
-        </div>
-
-        <nav class="header-nav fs-18">
-          <a>Главная</a>
-          <a>Про гида</a>
-          <a>Программа тура</a>
-          <a>Стоимость</a>
-          <a>Блог</a>
-          <a>Контакты</a>
-        </nav>
-
-        <button
-          (click)="renderTextService.addMessage(renderTextService._messageText.Success, renderTextService._messageType.Success)"
-          class="consultation-button">Консультация</button>
+<header class="header">
+  <div class="controls-container">
+    <div class="header-container">
+      <div class="logo-container">
+        <img class="mountains-logo" src="/images/mountains-logo.svg" alt="mountains logo">
+        <span class="company-name fs-14 fw-700">{{ companyName }}</span>
       </div>
 
-      <div class="header__widget">
-        @if (showTimer) {
-        <div class="timer-container">
-          <span class="header__widget-timer fs-18 fw-600">{{currentDate | date:'dd.MM.yyyy HH:mm:ss'}}</span>
-          <button (click)="toggleWidget()" class="counter-show-btn">Показать кликер</button>
-        </div>
-        } @else {
-        <div class="click-counter-container">
-          <div class="click-counter-wrapper">
-            <button (click)="incrementCount()" class="increment-btn fs-18 fw-600">+</button>
-            <span class="counter fs-18 fw-600">{{ count }}</span>
-            <button [disabled]="count === 0" (click)="decrementCount()" class="decrement-btn fs-18 fw-600">-</button>
-          </div>
-          <button (click)="toggleWidget()" class="timer-show-btn">Показать дату</button>
-        </div>
-        }
-      </div>
+      <nav class="header-nav fs-18">
+        <a>Главная</a>
+        <a>Про гида</a>
+        <a>Программа тура</a>
+        <a>Стоимость</a>
+        <a>Блог</a>
+        <a>Контакты</a>
+      </nav>
+
+      <button
+        (click)="renderTextService.addMessage(renderTextService._messageText.Success, renderTextService._messageType.Success)"
+        class="consultation-button">Консультация</button>
     </div>
-  </header>
 
+    <div class="header__widget">
+      @if (showTimer) {
+      <div class="timer-container">
+        <span class="header__widget-timer fs-18 fw-600">{{currentDate | date:'dd.MM.yyyy HH:mm:ss'}}</span>
+        <button (click)="toggleWidget()" class="counter-show-btn">Показать кликер</button>
+      </div>
+      } @else {
+      <div class="click-counter-container">
+        <div class="click-counter-wrapper">
+          <button (click)="incrementCount()" class="increment-btn fs-18 fw-600">+</button>
+          <span class="counter fs-18 fw-600">{{ count }}</span>
+          <button [disabled]="count === 0" (click)="decrementCount()" class="decrement-btn fs-18 fw-600">-</button>
+        </div>
+        <button (click)="toggleWidget()" class="timer-show-btn">Показать дату</button>
+      </div>
+      }
+    </div>
+  </div>
+</header>
+
+<div class="main-content-animated">
   <section class="hero-container">
     <div class="main-content-wrapper">
       <h1 class="description fw-400 fs-50">Насладись прогулкой в горах<br>с командой единомышленников</h1>
@@ -222,6 +222,103 @@
       <button
         (click)="renderTextService.addMessage(renderTextService._messageText.Warn, renderTextService._messageType.Warn)"
         class="other-materials-btn fs-16 fw-600">Другие материалы</button>
+    </div>
+  </section>
+
+  <section class="photo-report-container">
+    <div class="photo-report-wrapper">
+      <div class="title-photo-wrapper">
+        <span class="pre-title-photo fs-24 fw-400">фото-отчет</span>
+        <span class="fs-32 fw-800 line-height-120">Делимся впечатлениями</span>
+      </div>
+
+      <div class="photo-container">
+        <img src="images/photo-report/balloons-sky.png" alt="Шары в небе">
+        <img src="images/photo-report/travel-gear.png" alt="Снаряжение туриста">
+        <img src="images/photo-report/sail-hotel.png" alt="Отель-парус">
+        <img src="images/photo-report/beach-boats.png" alt="Пляж и лодки">
+        <img src="images/photo-report/canyon.png" alt="Каньон и река">
+        <img src="images/photo-report/adventure-map.png" alt="Карта приключений">
+      </div>
+
+      <button
+        (click)="renderTextService.addMessage(renderTextService._messageText.Success, renderTextService._messageType.Info)"
+        class="our-pinterest-btn fs-16 fw-600">Наш pinterest</button>
+    </div>
+  </section>
+
+  <section class="footer">
+    <div class="footer-top">
+      <div class="footer-top__title-wrapper">
+        <span class="footer-top__info-pre-title fs-18 fw-400">актуально</span>
+        <span class="fs-26 fw-800 line-height-120">Получайте полезные рассылки о путешествиях</span>
+      </div>
+
+      <div class="footer-top__right">
+        <div class="form-wrapper">
+          <form id="emailForm" class="footer-top__subscribe">
+            <label class="fs-16 fw-600" for="email-input">Введите e-mail адрес</label>
+            <input name="email-input" placeholder="name@domain.com" id="email-input" type="email" required>
+          </form>
+          <button type="submit" form="emailForm" class="subscribe-btn fs-16 fw-600">Подписаться на новости</button>
+        </div>
+
+        <p class="conditions fs-14 fw-600">подписываясь на новости, вы автоматически соглашаетесь с <a>условиями
+            обработки
+            персональных данных и правилами рекламных рассылок</a> </p>
+      </div>
+    </div>
+
+    <div class="footer-center">
+      <div class="footer-center__info">
+        <p class="footer-center__info-title fs-20 fw-700">Компания «РумТибет»</p>
+        <p class="footer-center__info-desc fs-14 fw-400">{{ loremIpsumFooter }}</p>
+
+        <div class="contacts">
+          <a type="emailto" class="email-footer">info@domain.com</a>
+          <a class="phone-number">+7 (123) 456-78-90</a>
+        </div>
+
+        <div class="social-icons">
+          <a href="" aria-label="Telegram">
+            <img src="images/icons-footer/telegram-icon.svg">
+          </a>
+          <a href="" aria-label="ВКонтакте">
+            <img src="images/icons-footer/vk-icon.svg">
+          </a>
+          <a href="" aria-label="Pinterest">
+            <img src="images/icons-footer/pinterest-icon.svg">
+          </a>
+          <a href="" aria-label="Skype">
+            <img src="images/icons-footer/skype-icon.svg">
+          </a>
+        </div>
+      </div>
+
+      <nav class="nav-services">
+        <span class="nav-title fs-20 fw-700 line-height-120">Наши услуги</span>
+        <a href="">Прогулки в горы летом</a>
+        <a href="">Зимние походы в горы</a>
+        <a href="">Посещение храмов в горах</a>
+        <a href="">Экстремальные виды туризма</a>
+        <a href="">Походы в джунглях Амазонии</a>
+        <a href="">Поездка в Африку</a>
+      </nav>
+
+      <nav class="nav-for-travel">
+        <span class="nav-title fs-20 fw-700 line-height-120">Важно для путешествий</span>
+        <a href="">Как собрать в долгий поход?</a>
+        <a href="">Жизненно важные предметы для похода</a>
+        <a href="">Медицинская страховка, гарантии безопасности</a>
+        <a href="">Если вы врач - загляните сюда</a>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-wrapper">
+        <span class="proprietor-company-name fs-14 fw-600">ИП Константинопольский К.К., 2023</span>
+        <a href="">Политика обработки персональных данных</a>
+      </div>
     </div>
   </section>
 </div>
