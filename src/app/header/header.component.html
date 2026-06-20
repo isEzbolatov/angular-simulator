@@ -9,7 +9,7 @@
             <nav class="header-nav fs-18">
                 @for (router of routerLink; track router.path) {
                 <a [routerLink]="router.path" routerLinkActive="active-link"
-                    [routerLinkActiveOptions]="router.path === '' || '/' ? {exact: true} : {exact: false}">{{
+                    [routerLinkActiveOptions]="router.path === '' ? {exact: true} : {exact: false}">{{
                     router.label
                     }}</a>
                 }
