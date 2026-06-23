@@ -1,0 +1,40 @@
+<header class="header">
+    <div class="controls-container">
+        <div class="header-container">
+            <div class="logo-container">
+                <img class="mountains-logo" src="/images/mountains-logo.svg" alt="mountains logo">
+                <span class="company-name fs-14 fw-700">{{ companyName }}</span>
+            </div>
+
+            <nav class="header-nav fs-18">
+                @for (router of routerLink; track router.path) {
+                <a [routerLink]="router.path" routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="router.path === '' ? {exact: true} : {exact: false}">{{
+                    router.label
+                    }}</a>
+                }
+            </nav>
+
+            <button (click)="renderTextService.showSuccess()" class="consultation-button">Консультация</button>
+        </div>
+
+        <div class="header__widget">
+            @if (showTimer) {
+            <div class="timer-container">
+                <span class="header__widget-timer fs-18 fw-600">{{currentDate | date:'dd.MM.yyyy HH:mm:ss'}}</span>
+                <button (click)="toggleWidget()" class="counter-show-btn">Показать кликер</button>
+            </div>
+            } @else {
+            <div class="click-counter-container">
+                <div class="click-counter-wrapper">
+                    <button (click)="incrementCount()" class="increment-btn fs-18 fw-600">+</button>
+                    <span class="counter fs-18 fw-600">{{ count }}</span>
+                    <button [disabled]="count === 0" (click)="decrementCount()"
+                        class="decrement-btn fs-18 fw-600">-</button>
+                </div>
+                <button (click)="toggleWidget()" class="timer-show-btn">Показать дату</button>
+            </div>
+            }
+        </div>
+    </div>
+</header>

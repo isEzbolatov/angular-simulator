@@ -1,0 +1,192 @@
+@use '../../assets/mixins' as *;
+
+.header {
+    @include flex-center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 156px;
+    background: rgba(24, 18, 30, 0.5);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    animation: fadeInPage 0.8s ease-out forwards;
+}
+
+.controls-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    width: 1180px;
+}
+
+.header__widget {
+    margin-top: 4px;
+    width: auto;
+    align-self: flex-end;
+
+    &-timer {
+        height: 24px;
+        line-height: 25px;
+        color: var(--white-color);
+    }
+
+    .timer-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 375px;
+    }
+
+    .click-counter-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 270px;
+
+        .click-counter-wrapper {
+            @include flex-center;
+
+            justify-content: space-between;
+            width: 63px;
+            height: 24px;
+
+            .increment-btn {
+                line-height: 25px;
+                color: var(--white-color);
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+
+                &:hover {
+                    filter: brightness(0.8);
+                }
+
+                &:active {
+                    transform: scale(0.7);
+                }
+            }
+
+            .counter {
+                color: var(--white-color);
+            }
+
+            .decrement-btn {
+                line-height: 25px;
+                color: var(--white-color);
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+
+                &:hover {
+                    filter: brightness(0.8);
+                }
+
+                &:active {
+                    transform: scale(0.7);
+                }
+
+                &:disabled {
+                    cursor: default;
+                    opacity: 0.3;
+                }
+            }
+        }
+    }
+
+    .counter-show-btn {
+        @include white-button;
+
+        width: 157px;
+        height: 44px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .timer-show-btn {
+        @include white-button;
+
+        width: 157px;
+        height: 44px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.logo-container {
+    @include flex-center;
+
+    flex-direction: column;
+    width: 143px;
+    height: 61px;
+
+    .company-name {
+        margin-top: 10px;
+        width: 132px;
+        height: 22px;
+        font-style: normal;
+        text-transform: uppercase;
+        line-height: 22px;
+        letter-spacing: 8px;
+        color: var(--white-color);
+    }
+
+    .mountains-logo {
+        height: 29px;
+        width: 138px;
+    }
+}
+
+.header-nav {
+    @include flex-center;
+
+    justify-content: space-between;
+    width: 625px;
+    color: var(--white-color);
+
+    a {
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
+    }
+
+    .active-link {
+        color: aqua;
+        text-decoration: underline;
+    }
+}
+
+.consultation-button {
+    @include flex-center;
+
+    flex-direction: row;
+    padding: 12px 24px;
+    width: 158px;
+    height: 44px;
+    color: var(--green-color);
+    background-color: var(--white-color);
+    border-radius: 4px;
+    border: 0;
+
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        filter: brightness(0.8);
+    }
+
+    &:active {
+        transform: scale(0.9);
+    }
+}

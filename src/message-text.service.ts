@@ -17,7 +17,7 @@ export class MessageTextService {
     return [...this._messageTextData];
   }
 
-  addMessage(text: MessageText, type: MessageType) {
+  private addMessage(text: MessageText, type: MessageType) {
     const newMessage: IMessage = {
       id: Date.now(),
       type: type,
@@ -32,5 +32,21 @@ export class MessageTextService {
 
   closeMessage(idMessage: number): void {
     this._messageTextData = this._messageTextData.filter(item => item.id !== idMessage)
+  }
+
+  showWarn() {
+    this.addMessage(this._messageText.Warn, this._messageType.Warn);
+  }
+
+  showError() {
+    this.addMessage(this._messageText.Error, this._messageType.Error);
+  }
+
+  showSuccess() {
+    this.addMessage(this._messageText.Success, this._messageType.Success);
+  }
+
+  showInfo() {
+    this.addMessage(this._messageText.Info, this._messageType.Info);
   }
 }
