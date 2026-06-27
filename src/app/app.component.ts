@@ -5,10 +5,11 @@ import { MessageList } from './message-list/message-list.component';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [MessageList, RouterOutlet, HeaderComponent, FooterComponent],
+  imports: [MessageList, RouterOutlet, HeaderComponent, FooterComponent, CommonModule],
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

@@ -4,10 +4,12 @@ import { MessageTextService } from '../../message-text.service';
 import { DatePipe } from '@angular/common';
 import { RouterLink, RouterLinkActive } from "@angular/router";
 import { INavigation } from '../../interfaces/INavigation';
+import { merge, scan, startWith, Subject } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-header',
-  imports: [DatePipe, RouterLink, RouterLinkActive],
+  imports: [DatePipe, RouterLink, RouterLinkActive, AsyncPipe],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -18,7 +20,6 @@ export class HeaderComponent {
   public companyName: string = 'румтибет';
   public currentDate: Date = new Date;
   public showTimer: boolean = true;
-  public count: number = 0;
 
   public routerLink = [
     {
@@ -37,15 +38,22 @@ export class HeaderComponent {
     }, 1000)
   }
 
+  //Переписал счётчик на RxJS формат
+  private increment$ = new Subject<number>();
+  private decrement$ = new Subject<number>();
+
+  counter = merge(this.increment$, this.decrement$).pipe(
+    startWith(0),
+    scan((acc, delta) => Math.max(acc + delta, 0))
+  )
+
   // (ДЗ 16.5) Счетчик кликов.
   incrementCount() {
-    this.count += 1;
+    this.increment$.next(1);
   }
 
   decrementCount() {
-    if (this.count > 0) {
-      this.count -= 1;
-    }
+    this.decrement$.next(-1);
   }
 
   // (ДЗ 16.6) Кнопка, которая при нажатии отображает в шапке ИЛИ 4, ИЛИ 5 задачу.

@@ -2,28 +2,30 @@ import { Injectable } from '@angular/core';
 import { MessageType } from './enums/MessageType';
 import { IMessage } from './interfaces/IMessage';
 import { MessageText } from './enums/MessageText';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MessageTextService {
-  private _messageTextData: IMessage[] = [];
-
   readonly _messageType = MessageType;
-
   readonly _messageText = MessageText;
 
-  public get messageTextData(): IMessage[] {
-    return [...this._messageTextData];
-  }
+  private messageSubject$ = new BehaviorSubject<IMessage[]>([]);
+
+  public message$: Observable<IMessage[]> = this.messageSubject$.asObservable();
 
   private addMessage(text: MessageText, type: MessageType) {
+    const currentMessages = this.messageSubject$.value;
+
     const newMessage: IMessage = {
       id: Date.now(),
       type: type,
       textMessage: text
     }
-    this._messageTextData.unshift(newMessage);
+    const updatedMessages = [...currentMessages, newMessage]
+
+    this.messageSubject$.next(updatedMessages);
 
     setTimeout(() => {
       this.closeMessage(newMessage.id);
@@ -31,7 +33,9 @@ export class MessageTextService {
   }
 
   closeMessage(idMessage: number): void {
-    this._messageTextData = this._messageTextData.filter(item => item.id !== idMessage)
+    const current = this.messageSubject$.value;
+    const updated = current.filter(item => item.id !== idMessage);
+    this.messageSubject$.next(updated);
   }
 
   showWarn() {
