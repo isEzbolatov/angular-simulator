@@ -18,16 +18,6 @@ import { LoaderService } from './loader.service';
 })
 export class AppComponent {
   renderTextService: MessageTextService = inject(MessageTextService);
-
-  @Output() public loadingWebsite: boolean = false;
-
-  loading$: LoaderService = inject(LoaderService);
-
-  constructor() {
-    setInterval(() => {
-      this.loadingWebsite = true;
-    }, 500)
-  }
 }
 
 Collection;
