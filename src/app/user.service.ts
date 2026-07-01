@@ -34,6 +34,7 @@ export class UserService {
 
         catchError(error => {
           this.renderTextService.showError();
+          this.setUsers([]);
           return of([]);
         }),
 
