@@ -12,4 +12,6 @@ import { MessageTextService } from '../../message-text.service';
 })
 export class MessageList {
   renderTextService: MessageTextService = inject(MessageTextService);
+
+  messages$ = this.renderTextService.message$;
 }

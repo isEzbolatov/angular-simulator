@@ -28,8 +28,8 @@
             <div class="click-counter-container">
                 <div class="click-counter-wrapper">
                     <button (click)="incrementCount()" class="increment-btn fs-18 fw-600">+</button>
-                    <span class="counter fs-18 fw-600">{{ count }}</span>
-                    <button [disabled]="count === 0" (click)="decrementCount()"
+                    <span class="counter fs-18 fw-600">{{ counter | async }}</span>
+                    <button [disabled]="(counter | async) === 0" (click)="decrementCount()"
                         class="decrement-btn fs-18 fw-600">-</button>
                 </div>
                 <button (click)="toggleWidget()" class="timer-show-btn">Показать дату</button>

@@ -17,6 +17,8 @@
   --green-color: #1A3E3E;
   --yellow-color: #F2BE22;
   --gray-color: #F3F5F4;
+  --beige-color: #D4A373;
+  --green-user-color: #1D3939;
 }
 
 p,
@@ -24,8 +26,16 @@ h2 {
   margin: 0;
 }
 
+.fs-13 {
+  font-size: 13px;
+}
+
 .fs-14 {
   font-size: 14px;
+}
+
+.fs-15 {
+  font-size: 15px;
 }
 
 .fs-16 {

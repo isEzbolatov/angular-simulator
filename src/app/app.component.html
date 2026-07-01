@@ -1,8 +1,5 @@
-@if (!loadingWebsite) {
-<div class="loading-screen">
-  <img class="loading-icon" src="/images/loading-icon.svg" alt="загрузка">
-</div>
-} @else {
+<app-loader></app-loader>
+
 <app-header></app-header>
 
 <router-outlet></router-outlet>
@@ -10,4 +7,3 @@
 <app-footer></app-footer>
 
 <in-message-list></in-message-list>
-}

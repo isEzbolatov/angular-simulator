@@ -9,9 +9,9 @@
     </div>
 </ng-template>
 
-@if (renderTextService.messageTextData.length > 0) {
+@if (messages$ | async; as messages) {
 <div class="notification-container">
-    @for (message of renderTextService.messageTextData; track message.id) {
+    @for (message of messages; track message.id) {
     <ng-container [ngTemplateOutlet]="messageButton" [ngTemplateOutletContext]="{$implicit: message}">
     </ng-container>
     }
