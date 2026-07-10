@@ -1,0 +1,65 @@
+<div class="user-card">
+  <div class="user-profile">
+    <span class="user-name fs-26 fw-800">{{ user.name }}</span>
+    <span class="user-nickname fs-15 fw-700">{{ user.username }}</span>
+  </div>
+
+  <div class="user-info">
+    <div class="user-info-item">
+      <span class="label-info">Контакты</span>
+      <div class="contact-item">
+        <span class="contact-item-title">Эл. почта:</span>
+        <span class="user-email fs-14 fw-700">{{ user.email }}</span>
+      </div>
+      <div class="contact-item user-phone">
+        <span class="contact-item-title">Телефон:</span>
+        <span class="black-item">{{ user.phone }}</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-title">Веб-сайт:</span>
+        <span class="user-website fs-14 fw-700">{{ user.website }}</span>
+      </div>
+    </div>
+    <div class="user-info-item">
+      <span class="label-info">Адрес Проживания</span>
+      <div class="contact-item user-address-city">
+        <span class="contact-item-title">Город:</span>
+        <span class="black-item">{{ user.address.city }}</span>
+      </div>
+      <div class="contact-item user-address-street">
+        <span class="contact-item-title">Улица:</span>
+        <span class="black-item">{{ user.address.street }}</span>
+      </div>
+      <div class="contact-item user-address-suite">
+        <span class="contact-item-title">Офис:</span>
+        <span class="black-item">{{ user.address.suite }}</span>
+      </div>
+      <div class="contact-item user-address-zipcode">
+        <span class="contact-item-title">Индекс:</span>
+        <span class="black-item">{{ user.address.zipcode }}</span>
+      </div>
+      <div class="contact-item user-address-coordinates">
+        <span class="contact-item-title">Координаты:</span>
+        <span class="geo-wrapper">
+          <span class="geo-item black-item">{{ user.address.geo.lat }}</span>
+          <span class="geo-item black-item">{{ user.address.geo.lng }}</span>
+        </span>
+      </div>
+    </div>
+    <div class="user-info-item">
+      <span class="label-info">Место работы</span>
+      <div class="contact-item user-company-name">
+        <span class="contact-item-title">Компания:</span>
+        <span class="black-item">{{ user.company.name }}</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-title">Миссия:</span>
+        <span class="mission fs-13 fw-700">{{ user.company.catchPhrase }}</span>
+      </div>
+      <div class="contact-item user-company-bs">
+        <span class="contact-item-title">Специализация:</span>
+        <span class="black-item">{{ user.company.bs }}</span>
+      </div>
+    </div>
+  </div>
+</div>
