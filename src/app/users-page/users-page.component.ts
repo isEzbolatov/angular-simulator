@@ -25,6 +25,6 @@ export class UsersPageComponent {
   );
 
   deleteUserCard(userId: number) {
-    this.userService.
+    this.userService.deleteUser(userId)
   }
 }

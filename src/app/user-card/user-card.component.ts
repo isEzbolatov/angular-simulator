@@ -10,5 +10,5 @@ import { IUser } from '../../interfaces/IUser';
 export class UserCardComponent {
   @Input({ required: true }) user!: IUser;
 
-  @Output() deleteUser = new EventEmitter<string>();
+  @Output() deleteUser = new EventEmitter<number>();
 }
