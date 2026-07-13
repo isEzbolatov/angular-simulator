@@ -45,6 +45,11 @@ export class UserService {
   }
 
   deleteUser(userId: number) {
-    return this.deleteUser
+    const currentUsers = this.userSubject.value;
+    const updatedUsers = currentUsers.filter(user => user.id !== userId);
+
+    this.userSubject.next(updatedUsers);
+
+    return of(void 0);
   }
 }

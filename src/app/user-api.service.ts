@@ -10,4 +10,8 @@ export class UserApiService {
   getUsers(): Observable<IUser[]> {
     return of(usersData as IUser[]);
   }
+
+  deleteUser(userId: number): Observable<void> {
+    return of(void 0); // если бы был у меня через запрос http, но у меня локальный мок.
+  }
 }
