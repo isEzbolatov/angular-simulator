@@ -43,4 +43,8 @@ export class UserService {
         })
       )
   }
+
+  deleteUser(userId: number) {
+    return this.deleteUser
+  }
 }

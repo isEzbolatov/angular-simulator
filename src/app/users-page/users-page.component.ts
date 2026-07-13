@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Output } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { UserService } from '../user.service';
 import { tap } from 'rxjs';
 import { UserCardComponent } from "../user-card/user-card.component";
+import { IUser } from '../../interfaces/IUser';
 
 @Component({
   selector: 'app-users-page',
@@ -22,4 +23,8 @@ export class UsersPageComponent {
   public users1$ = this.userService.user$.pipe(
     tap(users => console.log('users$ emitted:', users))
   );
+
+  deleteUserCard(userId: number) {
+    this.userService.
+  }
 }

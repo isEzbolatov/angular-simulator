@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IUser } from '../../interfaces/IUser';
 
 @Component({
@@ -8,5 +8,7 @@ import { IUser } from '../../interfaces/IUser';
   styleUrl: './user-card.component.scss',
 })
 export class UserCardComponent {
-  @Input() user!: IUser;
+  @Input({ required: true }) user!: IUser;
+
+  @Output() deleteUser = new EventEmitter<string>();
 }
