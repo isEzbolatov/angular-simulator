@@ -1,15 +1,17 @@
 import { Component, inject, Output } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { UserService } from '../user.service';
-import { tap } from 'rxjs';
+import { BehaviorSubject, combineLatest, map, tap } from 'rxjs';
 import { UserCardComponent } from "../user-card/user-card.component";
 import { IUser } from '../../interfaces/IUser';
 import { UserCreateComponent } from "../user-create/user-create.component";
 import { MessageTextService } from '../../message-text.service';
+import { UsersFilterComponent } from "../users-filter/users-filter.component";
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-users-page',
-  imports: [AsyncPipe, UserCardComponent, UserCreateComponent],
+  imports: [AsyncPipe, UserCardComponent, UserCreateComponent, UsersFilterComponent],
   templateUrl: './users-page.component.html',
   styleUrl: './users-page.component.scss',
 })
@@ -19,6 +21,12 @@ export class UsersPageComponent {
 
   public users$ = this.userService.user$;
   public isModalOpen: boolean = false;
+  public filterQuery$ = new BehaviorSubject<string>('');
+
+  public filteredUsers$ = combineLatest([this.users$, this.filterQuery$]).pipe(
+    map(([user, filterUser]) => user.filter(name => name.name.toLowerCase().includes(filterUser.trim().toLowerCase()))),
+    takeUntilDestroyed()
+  );
 
   ngOnInit() {
     this.userService.loadUsers().subscribe();
@@ -34,5 +42,9 @@ export class UsersPageComponent {
 
   onCreateUser(newUser: IUser) {
     this.userService.addUser(newUser).subscribe()
+  }
+
+  onFilterChange(search: string) {
+    this.filterQuery$.next(search);
   }
 }

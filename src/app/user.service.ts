@@ -4,6 +4,7 @@ import { UserApiService } from './user-api.service';
 import { LoaderService } from './loader.service';
 import { MessageTextService } from '../message-text.service';
 import { IUser } from '../interfaces/IUser';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,9 +16,11 @@ export class UserService {
   public userApi: UserApiService = inject(UserApiService);
   public loader: LoaderService = inject(LoaderService);
   public renderTextService: MessageTextService = inject(MessageTextService);
+  public localStorageService: LocalStorageService = inject(LocalStorageService);
 
   setUsers(user: IUser[]) {
     this.userSubject.next(user);
+    this.localStorageService.set('users', user);
   }
 
   getUsers(users: IUser[]) {
@@ -25,6 +28,14 @@ export class UserService {
   }
 
   loadUsers(): Observable<IUser[]> {
+    const localUsers = this.localStorageService.get('users');
+
+    if (localUsers && Array.isArray(localUsers) && localUsers.length > 0) {
+      this.userSubject.next(localUsers);
+      this.loader.hideLoader();
+      return of(localUsers);
+    }
+
     this.loader.showLoader();
 
     return this.userApi.getUsers()
@@ -49,6 +60,8 @@ export class UserService {
     const updatedUsers = currentUsers.filter(user => user.id !== userId);
 
     this.userSubject.next(updatedUsers);
+    
+    this.localStorageService.set('users', this.userSubject.value);
 
     return of(void 0);
   }
@@ -57,6 +70,7 @@ export class UserService {
     this.userSubject.value;
     const updated = [...this.userSubject.value, user];
     this.userSubject.next(updated);
+    this.localStorageService.set('users', this.userSubject.value);
     return of(void 0);
   }
 }
