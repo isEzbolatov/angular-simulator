@@ -52,4 +52,11 @@ export class UserService {
 
     return of(void 0);
   }
+
+  addUser(user: IUser): Observable<void> {
+    this.userSubject.value;
+    const updated = [...this.userSubject.value, user];
+    this.userSubject.next(updated);
+    return of(void 0);
+  }
 }
