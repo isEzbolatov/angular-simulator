@@ -30,7 +30,7 @@ export class UserService {
   loadUsers(): Observable<IUser[]> {
     const localUsers = this.localStorageService.get('users');
 
-    if (localUsers && Array.isArray(localUsers) && localUsers.length > 0) {
+    if (localUsers && Array.isArray(localUsers) && localUsers.length !== null) {
       this.userSubject.next(localUsers);
       this.loader.hideLoader();
       return of(localUsers);
@@ -60,7 +60,7 @@ export class UserService {
     const updatedUsers = currentUsers.filter(user => user.id !== userId);
 
     this.userSubject.next(updatedUsers);
-    
+
     this.localStorageService.set('users', this.userSubject.value);
 
     return of(void 0);
