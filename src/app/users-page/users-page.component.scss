@@ -35,151 +35,23 @@
       }
     }
   }
+}
 
-  .user-card {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    padding: 0px;
-    gap: 25px;
-    width: 440px;
-    height: 630px;
-    background: #FFFFFF;
-    border-top: 4px solid #D4A373;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.06);
-    border-radius: 4px;
-
-    .user-profile {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 35px 30px 0px;
-      gap: 3px;
-      height: 106px;
-
-      .user-name {
-        height: 30px;
-        line-height: 30px;
-        display: flex;
-        align-items: center;
-        color: var(--green-user-color);
-      }
-
-      .user-nickname {
-        height: 18px;
-        line-height: 17px;
-        display: flex;
-        align-items: center;
-        color: var(--beige-color);
-      }
-    }
-
-    .user-info {
-      display: flex;
-      flex-direction: column;
-      height: 493px;
-      padding: 0 30px 50px 30px;
-      gap: 25px;
-
-      .label-info {
-        display: inline;
-        position: relative;
-        padding-right: 20px;
-        font-weight: 800;
-        font-size: 12px;
-        line-height: 14px;
-        display: flex;
-        gap: 15px;
-        align-items: center;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-        color: var(--green-user-color);
-      }
-
-      .label-info::after {
-        content: '';
-        display: block;
-        flex: 1;
-        height: 1px;
-        background: #E2E8F0;
-      }
-
-      .user-info-item {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .contact-item {
-        display: flex;
-        justify-content: space-between;
-      }
-
-      .user-email {
-        cursor: pointer;
-        line-height: 20px;
-        display: flex;
-        align-items: center;
-        text-align: right;
-        color: var(--beige-color);
-      }
-
-      .contact-item-title {
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 20px;
-        display: flex;
-        align-items: center;
-        color: #667C7C;
-      }
-
-      .black-item {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 20px;
-        text-align: right;
-        color: var(--green-user-color);
-      }
-
-      .geo-wrapper {
-        display: flex;
-        gap: 5px;
-
-        .geo-item {
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: row;
-          justify-content: flex-end;
-          align-items: flex-start;
-          padding: 0.5px 6px;
-          width: 77px;
-          height: 20px;
-          background: #F4F7F5;
-          border: 1px solid #E2E8F0;
-          border-radius: 3px;
-        }
-      }
-
-      .user-website {
-        cursor: pointer;
-        line-height: 20px;
-        display: flex;
-        align-items: center;
-        text-align: right;
-        color: var(--beige-color);
-      }
-
-      .mission {
-        font-style: italic;
-        line-height: 18px;
-        display: flex;
-        align-items: center;
-        text-align: right;
-        color: #667C7C;
-      }
-    }
-  }
+.add-user-btn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 12px 24px;
+  width: 158px;
+  height: 44px;
+  color: var(--white-color);
+  background-color: var(--green-color);
+  border-radius: 4px;
+  border: 0;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  right: 400px;
+  top: 250px;
 }

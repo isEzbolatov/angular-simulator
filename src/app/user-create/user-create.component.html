@@ -1,0 +1,82 @@
+@if (isOpen) {
+<div class="modal-overlay" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button type="button" class="close-btn" (click)="closeModal()">✕</button>
+
+    <div class="create-form" [formGroup]="myForm">
+      <div>
+        <label for="name">name:</label>
+        <input type="text" id="name" formControlName="name">
+      </div>
+
+      <div>
+        <label for="username">username:</label>
+        <input type="text" id="username" formControlName="username">
+      </div>
+
+      <div>
+        <label for="email">email:</label>
+        <input type="email" id="email" formControlName="email">
+      </div>
+
+      <div>
+        <label for="phone">phone:</label>
+        <input type="tel" id="phone" formControlName="phone">
+      </div>
+
+      <div>
+        <label for="website">website:</label>
+        <input type="text" id="website" formControlName="website">
+      </div>
+
+      <div>
+        <label for="address-city">city:</label>
+        <input type="text" id="address-city" formControlName="city">
+      </div>
+
+      <div>
+        <label for="address-street">street:</label>
+        <input type="text" id="address-street" formControlName="street">
+      </div>
+
+      <div>
+        <label for="address-suite">suite:</label>
+        <input type="text" id="address-suite" formControlName="suite">
+      </div>
+
+      <div>
+        <label for="address-zipcode">zipcode:</label>
+        <input type="text" id="address-zipcode" formControlName="zipcode">
+      </div>
+
+      <div>
+        <label for="address-geo-lat">geo lat:</label>
+        <input type="text" id="address-geo-lat" formControlName="geoLat">
+      </div>
+
+      <div>
+        <label for="address-geo-lng">geo lng:</label>
+        <input type="text" id="address-geo-lng" formControlName="geoLng">
+      </div>
+
+      <div>
+        <label for="company-name">company:</label>
+        <input type="text" id="company-name" formControlName="companyName">
+      </div>
+
+      <div>
+        <label for="company-catchPhrase">catchPhrase:</label>
+        <input type="text" id="company-catchPhrase" formControlName="catchPhrase">
+      </div>
+
+      <div>
+        <label for="company-bs">bs:</label>
+        <input type="text" id="company-bs" formControlName="bs">
+      </div>
+
+      <button type="submit" (click)="addUser()" [disabled]="!myForm.valid">Добавить пользователя</button>
+    </div>
+  </div>
+
+</div>
+}
