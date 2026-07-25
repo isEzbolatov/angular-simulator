@@ -7,10 +7,12 @@ import { LocalStorageService } from './../local-storage.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import { MessageTextService } from '../../message-text.service';
+import { faPeopleGroup, faShield, faTag } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-home-page',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, FontAwesomeModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
@@ -27,26 +29,28 @@ export class HomePageComponent {
   public participantsCount: number = 0;
 
   public offerData: IOffer = {
-
     id: 1,
     title: 'Лучшие программы для тебя',
     description: 'Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.',
     features: [
       {
         id: 1,
-        icon: 'images/offer-icons/guide-icon.svg',
+        icon: faPeopleGroup,
+        iconClass: 'team',
         title: 'Опытный гид',
         description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
       },
       {
         id: 2,
-        icon: 'images/offer-icons/security-icon.svg',
+        icon: faShield,
+        iconClass: 'security',
         title: 'Безопасный поход',
         description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
       },
       {
         id: 3,
-        icon: 'images/offer-icons/prices-icon.svg',
+        icon: faTag,
+        iconClass: 'discount',
         title: 'Лояльные цены',
         description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
       }
