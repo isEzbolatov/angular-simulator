@@ -3,13 +3,14 @@ import { LocalStorageService } from '../local-storage.service';
 import { MessageTextService } from '../../message-text.service';
 import { DatePipe } from '@angular/common';
 import { RouterLink, RouterLinkActive } from "@angular/router";
-import { INavigation } from '../../interfaces/INavigation';
 import { merge, scan, startWith, Subject } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { ToggleSwitchModule, ToggleSwitch } from 'primeng/toggleswitch';
+import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'app-header',
-  imports: [DatePipe, RouterLink, RouterLinkActive, AsyncPipe],
+  imports: [DatePipe, RouterLink, RouterLinkActive, AsyncPipe, ToggleSwitch],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
