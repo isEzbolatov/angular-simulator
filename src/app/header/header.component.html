@@ -36,6 +36,11 @@
             </div>
             }
         </div>
-        <p-toggleswitch />
+        @if(themeService.state$ | async; as state) {
+        <p-toggleswitch (click)="themeService.toggleColorMode()" [ngModel]="state.colorMode === 'dark'" />
+        <div class="flex justify-center">
+            <p-selectbutton [options]="stateOptions" [(ngModel)]="value" optionLabel="label" optionValue="value" aria-labelledby="basic" />
+        </div>
+        }
     </div>
 </header>

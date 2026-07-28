@@ -1,4 +1,4 @@
 export interface ThemeState {
-  theme: string;
+  theme: 'aura' | 'lara' | 'nora';
   colorMode: 'light' | 'dark';
 }

@@ -11,7 +11,7 @@ export class ThemeService {
   public state$ = this.themeState.asObservable();
 
   getInitialState() {
-    const defaultState: ThemeState = { theme: 'default', colorMode: 'light' };
+    const defaultState: ThemeState = { theme: 'aura', colorMode: 'light' };
     const currentState = localStorage.getItem('themeState');
 
     if (currentState === null) {
@@ -34,7 +34,7 @@ export class ThemeService {
     }
   }
 
-  setTheme(theme: string) {
+  setTheme(theme: ThemeState['theme']) {
     const currentState = this.themeState.value;
     const newState = { ...currentState, theme };
     this.themeState.next(newState);
