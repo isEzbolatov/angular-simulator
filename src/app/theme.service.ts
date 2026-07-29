@@ -20,11 +20,6 @@ export class ThemeService {
 
   public state$ = this.themeState.asObservable();
 
-  constructor() {
-    const theme = this.themeState.value.theme;
-    usePreset(themePreset);
-  }
-
   getInitialState() {
     const defaultState: ThemeState = { theme: 'aura', colorMode: 'light' };
     const currentState = localStorage.getItem('themeState');
