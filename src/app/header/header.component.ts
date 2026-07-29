@@ -65,10 +65,9 @@ export class HeaderComponent {
     this.showTimer = !this.showTimer;
   }
 
-  stateOptions: any[] = [
-    { label: 'aura', value: 'aura' },
-    { label: 'lara', value: 'lara' },
-    { label: 'nora', value: 'nora' }
+  themeOptions = [
+    { label: 'Aura', value: 'aura' },
+    { label: 'Lara', value: 'lara' },
+    { label: 'Nora', value: 'nora' }
   ];
-  value: string = 'one-way';
 }

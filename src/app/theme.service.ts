@@ -1,6 +1,16 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ThemeState } from '../interfaces/ITheme';
+import { usePreset } from '@primeuix/themes';
+import Aura from '@primeuix/themes/aura';
+import Lara from '@primeuix/themes/lara';
+import Nora from '@primeuix/themes/nora';
+
+const themePreset = {
+  aura: Aura,
+  lara: Lara,
+  nora: Nora,
+};
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +19,11 @@ export class ThemeService {
   private themeState = new BehaviorSubject<ThemeState>(this.getInitialState());
 
   public state$ = this.themeState.asObservable();
+
+  constructor() {
+    const theme = this.themeState.value.theme;
+    usePreset(themePreset);
+  }
 
   getInitialState() {
     const defaultState: ThemeState = { theme: 'aura', colorMode: 'light' };
@@ -35,6 +50,7 @@ export class ThemeService {
   }
 
   setTheme(theme: ThemeState['theme']) {
+    usePreset(themePreset[theme]);
     const currentState = this.themeState.value;
     const newState = { ...currentState, theme };
     this.themeState.next(newState);
