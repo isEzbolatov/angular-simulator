@@ -4,6 +4,8 @@
         <button class="add-user-btn" (click)="isModalOpen = true">Добавить пользователя</button>
         <app-user-create [(isOpen)]="isModalOpen" (createUser)="onCreateUser($event)"></app-user-create>
         <app-users-filter (filterChange)="onFilterChange($event)"></app-users-filter>
+        <i class="fa-solid fa-user"></i>
+
         @for(user of filteredUsers$ | async; track user.id) {
         <app-user-card [user]="user" (deleteUser)="deleteUserCard($event)"></app-user-card>
         } @empty {

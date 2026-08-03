@@ -1,6 +1,9 @@
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+
 export interface IOfferFeature {
     id: number;
-    icon: string;
+    icon: IconDefinition;
+    iconClass: string;
     title: string;
     description: string;
 }

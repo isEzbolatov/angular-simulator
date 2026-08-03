@@ -88,7 +88,7 @@
 
       @for (feature of offerData.features; track feature.id) {
       <div class="feature-item scale">
-        <img [src]=feature.icon>
+        <fa-icon size="2xl" [icon]="feature.icon" [classList]="feature.iconClass"></fa-icon>
         <div class="feature-wrapper">
           <h2 class="feature-title fs-18 fw-700 ">{{ feature.title }}</h2>
           <p class="feature-description fs-14 fw-400">{{ feature.description }}</p>

@@ -3,19 +3,23 @@ import { LocalStorageService } from '../local-storage.service';
 import { MessageTextService } from '../../message-text.service';
 import { DatePipe } from '@angular/common';
 import { RouterLink, RouterLinkActive } from "@angular/router";
-import { INavigation } from '../../interfaces/INavigation';
 import { merge, scan, startWith, Subject } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { ToggleSwitchModule, ToggleSwitch } from 'primeng/toggleswitch';
+import { ThemeService } from '../theme.service';
+import { FormsModule } from '@angular/forms';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 @Component({
   selector: 'app-header',
-  imports: [DatePipe, RouterLink, RouterLinkActive, AsyncPipe],
+  imports: [DatePipe, RouterLink, RouterLinkActive, AsyncPipe, ToggleSwitch, SelectButtonModule, FormsModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
   renderTextService: MessageTextService = inject(MessageTextService);
   localStorageService: LocalStorageService = inject(LocalStorageService);
+  themeService = inject(ThemeService);
 
   public companyName: string = 'румтибет';
   public currentDate: Date = new Date;
@@ -60,4 +64,10 @@ export class HeaderComponent {
   toggleWidget() {
     this.showTimer = !this.showTimer;
   }
+
+  themeOptions = [
+    { label: 'Aura', value: 'aura' },
+    { label: 'Lara', value: 'lara' },
+    { label: 'Nora', value: 'nora' }
+  ];
 }
