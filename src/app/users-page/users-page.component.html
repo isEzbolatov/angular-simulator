@@ -6,7 +6,7 @@
         }
     </div>
     <div class="user-cards-wrapper">
-        <button class="add-user-btn" (click)="isModalOpen = true">Добавить пользователя</button>
+        <button class="add-user-btn" (click)="isModalOpen = true" appBoldOnHover>Добавить пользователя</button>
         <app-user-create [(isOpen)]="isModalOpen" (createUser)="onCreateUser($event)"></app-user-create>
         <app-users-filter (filterChange)="onFilterChange($event)"></app-users-filter>
         <i class="fa-solid fa-user"></i>

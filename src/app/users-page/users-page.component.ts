@@ -9,10 +9,11 @@ import { MessageTextService } from '../../message-text.service';
 import { UsersFilterComponent } from "../users-filter/users-filter.component";
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PluralPipe } from '../plural.pipe';
+import { BoldOnHoverDirective } from '../bold-on-hover.directive';
 
 @Component({
   selector: 'app-users-page',
-  imports: [AsyncPipe, UserCardComponent, UserCreateComponent, UsersFilterComponent, PluralPipe],
+  imports: [AsyncPipe, UserCardComponent, UserCreateComponent, UsersFilterComponent, PluralPipe, BoldOnHoverDirective],
   templateUrl: './users-page.component.html',
   styleUrl: './users-page.component.scss',
 })
