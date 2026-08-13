@@ -112,29 +112,27 @@ h2 {
   color: #1A3E3E;
 }
 
-.active {
-  [appAnimatedGradientOnHover] {
-    position: relative;
-    transition: all 0.3s ease;
+[appAnimatedGradientOnHover] {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+[appAnimatedGradientOnHover].active::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(from 0deg, #ff6b6b, #feca57, #48dbfb, #ff6b6b);
+  animation: rotate 2s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
   }
 
-  [appAnimatedGradientOnHover].active::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border-radius: inherit;
-    background: conic-gradient(from 0deg, #ff6b6b, #feca57, #48dbfb, #ff6b6b);
-    animation: rotate 2s linear infinite;
-    z-index: -1;
-  }
-
-  @keyframes rotate {
-    from {
-      transform: rotate(0deg);
-    }
-
-    to {
-      transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
   }
 }
