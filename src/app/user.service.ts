@@ -2,7 +2,6 @@ import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, finalize, Observable, of, tap } from 'rxjs';
 import { UserApiService } from './user-api.service';
 import { LoaderService } from './loader.service';
-import { MessageTextService } from '../message-text.service';
 import { IUser } from '../interfaces/IUser';
 import { LocalStorageService } from './local-storage.service';
 
@@ -15,7 +14,6 @@ export class UserService {
   public user$: Observable<IUser[]> = this.userSubject.asObservable();
   public userApi: UserApiService = inject(UserApiService);
   public loader: LoaderService = inject(LoaderService);
-  public renderTextService: MessageTextService = inject(MessageTextService);
   public localStorageService: LocalStorageService = inject(LocalStorageService);
 
   setUsers(user: IUser[]) {
@@ -44,7 +42,6 @@ export class UserService {
           this.setUsers(data)),
 
         catchError(error => {
-          this.renderTextService.showError();
           this.setUsers([]);
           return of([]);
         }),

@@ -5,10 +5,11 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import { loggingInterceptor } from './logging.interceptor';
+import { errorInterceptor } from './error.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(withInterceptors([loggingInterceptor])),
+    provideHttpClient(withInterceptors([loggingInterceptor, errorInterceptor])),
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideZoneChangeDetection(),
