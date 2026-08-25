@@ -1,7 +1,12 @@
 <section class="user-cards-container">
     <h1 class="users-title">Список Пользователей</h1>
+    <div class="users-count">
+        @if(filteredUsers$ | async; as users) {
+        Всего пользователей: {{ users.length | plural:'пользователей':'пользователя':'пользователь' }}
+        }
+    </div>
     <div class="user-cards-wrapper">
-        <button class="add-user-btn" (click)="isModalOpen = true">Добавить пользователя</button>
+        <button class="add-user-btn" (click)="isModalOpen = true" appBoldOnHover>Добавить пользователя</button>
         <app-user-create [(isOpen)]="isModalOpen" (createUser)="onCreateUser($event)"></app-user-create>
         <app-users-filter (filterChange)="onFilterChange($event)"></app-users-filter>
         <i class="fa-solid fa-user"></i>

@@ -1,6 +1,6 @@
-<div class="user-card">
+<div class="user-card" appAnimatedGradientOnHover>
   <div class="user-profile">
-    <span class="user-name fs-26 fw-800">{{ user.name || 'Неизвестно' }}</span>
+    <span class="user-name fs-26 fw-800">{{ user.name || 'Неизвестно' | uppercase }}</span>
     <span class="user-nickname fs-15 fw-700">{{ user.username || 'Неизвестно' }}</span>
   </div>
 
@@ -13,7 +13,7 @@
       </div>
       <div class="contact-item user-phone">
         <span class="contact-item-title">Телефон:</span>
-        <span class="black-item">{{ user.phone || 'Неизвестно' }}</span>
+        <span class="black-item">{{ user.phone | phoneFormat:'international' }}</span>
       </div>
       <div class="contact-item">
         <span class="contact-item-title">Веб-сайт:</span>
@@ -63,5 +63,5 @@
     </div>
   </div>
 
-  <button (click)="onDelete()" class="delete-user">Удалить пользователя</button>
+  <button (click)="onDelete()" class="delete-user" appBoldOnHover>Удалить пользователя</button>
 </div>
