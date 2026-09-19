@@ -1,5 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { IPostResponse } from '../models/post.model';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +9,9 @@ import { HttpClient } from '@angular/common/http';
 export class PostsApiService {
   http = inject(HttpClient);
 
-  getPosts() {
-    return this.http.get('https://dummyjson.com/posts');
+  getPosts(limit: number, skip: number): Observable<IPostResponse> {
+    return this.http.get<IPostResponse>(
+      `https://dummyjson.com/posts?limit=${limit}&skip=${skip}`
+    );
   }
 }
