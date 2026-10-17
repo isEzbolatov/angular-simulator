@@ -21,6 +21,12 @@ export const routes: Routes = [
                 .then((module) => module.PostsComponent)
     },
     {
+        path: 'posts/:id',
+        loadComponent: () =>
+            import('./features/posts/components/post-detail/post-detail.component')
+                .then((module) => module.PostDetailComponent)
+    },
+    {
         path: '**',
         loadComponent: () =>
             import('./not-found-page/not-found-page.component')

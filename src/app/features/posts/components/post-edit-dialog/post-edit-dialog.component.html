@@ -1,0 +1,18 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+  <label>
+    Заголовок
+    <input type="text" formControlName="title" />
+  </label>
+
+  <label>
+    Теги
+    <input type="text" formControlName="tags" />
+  </label>
+
+  <label>
+    Просмотры
+    <input type="number" formControlName="views" />
+  </label>
+
+  <button type="submit">Сохранить</button>
+</form>

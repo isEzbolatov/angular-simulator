@@ -1,0 +1,14 @@
+ .post-detail-page {
+  min-height: 420px;
+  padding: 210px 24px 64px;
+  box-sizing: border-box;
+  background: var(--white-color, #fff);
+}
+
+h1 {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  color: #18121e;
+  font-size: 42px;
+  line-height: 1.2;
+}
