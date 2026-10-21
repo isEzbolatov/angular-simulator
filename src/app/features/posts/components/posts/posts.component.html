@@ -8,7 +8,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-post>
-      <tr [pContextMenuRow]="post">
+      <tr [pContextMenuRow]="post" (dblclick)="viewPost(post)">
         <td>{{ post.title }}</td>
         <td>{{ post.tags.join(', ') }}</td>
         <td>{{ post.views }}</td>

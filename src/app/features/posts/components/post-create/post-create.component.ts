@@ -21,8 +21,11 @@ export class PostCreateComponent {
   form = this.formBuilder.group({
     title: [''],
     body: [''],
-    tags: ['']
-  })
+    tags: [''],
+    views: [0],
+    likes: [0],
+    dislikes: [0],
+  });
   
   createPost() {
     const formValue = this.form.getRawValue();
@@ -30,6 +33,11 @@ export class PostCreateComponent {
       ...formValue,
       title: formValue.title ?? '',
       body: formValue.body ?? '',
+      views: Number(formValue.views ?? 0),
+      reactions: {
+        likes: Number(formValue.likes ?? 0),
+        dislikes: Number(formValue.dislikes ?? 0),
+      },
       userId: 1,
       tags: (formValue.tags ?? '')
         .split(',')

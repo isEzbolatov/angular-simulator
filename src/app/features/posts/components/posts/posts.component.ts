@@ -71,9 +71,11 @@ export class PostsComponent {
     });
   }
 
-  viewPost() {
-    if (this.selectedPost) {
-      this.router.navigate(['/posts', this.selectedPost.id]);
+  viewPost(post?: IPost) {
+    const postToView = post ?? this.selectedPost;
+
+    if (postToView) {
+      this.router.navigate(['/posts', postToView.id]);
     }
   }
 
