@@ -10,6 +10,7 @@ import { ContextMenuModule } from 'primeng/contextmenu';
 import { MenuItem } from 'primeng/api';
 import { DynamicDialogModule, DialogService } from 'primeng/dynamicdialog';
 import { PostEditDialogComponent } from '../post-edit-dialog/post-edit-dialog.component';
+import { MessageTextService } from '../../../../../message-text.service';
 
 @Component({
   selector: 'app-posts',
@@ -20,9 +21,11 @@ import { PostEditDialogComponent } from '../post-edit-dialog/post-edit-dialog.co
   styleUrl: './posts.component.scss',
 })
 export class PostsComponent {
-  postsApiService = inject(PostsApiService);
-  router = inject(Router);
-  dialogService = inject(DialogService);
+  private postsApiService = inject(PostsApiService);
+  private messageService = inject(MessageTextService);
+  private router = inject(Router);
+  private dialogService = inject(DialogService);
+
   posts: IPost[] = [];
   first = 0;
   rows = 10;
@@ -37,11 +40,17 @@ export class PostsComponent {
 
   ngOnInit() {
     this.isLoading = true;
-    this.postsApiService.getPosts(10, 0).subscribe((response) => {
-      this.posts = response.posts;
-      this.totalRecords = response.total;
-      this.isLoading = false;
-      console.log(this.posts)
+    this.postsApiService.getPosts(10, 0).subscribe({
+      next: (response) => {
+        this.posts = response.posts;
+        this.totalRecords = response.total;
+        this.isLoading = false;
+        console.log(this.posts);
+      },
+      error: () => {
+        this.isLoading = false;
+        this.messageService.showError();
+      },
     });
   }
 
@@ -50,10 +59,16 @@ export class PostsComponent {
     this.rows = event.rows ?? 10;
     this.isLoading = true;
 
-    this.postsApiService.getPosts(this.rows, this.first).subscribe((response) => {
-      this.posts = response.posts;
-      this.isLoading = false;
-    })
+    this.postsApiService.getPosts(this.rows, this.first).subscribe({
+      next: (response) => {
+        this.posts = response.posts;
+        this.isLoading = false;
+      },
+      error: () => {
+        this.isLoading = false;
+        this.messageService.showError();
+      },
+    });
   }
 
   viewPost() {
@@ -101,9 +116,14 @@ export class PostsComponent {
 
     const postId = this.selectedPost.id;
 
-    this.postsApiService.deletePost(postId).subscribe(() => {
-      this.posts = this.posts.filter((post) => post.id !== postId);
-      this.selectedPost = null;
+    this.postsApiService.deletePost(postId).subscribe({
+      next: () => {
+        this.posts = this.posts.filter((post) => post.id !== postId);
+        this.selectedPost = null;
+      },
+      error: () => {
+        this.messageService.showError();
+      },
     });
   }
 }

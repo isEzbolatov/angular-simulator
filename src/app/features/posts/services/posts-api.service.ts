@@ -26,6 +26,13 @@ export class PostsApiService {
     );
   }
 
+  createPost(postData: Partial<IPost>): Observable<IPost> {
+    return this.http.post<IPost>(
+      'https://dummyjson.com/posts/add',
+      postData
+    );
+  }
+
   deletePost(id: number): Observable<void> {
     return this.http.delete<void>(
       `https://dummyjson.com/posts/${id}`
