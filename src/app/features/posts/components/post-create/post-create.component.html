@@ -1,0 +1,39 @@
+<main class="post-create-page">
+    <form class="post-create-form" [formGroup]="form" (ngSubmit)="createPost()">
+        <label>
+            Заголовок
+            <input formControlName="title">
+        </label>
+
+        <label>
+            Текст
+            <textarea formControlName="body"></textarea>
+        </label>
+
+        <label>
+            Теги через запятую
+            <input formControlName="tags">
+        </label>
+
+        <label>
+            Просмотры
+            <input type="number" formControlName="views">
+        </label>
+
+        <label>
+            Лайки
+            <input type="number" formControlName="likes">
+        </label>
+
+        <label>
+            Дизлайки
+            <input type="number" formControlName="dislikes">
+        </label>
+
+        <button type="submit">Отправить</button>
+
+        @if (message) {
+            <p class="success-message">{{ message }}</p>
+        }
+    </form>
+</main>

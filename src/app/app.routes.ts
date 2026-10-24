@@ -1,4 +1,6 @@
+import { model } from '@angular/core';
 import { Routes } from '@angular/router';
+import { postDetailResolver } from './features/posts/resolvers/post-detail.resolver';
 
 export const routes: Routes = [
     {
@@ -12,6 +14,27 @@ export const routes: Routes = [
         loadComponent: () =>
             import('./users-page/users-page.component')
                 .then((module) => module.UsersPageComponent),
+    },
+    {
+        path: 'posts',
+        loadComponent: () =>
+            import('./features/posts/components/posts/posts.component')
+                .then((module) => module.PostsComponent)
+    },
+    {
+        path: 'posts/create',
+        loadComponent: () =>
+            import('./features/posts/components/post-create/post-create.component')
+                .then((module) => module.PostCreateComponent)
+    },
+    {
+        path: 'posts/:id',
+        loadComponent: () =>
+            import('./features/posts/components/post-detail/post-detail.component')
+                .then((module) => module.PostDetailComponent),
+        resolve: {
+            post: postDetailResolver,
+        },
     },
     {
         path: '**',

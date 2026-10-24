@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { LoaderService } from '../loader.service';
 import { AsyncPipe } from '@angular/common';
 
@@ -13,11 +13,4 @@ export class LoaderComponent {
 
   protected isLoading$ = this.loaderService.loading$;
 
-  ngOnInit(): void {
-    this.loaderService.showLoader();
-
-    setTimeout(() => {
-      this.loaderService.hideLoader();
-    }, 2000);
-  }
 }
