@@ -16,6 +16,9 @@
             </nav>
 
             <button (click)="renderTextService.showSuccess()" class="consultation-button">Консультация</button>
+            @if(isAuthenticated()) {
+                <button type="button" (click)="logout()" class="logout-button">Выйти</button>
+            }
         </div>
 
         <div class="header__widget">
@@ -45,4 +48,5 @@
         </div>
         }
     </div>
+
 </header>

@@ -2,13 +2,14 @@ import { Component, inject } from '@angular/core';
 import { LocalStorageService } from '../local-storage.service';
 import { MessageTextService } from '../../message-text.service';
 import { DatePipe } from '@angular/common';
-import { RouterLink, RouterLinkActive } from "@angular/router";
+import { Router, RouterLink, RouterLinkActive } from "@angular/router";
 import { merge, scan, startWith, Subject } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { ToggleSwitchModule, ToggleSwitch } from 'primeng/toggleswitch';
 import { ThemeService } from '../theme.service';
 import { FormsModule } from '@angular/forms';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { AuthService } from '../features/auth/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +18,10 @@ import { SelectButtonModule } from 'primeng/selectbutton';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  public isAuthenticated = this.authService.authState;
+
   renderTextService: MessageTextService = inject(MessageTextService);
   localStorageService: LocalStorageService = inject(LocalStorageService);
   themeService = inject(ThemeService);
@@ -70,4 +75,9 @@ export class HeaderComponent {
     { label: 'Lara', value: 'lara' },
     { label: 'Nora', value: 'nora' }
   ];
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 }
