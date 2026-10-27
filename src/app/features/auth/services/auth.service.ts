@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs';
+import { switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +20,8 @@ export class AuthService {
           localStorage.setItem('accessToken', response.accessToken);
           localStorage.setItem('refreshToken', response.refreshToken);
           this.authState.set(true);
-        })
+        }),
+        switchMap(() => this.getCurrentMe())
       );
   }
 
@@ -43,9 +44,24 @@ export class AuthService {
     return !!localStorage.getItem('accessToken');
   }
 
+  isAdmin() {
+    return localStorage.getItem('role') === 'admin';
+  }
+
   logout() {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
+    localStorage.removeItem('role');
     this.authState.set(false);
+  }
+
+  getCurrentMe() {
+    return this.authHttp.get<{ role: string }>(
+      'https://dummyjson.com/auth/me'
+    ).pipe(
+      tap((response) => {
+        localStorage.setItem('role', response.role);
+      })
+    );
   }
 }
