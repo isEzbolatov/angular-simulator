@@ -1,0 +1,17 @@
+<main class="login-page">
+  <h1>Вход</h1>
+
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <label>
+      Логин
+      <input type="text" formControlName="username">
+    </label>
+
+    <label>
+      Пароль
+      <input type="password" formControlName="password">
+    </label>
+
+    <button type="submit">Войти</button>
+  </form>
+</main>

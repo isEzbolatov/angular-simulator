@@ -6,10 +6,11 @@ import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import { loggingInterceptor } from './logging.interceptor';
 import { errorInterceptor } from './error.interceptor';
+import { authInterceptor } from './features/auth/interceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(withInterceptors([loggingInterceptor, errorInterceptor])),
+    provideHttpClient(withInterceptors([loggingInterceptor, errorInterceptor, authInterceptor])),
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideZoneChangeDetection(),

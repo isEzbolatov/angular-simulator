@@ -1,6 +1,7 @@
 import { model } from '@angular/core';
 import { Routes } from '@angular/router';
 import { postDetailResolver } from './features/posts/resolvers/post-detail.resolver';
+import { authGuard } from './features/auth/guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -17,9 +18,16 @@ export const routes: Routes = [
     },
     {
         path: 'posts',
+        canActivate: [authGuard],
         loadComponent: () =>
             import('./features/posts/components/posts/posts.component')
                 .then((module) => module.PostsComponent)
+    },
+    {
+        path: 'login',
+        loadComponent: () =>
+            import('./features/auth/components/login/login.component')
+                .then((m) => m.LoginComponent),
     },
     {
         path: 'posts/create',
