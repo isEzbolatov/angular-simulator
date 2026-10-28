@@ -27,6 +27,7 @@ module.exports = tseslint.config(
       'object-curly-spacing': ['warn', 'always'],
       'template-curly-spacing': ['warn', 'always'],
       semi: ['warn', 'always'],
+      'padded-blocks': ['error', 'never'],
       'lines-between-class-members': ['error', 'always'],
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/explicit-member-accessibility': [
