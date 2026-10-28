@@ -1,5 +1,5 @@
-import { HttpInterceptorFn, HttpResponse } from "@angular/common/http";
-import { tap } from "rxjs";
+import { HttpInterceptorFn, HttpResponse } from '@angular/common/http';
+import { tap } from 'rxjs';
 
 export const loggingInterceptor: HttpInterceptorFn = (req, next) => {
   const startedAt = Date.now();
@@ -28,6 +28,6 @@ export const loggingInterceptor: HttpInterceptorFn = (req, next) => {
           duration: `${duration} ms`,
         });
       },
-    })
+    }),
   );
 };

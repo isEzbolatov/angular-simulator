@@ -10,9 +10,7 @@ export class PostsApiService {
   http = inject(HttpClient);
 
   getPosts(limit: number, skip: number): Observable<IPostResponse> {
-    return this.http.get<IPostResponse>(
-      `https://dummyjson.com/posts?limit=${limit}&skip=${skip}`
-    );
+    return this.http.get<IPostResponse>(`https://dummyjson.com/posts?limit=${limit}&skip=${skip}`);
   }
 
   getPost(id: number): Observable<IPost> {
@@ -20,22 +18,14 @@ export class PostsApiService {
   }
 
   updatePost(id: number, changes: Partial<IPost>): Observable<IPost> {
-    return this.http.put<IPost>(
-      `https://dummyjson.com/posts/${id}`,
-      changes
-    );
+    return this.http.put<IPost>(`https://dummyjson.com/posts/${id}`, changes);
   }
 
   createPost(postData: Partial<IPost>): Observable<IPost> {
-    return this.http.post<IPost>(
-      'https://dummyjson.com/posts/add',
-      postData
-    );
+    return this.http.post<IPost>('https://dummyjson.com/posts/add', postData);
   }
 
   deletePost(id: number): Observable<void> {
-    return this.http.delete<void>(
-      `https://dummyjson.com/posts/${id}`
-    );
+    return this.http.delete<void>(`https://dummyjson.com/posts/${id}`);
   }
 }

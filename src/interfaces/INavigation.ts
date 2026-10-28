@@ -1,4 +1,4 @@
 export interface INavigation {
-    id: number;
-    link: string;
+  id: number;
+  link: string;
 }

@@ -12,8 +12,11 @@ import { MessageTextService } from '../../../../../message-text.service';
 })
 export class PostCreateComponent {
   private messageService = inject(MessageTextService);
+
   private formBuilder = inject(FormBuilder);
+
   private router = inject(Router);
+
   private postsApiService = inject(PostsApiService);
 
   message = '';
@@ -26,7 +29,7 @@ export class PostCreateComponent {
     likes: [0],
     dislikes: [0],
   });
-  
+
   createPost() {
     const formValue = this.form.getRawValue();
     const postData = {

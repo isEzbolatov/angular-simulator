@@ -4,8 +4,10 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'phoneFormat',
 })
 export class PhoneFormatPipe implements PipeTransform {
-
-  transform(rawNumber: string, mode: 'compact' | 'international' | 'national' | 'masked' = 'international'): string {
+  transform(
+    rawNumber: string,
+    mode: 'compact' | 'international' | 'national' | 'masked' = 'international',
+  ): string {
     let cleaned = rawNumber.replace(/[^0-9+]/g, '');
 
     if (cleaned.includes('+') && !cleaned.startsWith('+')) {
@@ -13,7 +15,7 @@ export class PhoneFormatPipe implements PipeTransform {
     }
 
     const hasPlus = cleaned.startsWith('+');
-    let digits = cleaned.replace(/\+/g, '');
+    const digits = cleaned.replace(/\+/g, '');
 
     if (mode === 'compact') {
       return hasPlus ? '+' + digits : digits;
@@ -26,12 +28,7 @@ export class PhoneFormatPipe implements PipeTransform {
     const countryCode = digits.slice(0, 2);
     const rest = digits.slice(2);
 
-    const groups = [
-      rest.slice(0, 3),
-      rest.slice(3, 6),
-      rest.slice(6, 8),
-      rest.slice(8, 10)
-    ];
+    const groups = [rest.slice(0, 3), rest.slice(3, 6), rest.slice(6, 8), rest.slice(8, 10)];
 
     switch (mode) {
       case 'international':
@@ -40,14 +37,10 @@ export class PhoneFormatPipe implements PipeTransform {
       case 'national':
         return `${groups[0]} ${groups[1]} ${groups[2]} ${groups[3]}`;
 
-      case 'masked':
-        const maskedGroups = [
-          groups[0],
-          '***',
-          '**',
-          groups[3]
-        ];
-        return `+${countryCode} ${maskedGroups.join(' ')}`
+      case 'masked': {
+        const maskedGroups = [groups[0], '***', '**', groups[3]];
+        return `+${countryCode} ${maskedGroups.join(' ')}`;
+      }
 
       default:
         return cleaned;

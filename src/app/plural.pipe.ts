@@ -4,7 +4,6 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'plural',
 })
 export class PluralPipe implements PipeTransform {
-
   transform(value: number | string, plural: string, twoFour: string, one: string): string {
     const num = Number(value);
     if (isNaN(num)) {

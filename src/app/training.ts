@@ -1,8 +1,7 @@
-import { concatAll, reduce } from "rxjs";
-
 // (3) Функция, которая возвращает сумму двух чисел.
 export class Training {
   firstNumber: number;
+
   secondNumber: number;
 
   constructor(firstNumber: number, secondNumber: number) {
@@ -17,10 +16,10 @@ export class Training {
 }
 
 // (4) Переменная status, которая может быть только: "loading", "success", "error".
-let status: 'loading' | 'success' | 'error';
+export let status: 'loading' | 'success' | 'error';
 
 // (5) Переменная textFormat, которая может быть только: 'uppercase', 'lowercase', 'capitalize'".
-let textFormat: 'uppercase' | 'lowercase' | 'capitalize';
+export let textFormat: 'uppercase' | 'lowercase' | 'capitalize';
 
 // (6)  Интерфейс, который описывает юзера. Поля на ваш выбор. Одно поле должно быть опциональным.
 export interface IUserInfo {
@@ -38,7 +37,7 @@ export interface IUserStatus extends IUserInfo {
 
 // (8) Функцию, которая принимает строку и вариант,
 // как именно форматировать строку (задание №5) и на основе этого возвращает форматированную строку.
-function getformatText(text: string, textFormat: 'uppercase' | 'lowercase' | 'capitalize') {
+export function getformatText(text: string, textFormat: 'uppercase' | 'lowercase' | 'capitalize') {
   if (textFormat === 'uppercase') {
     return text.toUpperCase();
   } else if (textFormat === 'capitalize') {
@@ -51,7 +50,7 @@ function getformatText(text: string, textFormat: 'uppercase' | 'lowercase' | 'ca
 }
 
 // (9) Функция, которая принимает строку и символ, возвращает строку без переданного символа.
-function getRemoveChar(text: string, charsToRemove: string): string {
+export function getRemoveChar(text: string, charsToRemove: string): string {
   return text.replaceAll(charsToRemove, '');
 }
 
@@ -62,22 +61,22 @@ const usersList: IUserInfo[] = [
     name: 'Алексей',
     surname: 'Петров',
     city: 'Москва',
-    language: 'Russian'
+    language: 'Russian',
   },
   {
     id: 2,
     name: 'Дмитрий',
     surname: 'Иванов',
     city: 'Минск',
-    language: 'Russian'
+    language: 'Russian',
   },
   {
     id: 3,
     name: 'Елена',
     surname: 'Сидорова',
     city: 'Москва',
-    language: 'Russian'
-  }
+    language: 'Russian',
+  },
 ];
 
-const filteredUsers = usersList.filter(user => user.city === 'Москва');
+export const filteredUsers = usersList.filter((user) => user.city === 'Москва');

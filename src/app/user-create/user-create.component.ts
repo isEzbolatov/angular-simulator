@@ -11,20 +11,38 @@ import { IUser } from '../../interfaces/IUser';
 })
 export class UserCreateComponent {
   @Input() isOpen: boolean = false;
+
   @Output() isOpenChange = new EventEmitter<boolean>();
+
   @Output() createUser = new EventEmitter<IUser>();
 
-  public myForm = new FormGroup({
+  myForm = new FormGroup({
     id: new FormControl(''),
-    name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
-    username: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
+    name: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+      Validators.maxLength(100),
+    ]),
+    username: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30),
+    ]),
     email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(100)]),
-    phone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(25)]),
+    phone: new FormControl('', [
+      Validators.required,
+      Validators.minLength(10),
+      Validators.maxLength(25),
+    ]),
     website: new FormControl('', Validators.maxLength(100)),
     city: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     street: new FormControl('', [Validators.required, Validators.maxLength(100)]),
     suite: new FormControl('', Validators.maxLength(50)),
-    zipcode: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]),
+    zipcode: new FormControl('', [
+      Validators.required,
+      Validators.minLength(5),
+      Validators.maxLength(10),
+    ]),
     geoLat: new FormControl('', Validators.required),
     geoLng: new FormControl('', Validators.required),
     companyName: new FormControl('', [Validators.required, Validators.maxLength(50)]),
@@ -32,7 +50,7 @@ export class UserCreateComponent {
     bs: new FormControl('', Validators.maxLength(100)),
   });
 
-  public addUser() {
+  addUser() {
     if (this.myForm.invalid) return;
 
     const form = this.myForm.value;
@@ -53,13 +71,13 @@ export class UserCreateComponent {
         geo: {
           lat: form.geoLat || '',
           lng: form.geoLng || '',
-        }
+        },
       },
       company: {
         name: form.companyName || '',
         catchPhrase: form.catchPhrase || '',
-        bs: form.bs || ''
-      }
+        bs: form.bs || '',
+      },
     };
 
     this.createUser.emit(newUser);

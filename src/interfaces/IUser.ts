@@ -13,7 +13,7 @@ export interface IUser {
     geo: {
       lat: string;
       lng: string;
-    }
+    };
   };
   company: {
     name: string;

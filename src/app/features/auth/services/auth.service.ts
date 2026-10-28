@@ -7,13 +7,14 @@ import { switchMap, tap } from 'rxjs';
 })
 export class AuthService {
   authHttp = inject(HttpClient);
+
   authState = signal(!!localStorage.getItem('accessToken'));
 
   login(credentials: { username: string; password: string }) {
     return this.authHttp
       .post<{ accessToken: string; refreshToken: string }>(
         'https://dummyjson.com/auth/login',
-        credentials
+        credentials,
       )
       .pipe(
         tap((response) => {
@@ -21,22 +22,21 @@ export class AuthService {
           localStorage.setItem('refreshToken', response.refreshToken);
           this.authState.set(true);
         }),
-        switchMap(() => this.getCurrentMe())
+        switchMap(() => this.getCurrentMe()),
       );
   }
 
   refreshAccessToken() {
     const refreshToken = localStorage.getItem('refreshToken');
     return this.authHttp
-      .post<{ accessToken: string; refreshToken: string }>(
-        'https://dummyjson.com/auth/refresh',
-        { refreshToken }
-      )
+      .post<{ accessToken: string; refreshToken: string }>('https://dummyjson.com/auth/refresh', {
+        refreshToken,
+      })
       .pipe(
         tap((response) => {
           localStorage.setItem('accessToken', response.accessToken);
           localStorage.setItem('refreshToken', response.refreshToken);
-        })
+        }),
       );
   }
 
@@ -56,12 +56,10 @@ export class AuthService {
   }
 
   getCurrentMe() {
-    return this.authHttp.get<{ role: string }>(
-      'https://dummyjson.com/auth/me'
-    ).pipe(
+    return this.authHttp.get<{ role: string }>('https://dummyjson.com/auth/me').pipe(
       tap((response) => {
         localStorage.setItem('role', response.role);
-      })
+      }),
     );
   }
 }

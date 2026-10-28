@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PostsApiService } from '../../services/posts-api.service';
 import { TableModule } from 'primeng/table';
@@ -20,22 +20,31 @@ import { MessageTextService } from '../../../../../message-text.service';
   templateUrl: './posts.component.html',
   styleUrl: './posts.component.scss',
 })
-export class PostsComponent {
+export class PostsComponent implements OnInit {
   private postsApiService = inject(PostsApiService);
+
   private messageService = inject(MessageTextService);
+
   private router = inject(Router);
+
   private dialogService = inject(DialogService);
 
   posts: IPost[] = [];
+
   first = 0;
+
   rows = 10;
+
   totalRecords = 0;
+
   isLoading = false;
+
   menuItems: MenuItem[] = [
     { label: 'Просмотреть', command: () => this.viewPost() },
     { label: 'Редактировать', command: () => this.editPost() },
     { label: 'Удалить', command: () => this.deletePost() },
   ];
+
   selectedPost: IPost | null = null;
 
   ngOnInit() {
@@ -103,7 +112,7 @@ export class PostsComponent {
         };
 
         this.posts = this.posts.map((post) =>
-          post.id === selectedPost.id ? { ...post, ...changesForPost } : post
+          post.id === selectedPost.id ? { ...post, ...changesForPost } : post,
         );
 
         this.postsApiService.updatePost(selectedPost.id, changesForPost).subscribe();
