@@ -6,7 +6,10 @@
     "start": "ng serve --host 0.0.0.0 --port 9000",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"src/**/*.{ts,html,scss}\""
   },
   "prettier": {
     "printWidth": 100,
@@ -43,8 +46,17 @@
     "@angular/build": "^21.0.5",
     "@angular/cli": "^21.0.5",
     "@angular/compiler-cli": "^21.0.0",
+    "@eslint/js": "^10.0.1",
+    "angular-eslint": "^22.6.0",
+    "eslint": "^10.13.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.7",
+    "globals": "^17.13.0",
+    "jiti": "^2.7.0",
     "jsdom": "^27.1.0",
+    "prettier": "^3.9.10",
     "typescript": "~5.9.2",
+    "typescript-eslint": "^8.72.1",
     "vitest": "^4.0.8"
   }
 }
