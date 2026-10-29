@@ -1,5 +1,5 @@
-import { HttpInterceptorFn } from "@angular/common/http";
-import { catchError, throwError } from "rxjs";
+import { HttpInterceptorFn } from '@angular/common/http';
+import { catchError, throwError } from 'rxjs';
 import { inject } from '@angular/core';
 import { MessageTextService } from '../message-text.service';
 
@@ -13,6 +13,6 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
       }
 
       return throwError(() => error);
-    })
+    }),
   );
 };

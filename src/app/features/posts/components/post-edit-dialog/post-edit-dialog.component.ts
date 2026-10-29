@@ -11,7 +11,9 @@ import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 })
 export class PostEditDialogComponent {
   private readonly formBuilder = inject(FormBuilder);
+
   private readonly dialogConfig = inject(DynamicDialogConfig);
+
   private readonly dialogRef = inject(DynamicDialogRef);
 
   form = this.formBuilder.group({

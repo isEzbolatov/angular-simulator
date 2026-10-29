@@ -6,7 +6,7 @@ import { catchError, switchMap } from 'rxjs';
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
   const token = localStorage.getItem('accessToken');
-  
+
   if (!token) {
     return next(req);
   }
@@ -29,12 +29,11 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
             });
 
             return next(retryReq);
-          })
+          }),
         );
       }
 
       throw error;
-    })
+    }),
   );
-
 };

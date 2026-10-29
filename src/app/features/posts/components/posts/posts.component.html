@@ -1,4 +1,4 @@
-@if(!isLoading) {
+@if (!isLoading) {
   <p-table [value]="posts" [contextMenu]="cm" [(contextMenuSelection)]="selectedPost">
     <ng-template pTemplate="header">
       <tr>
@@ -21,5 +21,11 @@
   <p-skeleton></p-skeleton>
 }
 
-<p-paginator [first]="first" [rows]="rows" [totalRecords]="totalRecords" (onPageChange)="onPageChange($event)" [rowsPerPageOptions]="[10, 20, 50]">
+<p-paginator
+  [first]="first"
+  [rows]="rows"
+  [totalRecords]="totalRecords"
+  (onPageChange)="onPageChange($event)"
+  [rowsPerPageOptions]="[10, 20, 50]"
+>
 </p-paginator>

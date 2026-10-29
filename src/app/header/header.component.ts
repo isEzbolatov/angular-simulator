@@ -2,10 +2,10 @@ import { Component, inject } from '@angular/core';
 import { LocalStorageService } from '../local-storage.service';
 import { MessageTextService } from '../../message-text.service';
 import { DatePipe } from '@angular/common';
-import { Router, RouterLink, RouterLinkActive } from "@angular/router";
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { merge, scan, startWith, Subject } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
-import { ToggleSwitchModule, ToggleSwitch } from 'primeng/toggleswitch';
+import { ToggleSwitch } from 'primeng/toggleswitch';
 import { ThemeService } from '../theme.service';
 import { FormsModule } from '@angular/forms';
 import { SelectButtonModule } from 'primeng/selectbutton';
@@ -13,48 +13,63 @@ import { AuthService } from '../features/auth/services/auth.service';
 
 @Component({
   selector: 'app-header',
-  imports: [DatePipe, RouterLink, RouterLinkActive, AsyncPipe, ToggleSwitch, SelectButtonModule, FormsModule],
+  imports: [
+    DatePipe,
+    RouterLink,
+    RouterLinkActive,
+    AsyncPipe,
+    ToggleSwitch,
+    SelectButtonModule,
+    FormsModule,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
   private authService = inject(AuthService);
+
   private router = inject(Router);
-  public isAuthenticated = this.authService.authState;
+
+  isAuthenticated = this.authService.authState;
 
   renderTextService: MessageTextService = inject(MessageTextService);
+
   localStorageService: LocalStorageService = inject(LocalStorageService);
+
   themeService = inject(ThemeService);
 
-  public companyName: string = 'румтибет';
-  public currentDate: Date = new Date;
-  public showTimer: boolean = true;
+  companyName: string = 'румтибет';
 
-  public routerLink = [
+  currentDate: Date = new Date();
+
+  showTimer: boolean = true;
+
+  routerLink = [
     {
       path: '',
-      label: 'Главная'
+      label: 'Главная',
     },
     {
       path: '/users',
-      label: 'Пользователи'
-    }
-  ]
+      label: 'Пользователи',
+    },
+  ];
 
   constructor() {
     setInterval(() => {
       this.currentDate = new Date();
-    }, 1000)
+    }, 1000);
   }
 
   //Переписал счётчик на RxJS формат
   private increment$ = new Subject<number>();
+
   private decrement$ = new Subject<number>();
 
   counter = merge(this.increment$, this.decrement$).pipe(
     startWith(0),
-    scan((acc, delta) => Math.max(acc + delta, 0))
-  )
+    scan((acc, delta) => Math.max(acc + delta, 0)),
+  );
 
   // (ДЗ 16.5) Счетчик кликов.
   incrementCount() {
@@ -73,7 +88,7 @@ export class HeaderComponent {
   themeOptions = [
     { label: 'Aura', value: 'aura' },
     { label: 'Lara', value: 'lara' },
-    { label: 'Nora', value: 'nora' }
+    { label: 'Nora', value: 'nora' },
   ];
 
   logout() {

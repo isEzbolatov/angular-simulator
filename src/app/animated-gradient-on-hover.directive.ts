@@ -1,17 +1,20 @@
-import { Directive, HostBinding, HostListener, Input } from '@angular/core';
+import { Directive, HostBinding, HostListener, Input, OnInit, OnDestroy } from '@angular/core';
 
 @Directive({
   selector: '[appAnimatedGradientOnHover]',
 })
-export class AnimatedGradientOnHoverDirective {
-  timerId: any;
-  private config: any;
+export class AnimatedGradientOnHoverDirective implements OnInit, OnDestroy {
+  timerId: ReturnType<typeof setTimeout> | undefined = undefined;
 
-  defaultConfig = {
+  private config: {
+    delay: number;
+    colors: string[];
+    thickness: string;
+  } = {
     delay: 1000,
     colors: ['#ff6b6b', '#feca57', '#48dbfb'],
-    thickness: '2px'
-  }
+    thickness: '2px',
+  };
 
   @Input() gradientConfig: {
     delay?: number;
@@ -38,7 +41,7 @@ export class AnimatedGradientOnHoverDirective {
   }
 
   ngOnInit() {
-    this.config = { ...this.defaultConfig, ...this.gradientConfig };
+    this.config = { ...this.config, ...this.gradientConfig };
   }
 
   ngOnDestroy() {

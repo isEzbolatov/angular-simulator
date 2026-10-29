@@ -1,22 +1,25 @@
 <section class="user-cards-container">
-    <h1 class="users-title">Список Пользователей</h1>
-    <div class="users-count">
-        @if(filteredUsers$ | async; as users) {
-        Всего пользователей: {{ users.length | plural:'пользователей':'пользователя':'пользователь' }}
-        }
-    </div>
-    <div class="user-cards-wrapper">
-        <button class="add-user-btn" (click)="isModalOpen = true" appBoldOnHover>Добавить пользователя</button>
-        <app-user-create [(isOpen)]="isModalOpen" (createUser)="onCreateUser($event)"></app-user-create>
-        <app-users-filter (filterChange)="onFilterChange($event)"></app-users-filter>
-        <i class="fa-solid fa-user"></i>
+  <h1 class="users-title">Список Пользователей</h1>
+  <div class="users-count">
+    @if (filteredUsers$ | async; as users) {
+      Всего пользователей:
+      {{ users.length | plural: 'пользователей' : 'пользователя' : 'пользователь' }}
+    }
+  </div>
+  <div class="user-cards-wrapper">
+    <button class="add-user-btn" (click)="isModalOpen = true" appBoldOnHover>
+      Добавить пользователя
+    </button>
+    <app-user-create [(isOpen)]="isModalOpen" (createUser)="onCreateUser($event)"></app-user-create>
+    <app-users-filter (filterChange)="onFilterChange($event)"></app-users-filter>
+    <i class="fa-solid fa-user"></i>
 
-        @for(user of filteredUsers$ | async; track user.id) {
-        <app-user-card [user]="user" (deleteUser)="deleteUserCard($event)"></app-user-card>
-        } @empty {
-        <div class="not-found-users">
-            <p class="not-found-users-title fs-26 fw-800">Нет пользователей для отображения</p>
-        </div>
-        }
-    </div>
+    @for (user of filteredUsers$ | async; track user.id) {
+      <app-user-card [user]="user" (deleteUser)="deleteUserCard($event)"></app-user-card>
+    } @empty {
+      <div class="not-found-users">
+        <p class="not-found-users-title fs-26 fw-800">Нет пользователей для отображения</p>
+      </div>
+    }
+  </div>
 </section>

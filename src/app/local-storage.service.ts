@@ -1,4 +1,4 @@
-import { Injectable, KeyValueDiffers } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,7 @@ export class LocalStorageService {
    * @param key ключ: string
    * @param value значение: any
    */
-  public set<T>(key: string, value: T): void {
+  set<T>(key: string, value: T): void {
     localStorage.setItem(key, JSON.stringify(value));
   }
 
@@ -18,7 +18,7 @@ export class LocalStorageService {
    * @param key ключ: string
    * @returns значение или null, если ключ не найден
    */
-  public get<T>(key: string): T | null {
+  get<T>(key: string): T | null {
     const value = localStorage.getItem(key);
     return value ? (JSON.parse(value) as T) : null;
   }
@@ -27,14 +27,14 @@ export class LocalStorageService {
    * Удаление значения из localStorage
    * @param key ключ: string
    */
-  public clearElem(key: string): void {
+  clearElem(key: string): void {
     localStorage.removeItem(key);
   }
 
   /**
    * Очистка всего хранилища
    */
-  public clearAllElem() {
+  clearAllElem() {
     localStorage.clear();
   }
 }

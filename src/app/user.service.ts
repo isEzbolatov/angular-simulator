@@ -11,10 +11,13 @@ import { LocalStorageService } from './local-storage.service';
 export class UserService {
   private userSubject = new BehaviorSubject<IUser[]>([]);
 
-  public user$: Observable<IUser[]> = this.userSubject.asObservable();
-  public userApi: UserApiService = inject(UserApiService);
-  public loader: LoaderService = inject(LoaderService);
-  public localStorageService: LocalStorageService = inject(LocalStorageService);
+  user$: Observable<IUser[]> = this.userSubject.asObservable();
+
+  userApi: UserApiService = inject(UserApiService);
+
+  loader: LoaderService = inject(LoaderService);
+
+  localStorageService: LocalStorageService = inject(LocalStorageService);
 
   setUsers(user: IUser[]) {
     this.userSubject.next(user);
@@ -22,6 +25,7 @@ export class UserService {
   }
 
   getUsers(users: IUser[]) {
+    void users;
     return this.user$;
   }
 
@@ -36,25 +40,23 @@ export class UserService {
 
     this.loader.showLoader();
 
-    return this.userApi.getUsers()
-      .pipe(
-        tap((data) =>
-          this.setUsers(data)),
+    return this.userApi.getUsers().pipe(
+      tap((data) => this.setUsers(data)),
 
-        catchError(error => {
-          this.setUsers([]);
-          return of([]);
-        }),
+      catchError(() => {
+        this.setUsers([]);
+        return of([]);
+      }),
 
-        finalize(() => {
-          this.loader.hideLoader();
-        })
-      )
+      finalize(() => {
+        this.loader.hideLoader();
+      }),
+    );
   }
 
   deleteUser(userId: number) {
     const currentUsers = this.userSubject.value;
-    const updatedUsers = currentUsers.filter(user => user.id !== userId);
+    const updatedUsers = currentUsers.filter((user) => user.id !== userId);
 
     this.userSubject.next(updatedUsers);
 
@@ -64,7 +66,6 @@ export class UserService {
   }
 
   addUser(user: IUser): Observable<void> {
-    this.userSubject.value;
     const updated = [...this.userSubject.value, user];
     this.userSubject.next(updated);
     this.localStorageService.set('users', this.userSubject.value);

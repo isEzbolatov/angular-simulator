@@ -12,5 +12,4 @@ export class LoaderComponent {
   private loaderService = inject(LoaderService);
 
   protected isLoading$ = this.loaderService.loading$;
-
 }

@@ -9,11 +9,12 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class MessageTextService {
   readonly _messageType = MessageType;
+
   readonly _messageText = MessageText;
 
   private messageSubject$ = new BehaviorSubject<IMessage[]>([]);
 
-  public message$: Observable<IMessage[]> = this.messageSubject$.asObservable();
+  message$: Observable<IMessage[]> = this.messageSubject$.asObservable();
 
   private addMessage(text: MessageText, type: MessageType) {
     const currentMessages = this.messageSubject$.value;
@@ -21,36 +22,36 @@ export class MessageTextService {
     const newMessage: IMessage = {
       id: Date.now(),
       type: type,
-      textMessage: text
-    }
-    const updatedMessages = [...currentMessages, newMessage]
+      textMessage: text,
+    };
+    const updatedMessages = [...currentMessages, newMessage];
 
     this.messageSubject$.next(updatedMessages);
 
     setTimeout(() => {
       this.closeMessage(newMessage.id);
-    }, 5000)
+    }, 5000);
   }
 
   closeMessage(idMessage: number): void {
     const current = this.messageSubject$.value;
-    const updated = current.filter(item => item.id !== idMessage);
+    const updated = current.filter((item) => item.id !== idMessage);
     this.messageSubject$.next(updated);
   }
 
   showWarn() {
-    this.addMessage(this._messageText.Warn, this._messageType.Warn);
+    this.addMessage(this._messageText.WARN, this._messageType.WARN);
   }
 
   showError() {
-    this.addMessage(this._messageText.Error, this._messageType.Error);
+    this.addMessage(this._messageText.ERROR, this._messageType.ERROR);
   }
 
   showSuccess() {
-    this.addMessage(this._messageText.Success, this._messageType.Success);
+    this.addMessage(this._messageText.SUCCESS, this._messageType.SUCCESS);
   }
 
   showInfo() {
-    this.addMessage(this._messageText.Info, this._messageType.Info);
+    this.addMessage(this._messageText.INFO, this._messageType.INFO);
   }
 }
