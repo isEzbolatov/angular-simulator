@@ -29,6 +29,25 @@ export const routes: Routes = [
       import('./features/auth/components/login/login.component').then((m) => m.LoginComponent),
   },
   {
+    path: 'homework-28',
+    loadComponent: () =>
+      import('./homework-28/parent/parent.component').then((module) => module.ParentComponent),
+  },
+  {
+    path: 'homework-28/default-check',
+    loadComponent: () =>
+      import('./homework-28/default-check/default-check.component').then(
+        (module) => module.DefaultCheckComponent,
+      ),
+  },
+  {
+    path: 'homework-28/on-push-check',
+    loadComponent: () =>
+      import('./homework-28/on-push-check/on-push-check.component').then(
+        (module) => module.OnPushCheckComponent,
+      ),
+  },
+  {
     path: 'posts/create',
     canActivate: [authGuard, adminGuard],
     loadComponent: () =>
