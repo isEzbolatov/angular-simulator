@@ -1,6 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { switchMap, tap } from 'rxjs';
+import { APP_CONFIG } from '../../../app-config.token';
 
 @Injectable({
   providedIn: 'root',
@@ -8,14 +9,16 @@ import { switchMap, tap } from 'rxjs';
 export class AuthService {
   authHttp = inject(HttpClient);
 
+  appConfig = inject(APP_CONFIG);
+
   authState = signal(!!localStorage.getItem('accessToken'));
 
   login(credentials: { username: string; password: string }) {
     return this.authHttp
-      .post<{ accessToken: string; refreshToken: string }>(
-        'https://dummyjson.com/auth/login',
-        credentials,
-      )
+      .post<{ accessToken: string; refreshToken: string }>('https://dummyjson.com/auth/login', {
+        ...credentials,
+        sessionTimeout: this.appConfig.sessionTimeout,
+      })
       .pipe(
         tap((response) => {
           localStorage.setItem('accessToken', response.accessToken);
@@ -31,6 +34,7 @@ export class AuthService {
     return this.authHttp
       .post<{ accessToken: string; refreshToken: string }>('https://dummyjson.com/auth/refresh', {
         refreshToken,
+        sessionTimeout: this.appConfig.sessionTimeout,
       })
       .pipe(
         tap((response) => {

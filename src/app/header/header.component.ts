@@ -10,6 +10,7 @@ import { ThemeService } from '../theme.service';
 import { FormsModule } from '@angular/forms';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { AuthService } from '../features/auth/services/auth.service';
+import { APP_CONFIG } from '../app-config.token';
 
 @Component({
   selector: 'app-header',
@@ -28,6 +29,8 @@ import { AuthService } from '../features/auth/services/auth.service';
 export class HeaderComponent {
   private authService = inject(AuthService);
 
+  private appConfig = inject(APP_CONFIG);
+
   private router = inject(Router);
 
   isAuthenticated = this.authService.authState;
@@ -38,7 +41,9 @@ export class HeaderComponent {
 
   themeService = inject(ThemeService);
 
-  companyName: string = 'румтибет';
+  companyName = this.appConfig.companyName;
+
+  enableTheming = this.appConfig.enableTheming;
 
   currentDate: Date = new Date();
 
