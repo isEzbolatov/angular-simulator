@@ -3,7 +3,7 @@
   "singleQuote": true,
   "semi": true,
   "printWidth": 100,
-  "endOfLine": "lf",
+  "endOfLine": "auto",
   "overrides": [
     {
       "files": "*.html",
