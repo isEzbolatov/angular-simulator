@@ -1,0 +1,66 @@
+<main class="cart-page">
+  <a class="back-link" routerLink="/products">← Продолжить покупки</a>
+  <h1>
+    Корзина <span>({{ cart.itemCount() }})</span>
+  </h1>
+
+  @if (cart.error(); as error) {
+    <p class="cart-error" role="alert">{{ error }}</p>
+  }
+
+  @if (cart.lines().length) {
+    <div class="cart-layout">
+      <section class="cart-items" aria-label="Товары в корзине">
+        @for (line of cart.lines(); track line.product.id) {
+          <article class="cart-item">
+            <img [src]="line.product.thumbnail" [alt]="line.product.title" />
+            <div class="item-info">
+              <h2>{{ line.product.title }}</h2>
+              <p>${{ line.product.price.toFixed(2) }} за штуку</p>
+            </div>
+            <input
+              type="number"
+              min="1"
+              [disabled]="cart.busy()"
+              [value]="line.quantity"
+              [attr.aria-label]="'Количество: ' + line.product.title"
+              (change)="updateQuantity(line.product.id, $event)"
+            />
+            <strong>${{ (line.product.price * line.quantity).toFixed(2) }}</strong>
+            <button
+              class="remove-button"
+              type="button"
+              [disabled]="cart.busy()"
+              [attr.aria-label]="'Убрать ' + line.product.title"
+              (click)="removeProduct(line.product.id)"
+            >
+              Убрать
+            </button>
+          </article>
+        }
+        <button class="clear-button" type="button" [disabled]="cart.busy()" (click)="clearCart()">
+          Очистить корзину
+        </button>
+      </section>
+
+      <aside class="summary" aria-label="Итого">
+        <h2>Ваш заказ</h2>
+        <p>
+          <span>Товары</span><strong>${{ cart.subtotal().toFixed(2) }}</strong>
+        </p>
+        <p>
+          <span>Налог (20%)</span><strong>${{ cart.tax().toFixed(2) }}</strong>
+        </p>
+        <p class="total">
+          <span>Итого</span><strong>${{ cart.total().toFixed(2) }}</strong>
+        </p>
+        <button type="button" disabled>Оформление заказа — следующий шаг</button>
+      </aside>
+    </div>
+  } @else {
+    <section class="empty-cart">
+      <p>В корзине пока пусто.</p>
+      <a routerLink="/products">Перейти в каталог</a>
+    </section>
+  }
+</main>
