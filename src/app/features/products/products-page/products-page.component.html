@@ -1,0 +1,89 @@
+<main class="products-page">
+  <header class="page-heading">
+    <div>
+      <p class="eyebrow">МАГАЗИН</p>
+      <h1>Каталог товаров</h1>
+      <p class="subtitle">Выберите то, что подходит именно вам</p>
+    </div>
+    <a class="cart-link" routerLink="/cart">Корзина · {{ cartCount() }}</a>
+  </header>
+
+  <section class="filters" aria-label="Фильтры каталога">
+    <input
+      pInputText
+      type="search"
+      placeholder="Найти товар"
+      aria-label="Поиск товаров"
+      [value]="search()"
+      (input)="onSearch($any($event.target).value)"
+    />
+
+    <p-select
+      [options]="categories()"
+      optionLabel="name"
+      optionValue="slug"
+      [showClear]="true"
+      [ngModel]="category()"
+      (ngModelChange)="onCategoryChange($event)"
+      placeholder="Все категории"
+      ariaLabel="Категория"
+    />
+
+    <p-select
+      [options]="sortOptions"
+      optionLabel="label"
+      [ngModel]="sort()"
+      (ngModelChange)="onSortChange($event)"
+      placeholder="Сортировка"
+      ariaLabel="Сортировка товаров"
+    />
+  </section>
+
+  @if (state().loading) {
+    <section class="product-grid" aria-label="Загрузка товаров">
+      @for (item of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; track item) {
+        <p-card styleClass="product-card skeleton-card">
+          <p-skeleton height="180px" />
+          <p-skeleton width="70%" height="1.25rem" />
+          <p-skeleton width="40%" height="1rem" />
+        </p-card>
+      }
+    </section>
+  } @else if (state().error) {
+    <p class="message error-message" role="alert">
+      Не удалось загрузить товары.
+      <button class="retry-button" type="button" (click)="retry()">Повторить</button>
+    </p>
+  } @else if (state().response; as response) {
+    @if (response.products.length) {
+      <section class="product-grid" aria-label="Товары">
+        @for (product of response.products; track trackProduct($index, product)) {
+          <a class="product-link" [routerLink]="['/products', product.id]">
+            <p-card styleClass="product-card">
+              <ng-template #header>
+                <img class="product-image" [src]="product.thumbnail" [alt]="product.title" />
+              </ng-template>
+              <ng-template #title>{{ product.title }}</ng-template>
+              <ng-template #subtitle>{{ product.category }}</ng-template>
+              <div class="product-meta">
+                <span class="price">${{ product.price.toFixed(2) }}</span>
+                <span class="rating" aria-label="Рейтинг">★ {{ product.rating }}</span>
+              </div>
+              <p class="stock">В наличии: {{ product.stock }}</p>
+            </p-card>
+          </a>
+        }
+      </section>
+
+      <p-paginator
+        [first]="first()"
+        [rows]="rows()"
+        [totalRecords]="response.total"
+        [rowsPerPageOptions]="[12, 24, 48]"
+        (onPageChange)="onPageChange($event)"
+      />
+    } @else {
+      <p class="message">По вашему запросу товары не найдены.</p>
+    }
+  }
+</main>
