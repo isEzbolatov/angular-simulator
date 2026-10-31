@@ -8,13 +8,17 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./home-page/home-page.component').then((module) => module.HomePageComponent),
+      import('./features/home/pages/home-page/home-page.component').then(
+        (module) => module.HomePageComponent,
+      ),
   },
   {
     path: 'users',
     canActivate: [authGuard, adminGuard],
     loadComponent: () =>
-      import('./users-page/users-page.component').then((module) => module.UsersPageComponent),
+      import('./features/users/components/users-page/users-page.component').then(
+        (module) => module.UsersPageComponent,
+      ),
   },
   {
     path: 'posts',
