@@ -25,7 +25,8 @@ module.exports = tseslint.config(
       'no-console': ['warn', { allow: ['warn', 'error'] }],
       quotes: ['warn', 'single', { avoidEscape: true, allowTemplateLiterals: true }],
       'object-curly-spacing': ['warn', 'always'],
-      'template-curly-spacing': ['warn', 'always'],
+      // Prettier formats template interpolations without inner spaces.
+      'template-curly-spacing': 'off',
       semi: ['warn', 'always'],
       'padded-blocks': ['error', 'never'],
       'lines-between-class-members': ['error', 'always'],
