@@ -1,7 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { switchMap, tap } from 'rxjs';
-import { APP_CONFIG } from '../../../app-config.token';
+import { APP_CONFIG } from '../../../core/config/app-config.token';
 
 @Injectable({
   providedIn: 'root',

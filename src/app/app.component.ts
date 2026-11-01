@@ -1,12 +1,12 @@
 import { Component, inject, DOCUMENT, DestroyRef } from '@angular/core';
-import { MessageTextService } from '../message-text.service';
-import { MessageList } from './message-list/message-list.component';
+import { MessageTextService } from './core/services/message-text.service';
+import { MessageList } from './core/layout/message-list/message-list.component';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './core/layout/header/header.component';
+import { FooterComponent } from './core/layout/footer/footer.component';
 import { CommonModule } from '@angular/common';
-import { LoaderComponent } from './loader/loader.component';
-import { ThemeService } from './theme.service';
+import { LoaderComponent } from './core/layout/loader/loader.component';
+import { ThemeService } from './core/services/theme.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({

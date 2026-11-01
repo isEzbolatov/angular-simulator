@@ -10,7 +10,7 @@ import { ContextMenuModule } from 'primeng/contextmenu';
 import { MenuItem } from 'primeng/api';
 import { DynamicDialogModule, DialogService } from 'primeng/dynamicdialog';
 import { PostEditDialogComponent } from '../post-edit-dialog/post-edit-dialog.component';
-import { MessageTextService } from '../../../../../message-text.service';
+import { MessageTextService } from '../../../../core/services/message-text.service';
 
 @Component({
   selector: 'app-posts',

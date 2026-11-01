@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PostsApiService } from '../../services/posts-api.service';
-import { MessageTextService } from '../../../../../message-text.service';
+import { MessageTextService } from '../../../../core/services/message-text.service';
 
 @Component({
   selector: 'app-post-create',
