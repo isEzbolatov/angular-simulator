@@ -4,6 +4,8 @@ import {
   provideZoneChangeDetection,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { provideEffects } from '@ngrx/effects';
+import { provideStore } from '@ngrx/store';
 import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
 import { routes } from '../../app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
@@ -35,6 +37,8 @@ export const appConfig: ApplicationConfig = {
     },
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
+    provideStore(),
+    provideEffects(),
     provideZoneChangeDetection(),
     providePrimeNG({
       theme: {

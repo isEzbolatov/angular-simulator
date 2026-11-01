@@ -1,0 +1,37 @@
+<main class="recipes-page">
+  <header class="page-heading">
+    <div>
+      <p class="eyebrow">КОЛЛЕКЦИЯ РЕЦЕПТОВ</p>
+      <h1>Рецепты</h1>
+      <p class="subtitle">Идеи для следующего вкусного блюда</p>
+    </div>
+    <button class="reload-button" type="button" (click)="reloadRecipes()" [disabled]="loading()">
+      {{ loading() ? 'Загружаем…' : 'Обновить рецепты' }}
+    </button>
+  </header>
+
+  @if (loading() && !recipes().length) {
+    <p class="message" role="status">Загружаем рецепты…</p>
+  } @else if (error()) {
+    <p class="message error-message" role="alert">
+      Не удалось загрузить рецепты: {{ error() }}
+      <button class="retry-button" type="button" (click)="reloadRecipes()">Повторить</button>
+    </p>
+  } @else {
+    <section class="recipe-grid" aria-label="Список рецептов">
+      @for (recipe of recipes(); track recipe.id) {
+        <article class="recipe-card">
+          <img class="recipe-image" [src]="recipe.image" [alt]="recipe.name" />
+          <div class="recipe-content">
+            <p class="recipe-cuisine">{{ recipe.cuisine }}</p>
+            <h2>{{ recipe.name }}</h2>
+            <div class="recipe-meta">
+              <span>{{ recipe.prepTimeMinutes + recipe.cookTimeMinutes }} мин</span>
+              <span>★ {{ recipe.rating }}</span>
+            </div>
+          </div>
+        </article>
+      }
+    </section>
+  }
+</main>

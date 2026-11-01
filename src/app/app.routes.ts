@@ -1,4 +1,8 @@
 import { Routes } from '@angular/router';
+import { provideEffects } from '@ngrx/effects';
+import { provideState } from '@ngrx/store';
+import { RecipesEffects } from './features/recipes/store/recipes.effects';
+import { RECIPES_FEATURE_KEY, recipesReducer } from './features/recipes/store/recipes.reducer';
 import { postDetailResolver } from './features/posts/resolvers/post-detail.resolver';
 import { authGuard } from './features/auth/guards/auth.guard';
 import { adminGuard } from './features/auth/guards/admin.guard';
@@ -50,6 +54,14 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/products/cart/cart-page.component').then(
         (module) => module.CartPageComponent,
+      ),
+  },
+  {
+    path: 'recipes',
+    providers: [provideState(RECIPES_FEATURE_KEY, recipesReducer), provideEffects(RecipesEffects)],
+    loadComponent: () =>
+      import('./features/recipes/pages/recipes-page/recipes-page.component').then(
+        (module) => module.RecipesPageComponent,
       ),
   },
   {

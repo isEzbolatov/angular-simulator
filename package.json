@@ -36,6 +36,8 @@
     "@fortawesome/angular-fontawesome": "^4.0.0",
     "@fortawesome/free-regular-svg-icons": "^7.3.1",
     "@fortawesome/free-solid-svg-icons": "^7.3.1",
+    "@ngrx/effects": "^21.1.1",
+    "@ngrx/store": "^21.1.1",
     "@primeuix/themes": "^3.0.0",
     "primeicons": "^6.0.1",
     "primeng": "^21.0.0",

@@ -58,6 +58,10 @@ export class HeaderComponent {
       path: '/users',
       label: 'Пользователи',
     },
+    {
+      path: '/recipes',
+      label: 'Рецепты',
+    },
   ];
 
   constructor() {
