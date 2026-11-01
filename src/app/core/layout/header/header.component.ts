@@ -62,6 +62,10 @@ export class HeaderComponent {
       path: '/recipes',
       label: 'Рецепты',
     },
+    {
+      path: '/quotes',
+      label: 'Цитаты',
+    },
   ];
 
   constructor() {

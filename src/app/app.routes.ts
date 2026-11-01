@@ -65,6 +65,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'quotes',
+    loadComponent: () =>
+      import('./features/quotes/pages/quotes-page/quotes-page.component').then(
+        (module) => module.QuotesPageComponent,
+      ),
+  },
+  {
     path: 'login',
     loadComponent: () =>
       import('./features/auth/components/login/login.component').then((m) => m.LoginComponent),
