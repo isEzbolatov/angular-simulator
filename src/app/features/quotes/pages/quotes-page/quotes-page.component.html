@@ -1,0 +1,105 @@
+<main class="quotes-page">
+  <header class="page-heading">
+    <div>
+      <p class="eyebrow">МЫСЛИ, КОТОРЫЕ ОСТАЮТСЯ</p>
+      <h1>Коллекция цитат</h1>
+      <p class="subtitle">Сохраняй понравившиеся и находи вдохновение</p>
+    </div>
+    <button class="random-button" type="button" (click)="store.pickRandomQuote()">
+      Случайная цитата
+    </button>
+  </header>
+
+  <section class="statistics" aria-label="Статистика коллекции">
+    <article class="stat-card">
+      <span class="stat-label">В избранном</span>
+      <strong>{{ store.favoritesCount() }}</strong>
+    </article>
+    <article class="stat-card">
+      <span class="stat-label">Авторов</span>
+      <strong>{{ store.authorsCount() }}</strong>
+    </article>
+    <article class="stat-card">
+      <span class="stat-label">Всего цитат</span>
+      <strong>{{ store.quotes().length }}</strong>
+    </article>
+  </section>
+
+  @if (store.randomQuote(); as quote) {
+    <aside class="random-quote" aria-live="polite">
+      <p class="random-label">Случайная цитата</p>
+      <blockquote>“{{ quote.quote }}”</blockquote>
+      <p class="quote-author">— {{ quote.author }}</p>
+    </aside>
+  }
+
+  <section class="collection" aria-label="Цитаты">
+    <div class="collection-toolbar">
+      <div>
+        <h2>{{ store.favoritesOnly() ? 'Избранное' : 'Все цитаты' }}</h2>
+        <p>{{ store.visibleQuotes().length }} в списке</p>
+      </div>
+      <div class="filter-switch" role="group" aria-label="Фильтр цитат">
+        <button
+          type="button"
+          [class.active]="!store.favoritesOnly()"
+          [attr.aria-pressed]="!store.favoritesOnly()"
+          (click)="store.setFavoritesOnly(false)"
+        >
+          Все
+        </button>
+        <button
+          type="button"
+          [class.active]="store.favoritesOnly()"
+          [attr.aria-pressed]="store.favoritesOnly()"
+          (click)="store.setFavoritesOnly(true)"
+        >
+          Избранное
+        </button>
+      </div>
+    </div>
+
+    @if (store.loading()) {
+      <p class="status-message" role="status">Загружаем цитаты…</p>
+    }
+
+    @if (store.error()) {
+      <div class="error-message" role="alert">
+        <span>Не удалось загрузить цитаты: {{ store.error() }}</span>
+        <button class="retry-button" type="button" (click)="store.retry()">Повторить</button>
+      </div>
+    }
+
+    @if (!store.loading() && !store.error() && store.visibleQuotes().length === 0) {
+      <p class="empty-state">
+        {{ store.favoritesOnly() ? 'В избранном пока пусто.' : 'Цитаты не найдены.' }}
+      </p>
+    }
+
+    <div class="quote-grid">
+      @for (quote of store.visibleQuotes(); track quote.id) {
+        <article class="quote-card">
+          <span class="quote-mark" aria-hidden="true">“</span>
+          <blockquote>{{ quote.quote }}</blockquote>
+          <div class="quote-card-footer">
+            <span class="quote-author">{{ quote.author }}</span>
+            <button
+              class="favorite-button"
+              type="button"
+              [class.is-favorite]="store.favorites().includes(quote.id)"
+              [attr.aria-pressed]="store.favorites().includes(quote.id)"
+              [attr.aria-label]="
+                store.favorites().includes(quote.id)
+                  ? 'Удалить из избранного'
+                  : 'Добавить в избранное'
+              "
+              (click)="store.toggleFavorite(quote.id)"
+            >
+              {{ store.favorites().includes(quote.id) ? '♥ В избранном' : '♡ В избранное' }}
+            </button>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+</main>

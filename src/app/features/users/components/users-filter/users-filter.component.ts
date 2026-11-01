@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, DestroyRef, inject, OnInit } from '@angular/core';
+import { Component, DestroyRef, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs';
@@ -11,6 +11,13 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs';
 })
 export class UsersFilterComponent implements OnInit {
   @Output() filterChange = new EventEmitter<string>();
+
+  @Input() set search(value: string) {
+    const normalizedSearch = value ?? '';
+    if (this.searchControl.value !== normalizedSearch) {
+      this.searchControl.setValue(normalizedSearch, { emitEvent: false });
+    }
+  }
 
   private destroyRef = inject(DestroyRef);
 
