@@ -1,11 +1,13 @@
 import {
   ApplicationConfig,
   provideBrowserGlobalErrorListeners,
+  isDevMode,
   provideZoneChangeDetection,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
 import { routes } from '../../app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
@@ -39,6 +41,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideStore(),
     provideEffects(),
+    provideStoreDevtools({ maxAge: 50, logOnly: !isDevMode() }),
     provideZoneChangeDetection(),
     providePrimeNG({
       theme: {

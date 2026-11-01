@@ -12,11 +12,11 @@ interface IRequestTask<T> {
   onSuccess: (value: T) => void;
 }
 
-function getErrorMessage(error: unknown): string {
-  return error instanceof Error ? error.message : 'Не удалось загрузить цитаты';
+function getErrorMessage(error: unknown, fallback: string): string {
+  return error instanceof Error ? error.message : fallback;
 }
 
-export function withRequestStatus<T>() {
+export function withRequestStatus<T>(fallbackErrorMessage: string) {
   return signalStoreFeature(
     withState<IRequestStatusState>({ loading: false, error: null }),
     withMethods((store) => ({
@@ -29,7 +29,8 @@ export function withRequestStatus<T>() {
               return request.pipe(
                 tap({
                   next: onSuccess,
-                  error: (error: unknown) => patchState(store, { error: getErrorMessage(error) }),
+                  error: (error: unknown) =>
+                    patchState(store, { error: getErrorMessage(error, fallbackErrorMessage) }),
                 }),
                 catchError(() => EMPTY),
                 finalize(() => patchState(store, { loading: false })),

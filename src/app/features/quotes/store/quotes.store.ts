@@ -1,8 +1,9 @@
 import { computed, inject } from '@angular/core';
+import { withDevtools } from '@angular-architects/ngrx-toolkit';
 import { patchState, signalStore, withComputed, withMethods, withState } from '@ngrx/signals';
+import { withRequestStatus } from '../../../core/state/with-request-status.feature';
 import { IQuote, IQuotesResponse } from '../models/quote.interface';
 import { QuotesApiService } from '../data-access/quotes-api.service';
-import { withRequestStatus } from './with-request-status.feature';
 
 interface IQuotesState {
   quotes: IQuote[];
@@ -20,8 +21,9 @@ const initialState: IQuotesState = {
 
 export const QuotesStore = signalStore(
   { providedIn: 'root' },
+  withDevtools('quotes'),
   withState(initialState),
-  withRequestStatus<IQuotesResponse>(),
+  withRequestStatus<IQuotesResponse>('Не удалось загрузить цитаты'),
   withComputed(({ quotes, favorites, favoritesOnly }) => ({
     visibleQuotes: computed(() => {
       if (!favoritesOnly()) {

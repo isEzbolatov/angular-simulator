@@ -1,60 +1,43 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
-import { UserService } from '../../services/user.service';
-import { BehaviorSubject, combineLatest, map } from 'rxjs';
 import { UserCardComponent } from '../user-card/user-card.component';
 import { IUser } from '../../models/user.model';
 import { UserCreateComponent } from '../user-create/user-create.component';
-import { MessageTextService } from '../../../../core/services/message-text.service';
 import { UsersFilterComponent } from '../users-filter/users-filter.component';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PluralPipe } from '../../../../plural.pipe';
 import { BoldOnHoverDirective } from '../../../../bold-on-hover.directive';
+import { UsersStore } from '../../store/users.store';
 
 @Component({
   selector: 'app-users-page',
   imports: [
-    AsyncPipe,
     UserCardComponent,
     UserCreateComponent,
     UsersFilterComponent,
     PluralPipe,
     BoldOnHoverDirective,
   ],
+  providers: [UsersStore],
   templateUrl: './users-page.component.html',
   styleUrl: './users-page.component.scss',
 })
 export class UsersPageComponent implements OnInit {
-  private userService = inject(UserService);
-
-  private renderTextService = inject(MessageTextService);
-
-  users$ = this.userService.user$;
+  readonly store = inject(UsersStore);
 
   isModalOpen: boolean = false;
 
-  filterQuery$ = new BehaviorSubject<string>('');
-
-  filteredUsers$ = combineLatest([this.users$, this.filterQuery$]).pipe(
-    map(([user, filterUser]) =>
-      user.filter((name) => name.name.toLowerCase().includes(filterUser.trim().toLowerCase())),
-    ),
-    takeUntilDestroyed(),
-  );
-
   ngOnInit() {
-    this.userService.loadUsers().subscribe();
+    this.store.loadUsers();
   }
 
   deleteUserCard(userId: number) {
-    this.userService.deleteUser(userId);
+    this.store.deleteUser(userId);
   }
 
   onCreateUser(newUser: IUser) {
-    this.userService.addUser(newUser).subscribe();
+    this.store.addUser(newUser);
   }
 
   onFilterChange(search: string) {
-    this.filterQuery$.next(search);
+    this.store.setSearch(search);
   }
 }
